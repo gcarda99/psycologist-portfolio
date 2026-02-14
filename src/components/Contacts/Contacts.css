@@ -43,7 +43,7 @@
 
 .contacts-form {
     display: flex;
-    flex: 0.4;
+    flex: 1;
     width: 100%;
 }
 
@@ -178,12 +178,7 @@
 
 @media (min-width: 992px) and (max-width: 1380px) {
     .contacts--img {
-        width: 240px;
-    }
-
-    .contacts--container {
-        padding: 2rem 4rem;
-        margin-top: 1rem;
+        display: none;
     }
 }
 
@@ -193,31 +188,6 @@
         display: none;
     }
 
-    .contacts--container {
-        margin-top: 1rem;
-        margin-bottom: 25vh;
-    }
-
-    .contacts--container > h1 {
-        font-size: 3rem;
-        margin: 0 0 1.2rem 0;
-    }
-
-    .contacts-details {
-        padding-left: 4rem;
-    }
-
-    .personal-details p {
-        margin-left: 1rem;
-        font-size: 1rem;
-    }
-
-    .custom-shape-divider-bottom-1757341859 svg {
-        width: 150%;
-    }
-}
-
-@media screen and (max-width: 800px) {
     .contacts--container h1 {
         font-size: 3rem;
         margin-bottom: 30px;
