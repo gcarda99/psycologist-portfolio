@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Button} from '@material-ui/core';
+import {Button, useMediaQuery} from '@material-ui/core';
 import {NavHashLink as NavLink} from 'react-router-hash-link';
 import {makeStyles} from '@material-ui/core/styles';
 
@@ -13,6 +13,10 @@ import {FaEnvelope, FaInstagram, FaLinkedin,} from 'react-icons/fa';
 
 function Landing() {
     const { theme, drawerOpen } = useContext(ThemeContext);
+
+    const isMobile = useMediaQuery(
+        '(max-width: 600px)'
+    );
 
     const useStyles = makeStyles((t) => ({
         resumeBtn: {
@@ -105,6 +109,25 @@ function Landing() {
                         )}
                     </div>
                 </div>
+                {isMobile && (
+                    <div className="custom-shape-divider-top-1757341859">
+                        <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg"
+                             className="transition duration-300 ease-in-out delay-150">
+                            <path
+                                d="M 0,400 L 0,75 C 74.44102564102565,81.77435897435898 148.8820512820513,88.54871794871795 238,80 C 327.1179487179487,71.45128205128205 430.9128205128204,47.579487179487174 520,38 C 609.0871794871796,28.420512820512823 683.4666666666667,33.13333333333333 751,43 C 818.5333333333333,52.86666666666667 879.220512820513,67.8871794871795 958,80 C 1036.779487179487,92.1128205128205 1133.651282051282,101.31794871794871 1217,100 C 1300.348717948718,98.68205128205129 1370.1743589743592,86.84102564102565 1440,75 L 1440,400 L 0,400 Z"
+                                stroke="none" strokeWidth="0" fill="#823ae0" fillOpacity="0.4"
+                                className="transition-all duration-300 ease-in-out delay-150 path-0"></path>
+                            <path
+                                d="M 0,400 L 0,175 C 104.25384615384615,187.47692307692307 208.5076923076923,199.95384615384614 282,190 C 355.4923076923077,180.04615384615386 398.223076923077,147.66153846153847 474,140 C 549.776923076923,132.33846153846153 658.6,149.39999999999998 740,158 C 821.4,166.60000000000002 875.376923076923,166.73846153846156 958,170 C 1040.623076923077,173.26153846153844 1151.892307692308,179.64615384615382 1237,181 C 1322.107692307692,182.35384615384618 1381.053846153846,178.6769230769231 1440,175 L 1440,400 L 0,400 Z"
+                                stroke="none" strokeWidth="0" fill="#823ae0" fillOpacity="0.53"
+                                className="transition-all duration-300 ease-in-out delay-150 path-1"></path>
+                            <path
+                                d="M 0,400 L 0,275 C 87.84358974358975,281.7051282051282 175.6871794871795,288.4102564102564 244,291 C 312.3128205128205,293.5897435897436 361.0948717948718,292.06410256410254 445,291 C 528.9051282051282,289.93589743589746 647.9333333333334,289.3333333333333 751,276 C 854.0666666666666,262.6666666666667 941.1717948717949,236.60256410256414 1003,241 C 1064.8282051282051,245.39743589743586 1101.3794871794871,280.2564102564102 1170,291 C 1238.6205128205129,301.7435897435898 1339.3102564102564,288.3717948717949 1440,275 L 1440,400 L 0,400 Z"
+                                stroke="none" strokeWidth="0" fill="#823ae0" fillOpacity="1"
+                                className="transition-all duration-300 ease-in-out delay-150 path-2"></path>
+                        </svg>
+                    </div>
+                )}
                 <img
                     src={headerData.image}
                     alt=''
