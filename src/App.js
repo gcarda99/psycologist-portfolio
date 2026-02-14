@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Navigate, Route, Routes} from 'react-router-dom';
 
 import {ThemeContext} from './contexts/ThemeContext';
 import {Main, PrivacyPolicy} from './pages'
@@ -17,14 +17,14 @@ function App() {
         <div className="app">
             <Router>
                 <ScrollToTop/>
-                <Switch>
-                    <Route path="/" exact component={Main}/>
-                    <Route path="/privacy-policy" exact component={PrivacyPolicy}/>
-                    {/*<Route path="/blog" exact component={BlogPage} />*/}
-                    {/*<Route path="/projects" exact component={ProjectPage} />*/}
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                    {/*<Route path="/blog" element={<BlogPage />} />*/}
+                    {/*<Route path="/projects" element={<ProjectPage />} />*/}
 
-                    <Redirect to="/"/>
-                </Switch>
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                </Routes>
             </Router>
             <BackToTop/>
         </div>

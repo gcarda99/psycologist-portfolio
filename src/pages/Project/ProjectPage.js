@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { Helmet } from 'react-helmet'
-import { Grid } from '@material-ui/core'
+import { Grid } from '@mui/material'
 import { Link } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import { AiOutlineHome } from "react-icons/ai";
 
 import './ProjectPage.css'
@@ -38,7 +38,7 @@ function ProjectPage() {
             "&::placeholder": {
                 color: theme.tertiary80, 
             },
-            [t.breakpoints.down('sm')]: {
+            [t.breakpoints.down('md')]: {
                 width:'350px',
             },
         },
@@ -59,7 +59,7 @@ function ProjectPage() {
                 color: theme.tertiary,
                 transform: 'scale(1.1)',
             },
-            [t.breakpoints.down('sm')]: {
+            [t.breakpoints.down('md')]: {
                 fontSize: '1.8rem',
             },
         },

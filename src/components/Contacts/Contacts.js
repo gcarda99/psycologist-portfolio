@@ -1,9 +1,9 @@
 import React, {useContext, useState} from 'react';
-import {IconButton, Snackbar, SnackbarContent} from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
+import {IconButton, Snackbar, SnackbarContent} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import axios from 'axios';
 import isEmail from 'validator/lib/isEmail';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import {AiOutlineCheckCircle, AiOutlineSend} from 'react-icons/ai';
 import {FiAtSign, FiPhone} from 'react-icons/fi';
 import {HiOutlineLocationMarker} from 'react-icons/hi';

@@ -1,14 +1,14 @@
 import React, {useContext, useState} from 'react';
-import {NavHashLink as NavLink} from 'react-router-hash-link';
+import {NavHashLink as NavLink} from '@xzar90/react-router-hash-link';
 import Fade from 'react-reveal/Fade';
 import {IoHomeSharp, IoMenuSharp} from 'react-icons/io5';
 import {HiDocumentText} from 'react-icons/hi';
 import {BsFillGearFill} from 'react-icons/bs';
 import {MdPhone} from 'react-icons/md';
 import {FaUser} from 'react-icons/fa';
-import {makeStyles} from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CloseIcon from '@material-ui/icons/Close';
+import { makeStyles } from '@mui/styles';
+import Drawer from '@mui/material/Drawer';
+import CloseIcon from '@mui/icons-material/Close';
 
 import './Navbar.css';
 import {headerData} from '../../data/headerData';
@@ -42,10 +42,10 @@ function Navbar() {
             '&:hover': {
                 color: theme.primary,
             },
-            [t.breakpoints.down('sm')]: {
+            [t.breakpoints.down('md')]: {
                 fontSize: '2.5rem',
             },
-            [t.breakpoints.down('xs')]: {
+            [t.breakpoints.down('sm')]: {
                 fontSize: '2rem',
             },
         },
@@ -60,7 +60,7 @@ function Navbar() {
             overflow: 'hidden',
             borderTopLeftRadius: '40px',
             borderBottomLeftRadius: '40px',
-            [t.breakpoints.down('sm')]: {
+            [t.breakpoints.down('md')]: {
                 width: '12em',
             },
         },
@@ -76,7 +76,7 @@ function Navbar() {
             '&:hover': {
                 color: theme.tertiary,
             },
-            [t.breakpoints.down('sm')]: {
+            [t.breakpoints.down('md')]: {
                 right: 20,
                 top: 20,
             },
@@ -84,7 +84,7 @@ function Navbar() {
         drawerItem: {
             margin: '2rem auto',
             borderRadius: '78.8418px',
-            background: theme.secondary,
+            background: "white",
             color: theme.primary,
             width: '100%',
             height: '60px',
@@ -100,7 +100,7 @@ function Navbar() {
                 background: theme.primary,
                 color: theme.secondary,
             },
-            [t.breakpoints.down('sm')]: {
+            [t.breakpoints.down('md')]: {
                 width: '100%',
                 padding: '0 25px',
                 height: '55px',
@@ -111,13 +111,13 @@ function Navbar() {
             width: '55%',
             fontSize: '1.3rem',
             fontWeight: 600,
-            [t.breakpoints.down('sm')]: {
+            [t.breakpoints.down('md')]: {
                 fontSize: '1.125rem',
             },
         },
         drawerIcon: {
             fontSize: '1.6rem',
-            [t.breakpoints.down('sm')]: {
+            [t.breakpoints.down('md')]: {
                 fontSize: '1.385rem',
             },
         },

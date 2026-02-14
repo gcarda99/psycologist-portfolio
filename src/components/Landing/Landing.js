@@ -1,120 +1,80 @@
 import React, {useContext} from 'react';
-import {Button, useMediaQuery} from '@material-ui/core';
-import {NavHashLink as NavLink} from 'react-router-hash-link';
-import {makeStyles} from '@material-ui/core/styles';
+import {Button, useMediaQuery} from '@mui/material';
+import {NavHashLink as NavLink} from '@xzar90/react-router-hash-link';
 
 import './Landing.css';
 import {ThemeContext} from '../../contexts/ThemeContext';
 import {headerData} from '../../data/headerData';
 import {socialsData} from '../../data/socialsData';
 
-import {FaEnvelope, FaInstagram, FaLinkedin, FaTiktok} from 'react-icons/fa';
+import {FaEnvelope, FaInstagram, FaLinkedin, FaTiktok} from 'react-icons/fa6';
 
 function Landing() {
-    const { theme, drawerOpen } = useContext(ThemeContext);
+    const {theme, drawerOpen} = useContext(ThemeContext);
 
-    const isMobile = useMediaQuery(
-        '(max-width: 600px)'
-    );
+    const isMobile = useMediaQuery('(max-width: 600px)');
 
-    const useStyles = makeStyles((t) => ({
-        resumeBtn: {
-            color: theme.primary,
-            borderRadius: '30px',
-            textTransform: 'inherit',
-            textDecoration: 'none',
-            width: '140px',
-            fontSize: '1rem',
-            fontWeight: '500',
-            height: '45px',
-            fontFamily: 'var(--primaryFont)',
-            border: `3px solid ${theme.primary}`,
-            transition: '100ms ease-out',
-            '&:hover': {
-                backgroundColor: theme.tertiary,
-                color: theme.secondary,
-                border: `3px solid ${theme.tertiary}`,
-            },
-        },
-        contactBtn: {
-            backgroundColor: theme.primary,
+    const contactBtnStyle = {
+        backgroundColor: theme.primary,
+        color: theme.secondary,
+        borderRadius: '30px',
+        textTransform: 'inherit',
+        textDecoration: 'none',
+        width: '140px',
+        height: '45px',
+        fontSize: '1rem',
+        fontWeight: '500',
+        fontFamily: 'var(--primaryFont)',
+        border: `3px solid ${theme.primary}`,
+        transition: '100ms ease-out',
+        '&:hover': {
+            transform: 'scale(1.08)',
             color: theme.secondary,
-            borderRadius: '30px',
-            textTransform: 'inherit',
-            textDecoration: 'none',
-            width: '140px',
-            height: '45px',
-            fontSize: '1rem',
-            fontWeight: '500',
-            fontFamily: 'var(--primaryFont)',
-            border: `3px solid ${theme.primary}`,
-            transition: '100ms ease-out',
-            '&:hover': {
-                backgroundColor: theme.secondary,
-                color: theme.tertiary,
-                border: `3px solid ${theme.tertiary}`,
-            }
-        },
-    }));
-
-    const classes = useStyles();
+            backgroundColor: theme.tertiary,
+            border: `3px solid ${theme.tertiary}`
+        }
+    };
 
     return (
         <div className='landing'>
             <div className='landing--container'>
                 <div
                     className='landing--container-left'
-                    style={{ backgroundColor: theme.primary }}
+                    style={{backgroundColor: theme.primary}}
                 >
                     <div className='lcl--content'>
                         {socialsData.linkedIn && (
-                            <a
-                                href={socialsData.linkedIn}
-                                target='_blank'
-                                rel='noreferrer'
-                            >
+                            <a href={socialsData.linkedIn} target='_blank' rel='noreferrer'>
                                 <FaLinkedin
                                     className='landing--social'
-                                    style={{ color: theme.secondary }}
+                                    style={{color: theme.secondary}}
                                     aria-label='LinkedIn'
                                 />
                             </a>
                         )}
                         {socialsData.instagram && (
-                            <a
-                                href={socialsData.instagram}
-                                target='_blank'
-                                rel='noreferrer'
-                            >
+                            <a href={socialsData.instagram} target='_blank' rel='noreferrer'>
                                 <FaInstagram
                                     className='landing--social'
-                                    style={{ color: theme.secondary }}
+                                    style={{color: theme.secondary}}
                                     aria-label='Instagram'
                                 />
                             </a>
                         )}
                         {socialsData.tikTok && (
-                            <a
-                                href={socialsData.tikTok}
-                                target='_blank'
-                                rel='noreferrer'
-                            >
+                            <a href={socialsData.tikTok} target='_blank' rel='noreferrer'>
                                 <FaTiktok
                                     className='landing--social'
-                                    style={{ color: theme.secondary }}
+                                    style={{color: theme.secondary}}
                                     aria-label='TikTok'
                                 />
                             </a>
                         )}
                         {socialsData.gmail && (
-                            <a
-                                href={socialsData.gmail}
-                                target='_blank'
-                                rel='noreferrer'
-                            >
+                            <a href={socialsData.gmail} target='_blank' rel='noreferrer'>
                                 <FaEnvelope
                                     className='landing--social'
-                                    style={{ color: theme.secondary }}
+                                    style={{color: theme.secondary}}
                                     aria-label='Gmail'
                                 />
                             </a>
@@ -151,11 +111,11 @@ function Landing() {
                 />
                 <div
                     className='landing--container-right'
-                    style={{ backgroundColor: theme.secondary }}
+                    style={{backgroundColor: theme.secondary}}
                 >
                     <div
                         className='lcr--content'
-                        style={{ color: theme.tertiary }}
+                        style={{color: theme.tertiary}}
                     >
                         <h6 className='lcr--content--title'>{headerData.title}</h6>
                         <h1>{headerData.name}</h1>
@@ -170,7 +130,7 @@ function Landing() {
                                     spy='true'
                                     duration={2000}
                                 >
-                                    <Button className={classes.contactBtn}>
+                                    <Button sx={contactBtnStyle}>
                                         Contatti
                                     </Button>
                                 </NavLink>
@@ -183,8 +143,6 @@ function Landing() {
                             <div className='arrow'></div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>

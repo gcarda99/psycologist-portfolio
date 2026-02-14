@@ -4,7 +4,7 @@ import {ThemeContext} from '../../contexts/ThemeContext'
 import {socialsData} from '../../data/socialsData'
 import {footerData} from '../../data/footerData'
 import {FaAt, FaEnvelope, FaInstagram, FaLinkedinIn, FaTiktok} from "react-icons/fa";
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from '@mui/styles';
 
 function Footer() {
 
