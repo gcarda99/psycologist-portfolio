@@ -8,8 +8,7 @@ import {ThemeContext} from '../../contexts/ThemeContext';
 import {headerData} from '../../data/headerData';
 import {socialsData} from '../../data/socialsData';
 
-import {FaEnvelope, FaInstagram, FaLinkedin,} from 'react-icons/fa';
-
+import {FaEnvelope, FaInstagram, FaLinkedin, FaTiktok} from 'react-icons/fa';
 
 function Landing() {
     const { theme, drawerOpen } = useContext(ThemeContext);
@@ -91,6 +90,19 @@ function Landing() {
                                     className='landing--social'
                                     style={{ color: theme.secondary }}
                                     aria-label='Instagram'
+                                />
+                            </a>
+                        )}
+                        {socialsData.tikTok && (
+                            <a
+                                href={socialsData.tikTok}
+                                target='_blank'
+                                rel='noreferrer'
+                            >
+                                <FaTiktok
+                                    className='landing--social'
+                                    style={{ color: theme.secondary }}
+                                    aria-label='TikTok'
                                 />
                             </a>
                         )}

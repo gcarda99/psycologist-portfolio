@@ -3,7 +3,7 @@ import './Footer.css'
 import {ThemeContext} from '../../contexts/ThemeContext'
 import {socialsData} from '../../data/socialsData'
 import {footerData} from '../../data/footerData'
-import {FaAt, FaEnvelope, FaInstagram, FaLinkedinIn} from "react-icons/fa";
+import {FaAt, FaEnvelope, FaInstagram, FaLinkedinIn, FaTiktok} from "react-icons/fa";
 import {makeStyles} from "@material-ui/core/styles";
 
 function Footer() {
@@ -88,6 +88,16 @@ function Footer() {
                         className={classes.socialIcon}
                     >
                         <FaInstagram aria-label='Instagram'/>
+                    </a>
+                )}
+                {socialsData.tikTok && (
+                    <a
+                        href={socialsData.tikTok}
+                        target='_blank'
+                        rel='noreferrer'
+                        className={classes.socialIcon}
+                    >
+                        <FaTiktok aria-label='Tiktok'/>
                     </a>
                 )}
                 {socialsData.gmail && (
