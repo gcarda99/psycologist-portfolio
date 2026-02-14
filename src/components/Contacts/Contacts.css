@@ -222,7 +222,7 @@
     }
 
     .contacts-form form {
-        align-items: flex-end;
+        align-items: flex-start;
     }
 
     .contacts-details {

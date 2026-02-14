@@ -1,9 +1,8 @@
 import React, {useContext, useState} from 'react';
 import {IconButton, Snackbar, SnackbarContent} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import axios from 'axios';
 import isEmail from 'validator/lib/isEmail';
-import { makeStyles } from '@mui/styles';
+import {makeStyles} from '@mui/styles';
 import {AiOutlineCheckCircle, AiOutlineSend} from 'react-icons/ai';
 import {FiAtSign, FiPhone} from 'react-icons/fi';
 import {HiOutlineLocationMarker} from 'react-icons/hi';
@@ -14,14 +13,13 @@ import './Contacts.css';
 
 function Contacts() {
     const [open, setOpen] = useState(false);
-
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
-
     const [success, setSuccess] = useState(false);
     const [errMsg, setErrMsg] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const { theme } = useContext(ThemeContext);
 
@@ -118,35 +116,46 @@ function Contacts() {
     const handleContactForm = (e) => {
         e.preventDefault();
 
-        if (name && email && message) {
+        if (name && email && subject && message) {
             if (isEmail(email)) {
-                const responseData = {
+                setIsSubmitting(true);
+                const formData = {
                     name: name,
                     email: email,
                     subject: subject,
                     message: message,
                 };
 
-                axios.post(contactsData.sheetAPI, responseData).then((res) => {
-                    console.log('success');
+                console.log('name:', formData.name);
+                console.log('email:', formData.email);
+                console.log('subject:', formData.subject);
+                console.log('message:', formData.message);
+
+                setTimeout(() => {
                     setSuccess(true);
                     setErrMsg('');
-
                     setName('');
                     setEmail('');
-                    setSubject('')
+                    setSubject('');
                     setMessage('');
                     setOpen(false);
-                });
+
+                    setTimeout(() => {
+                        setSuccess(false);
+                        setIsSubmitting(false);
+                    }, 3000);
+                }, 500);
+
             } else {
-                setErrMsg('Invalid email');
+                setErrMsg('Email non valida');
                 setOpen(true);
             }
         } else {
-            setErrMsg('Enter all the fields');
+            setErrMsg('Inserisci tutti i campi');
             setOpen(true);
         }
     };
+
 
     return (
         <div
@@ -226,6 +235,11 @@ function Contacts() {
                                     <button
                                         type='submit'
                                         className={classes.submitBtn}
+                                        disabled={isSubmitting}
+                                        style={{
+                                            opacity: isSubmitting ? 0.6 : 1,
+                                            cursor: isSubmitting ? 'not-allowed' : 'pointer'
+                                        }}
                                     >
                                         <p>{!success ? 'Invia' : 'Inviato'}</p>
                                         <div className='submit-icon'>
