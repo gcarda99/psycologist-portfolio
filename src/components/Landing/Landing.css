@@ -200,8 +200,8 @@
 
 @media (max-width: 900px) {
     .landing--img {
-        --img-size: clamp(180px, 30vw, 320px);
-        top: 28%;
+        --img-size: clamp(180px, 35vw, 320px);
+        top: 35%;
     }
 
     .landing--social {
