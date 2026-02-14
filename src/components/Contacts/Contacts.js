@@ -313,7 +313,7 @@ function Contacts() {
                                     <HiOutlineLocationMarker/>
                                 </div>
                                 <p style={{color: theme.tertiary}}>
-                                    {contactsData.address}
+                                    {contactsData.address1}<br/>{contactsData.address2}
                                 </p>
                             </div>
                         </div>
