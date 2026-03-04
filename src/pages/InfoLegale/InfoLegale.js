@@ -4,7 +4,7 @@ import React from 'react';
 
 function InfoLegale() {
     return (
-        <div className="privacy-policy">
+        <div className="info-legale">
             <div className="container">
                 <h1>Privacy Policy</h1>
                 <p><strong>Ultimo aggiornamento:</strong> {privacyPolicyData.lastUpdate}</p>
