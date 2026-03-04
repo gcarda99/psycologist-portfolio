@@ -78,6 +78,25 @@ const useStyles = makeStyles((t) => ({
 
 const shortname = (name) => name.replace('Dott.ssa', '');
 
+// base:  white bg  + purple text/icon
+// hover: black bg  + white  text/icon
+const getItemStyle = (isHovered, theme) => ({
+    margin: '1.5rem auto',
+    borderRadius: '78.8418px',
+    width: '100%',
+    height: '60px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    padding: '0 30px',
+    boxSizing: 'border-box',
+    border: `2px solid ${isHovered ? '#111' : theme.primary}`,
+    backgroundColor: isHovered ? '#111' : theme.primary,
+    color: isHovered ? '#fff' : theme.secondary,
+    transition: 'background-color 250ms ease-in-out, color 250ms ease-in-out, border-color 250ms ease-in-out',
+    cursor: 'pointer',
+});
+
 function Navbar() {
     const { theme, setHandleDrawer } = useContext(ThemeContext);
     const [open, setOpen] = useState(false);
@@ -90,25 +109,6 @@ function Navbar() {
     const drawerPaperStyle = useMemo(() => ({
         background: theme.secondary,
     }), [theme.secondary]);
-
-    // base: white bg, purple text/border
-    // hover: purple bg (tertiary), white text
-    const getItemStyle = (isHovered) => ({
-        margin: '1.5rem auto',
-        borderRadius: '78.8418px',
-        width: '100%',
-        height: '60px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-        padding: '0 30px',
-        boxSizing: 'border-box',
-        border: `2px solid ${theme.primary}`,
-        backgroundColor: isHovered ? theme.tertiary : theme.primary,
-        color: isHovered ? theme.primary : theme.secondary,
-        transition: 'background-color 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out',
-        cursor: 'pointer',
-    });
 
     return (
         <div className='navbar'>
@@ -168,7 +168,7 @@ function Navbar() {
                                 onClick={handleDrawerClose}
                             >
                                 <NavLink to={to} smooth={true} spy='true' duration={2000}>
-                                    <div style={getItemStyle(hoveredIndex === i)}>
+                                    <div style={getItemStyle(hoveredIndex === i, theme)}>
                                         <Icon className={classes.drawerIcon} />
                                         <span className={classes.drawerLinks}>
                                             {label}
