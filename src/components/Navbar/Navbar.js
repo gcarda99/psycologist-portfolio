@@ -47,13 +47,14 @@ const useStyles = makeStyles((t) => ({
     },
     drawerIcon: {
         fontSize: '1.6rem',
+        flexShrink: 0,
         [t.breakpoints.down('md')]: { fontSize: '1.385rem' },
     },
     drawerLinks: {
         fontFamily: 'var(--primaryFont)',
-        width: '55%',
         fontSize: '1.3rem',
         fontWeight: 600,
+        whiteSpace: 'nowrap',
         [t.breakpoints.down('md')]: { fontSize: '1.125rem' },
     },
 }));
@@ -70,6 +71,7 @@ const getItemStyle = (isHovered, theme) => ({
     justifyContent: 'space-evenly',
     padding: '0 30px',
     boxSizing: 'border-box',
+    gap: '0.75rem',
     border: `2px solid ${isHovered ? '#111' : theme.primary}`,
     backgroundColor: isHovered ? '#111' : theme.primary,
     color: isHovered ? '#fff' : theme.secondary,
