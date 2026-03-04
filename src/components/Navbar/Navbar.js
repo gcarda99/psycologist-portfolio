@@ -53,16 +53,6 @@ const useStyles = makeStyles((t) => ({
         borderBottomLeftRadius: '40px',
         [t.breakpoints.down('md')]: { width: '12em' },
     },
-    closebtnIcon: {
-        fontSize: '2rem',
-        fontWeight: 'bold',
-        cursor: 'pointer',
-        position: 'absolute',
-        right: 40,
-        top: 40,
-        transition: 'color 0.2s',
-        [t.breakpoints.down('md')]: { right: 20, top: 20 },
-    },
     drawerIcon: {
         fontSize: '1.6rem',
         [t.breakpoints.down('md')]: { fontSize: '1.385rem' },
@@ -78,8 +68,6 @@ const useStyles = makeStyles((t) => ({
 
 const shortname = (name) => name.replace('Dott.ssa', '');
 
-// base:  white bg  + purple text/icon
-// hover: black bg  + white  text/icon
 const getItemStyle = (isHovered, theme) => ({
     margin: '1.5rem auto',
     borderRadius: '78.8418px',
@@ -101,6 +89,7 @@ function Navbar() {
     const { theme, setHandleDrawer } = useContext(ThemeContext);
     const [open, setOpen] = useState(false);
     const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [closeHovered, setCloseHovered] = useState(false);
     const classes = useStyles();
 
     const handleDrawerOpen = () => { setOpen(true); setHandleDrawer(); };
@@ -137,7 +126,19 @@ function Navbar() {
                 disableScrollLock={true}
             >
                 <div className='div-closebtn'>
-                    <CloseIcon
+                    <motion.div
+                        style={{
+                            position: 'absolute',
+                            right: 40,
+                            top: 40,
+                            display: 'inline-flex',
+                            cursor: 'pointer',
+                            color: closeHovered ? '#111' : theme.primary,
+                            transition: 'color 250ms ease-in-out',
+                        }}
+                        whileHover={{ scale: 1.2 }}
+                        onHoverStart={() => setCloseHovered(true)}
+                        onHoverEnd={() => setCloseHovered(false)}
                         onClick={handleDrawerClose}
                         onKeyDown={(e) => {
                             if (e.key === ' ' || e.key === 'Enter') {
@@ -145,12 +146,12 @@ function Navbar() {
                                 handleDrawerClose();
                             }
                         }}
-                        className={classes.closebtnIcon}
-                        style={{ color: theme.primary }}
                         role='button'
                         tabIndex='0'
                         aria-label='Close'
-                    />
+                    >
+                        <CloseIcon style={{ fontSize: '2rem', fontWeight: 'bold' }} />
+                    </motion.div>
                 </div>
                 <br />
                 <div className='drawer-content'>
