@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useMemo } from 'react';
 import { NavHashLink as NavLink } from '@xzar90/react-router-hash-link';
 import { motion } from 'framer-motion';
 import { IoHomeSharp, IoMenuSharp } from 'react-icons/io5';
@@ -24,9 +24,80 @@ const fadeRightVariant = {
     }),
 };
 
+const NAV_ITEMS = [
+    { to: '/',           Icon: IoHomeSharp,     label: 'Home' },
+    { to: '/#about',     Icon: FaUser,          label: 'Su di me' },
+    { to: '/#education', Icon: HiDocumentText,  label: 'Formazione' },
+    { to: '/#services',  Icon: BsFillGearFill,  label: 'Servizi' },
+    { to: '/#contacts',  Icon: MdPhone,         label: 'Contatti' },
+];
+
+// makeStyles moved outside the component so it's created only once
+const useStyles = makeStyles((t) => ({
+    navMenu: {
+        fontSize: '2.5rem',
+        cursor: 'pointer',
+        transform: 'translateY(-10px)',
+        transition: 'color 0.3s',
+        [t.breakpoints.down('md')]: { fontSize: '2.5rem' },
+        [t.breakpoints.down('sm')]: { fontSize: '2rem' },
+    },
+    MuiDrawer: {
+        padding: '0em 1.8em',
+        width: '14em',
+        fontFamily: 'var(--primaryFont)',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '24px',
+        overflow: 'hidden',
+        borderTopLeftRadius: '40px',
+        borderBottomLeftRadius: '40px',
+        [t.breakpoints.down('md')]: { width: '12em' },
+    },
+    closebtnIcon: {
+        fontSize: '2rem',
+        fontWeight: 'bold',
+        cursor: 'pointer',
+        position: 'absolute',
+        right: 40,
+        top: 40,
+        transition: 'color 0.2s',
+        [t.breakpoints.down('md')]: { right: 20, top: 20 },
+    },
+    drawerItem: {
+        margin: '2rem auto',
+        borderRadius: '78.8418px',
+        background: 'white',
+        width: '100%',
+        height: '60px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        padding: '0 30px',
+        boxSizing: 'border-box',
+        border: '2px solid',
+        transition: 'background-color 0.2s, color 0.2s',
+        [t.breakpoints.down('md')]: { width: '100%', padding: '0 25px', height: '55px' },
+    },
+    drawerLinks: {
+        fontFamily: 'var(--primaryFont)',
+        width: '55%',
+        fontSize: '1.3rem',
+        fontWeight: 600,
+        [t.breakpoints.down('md')]: { fontSize: '1.125rem' },
+    },
+    drawerIcon: {
+        fontSize: '1.6rem',
+        [t.breakpoints.down('md')]: { fontSize: '1.385rem' },
+    },
+}));
+
+const shortname = (name) => name.replace('Dott.ssa', '');
+
 function Navbar() {
     const { theme, setHandleDrawer } = useContext(ThemeContext);
     const [open, setOpen] = useState(false);
+    const classes = useStyles();
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -38,84 +109,15 @@ function Navbar() {
         setHandleDrawer();
     };
 
-    const useStyles = makeStyles((t) => ({
-        navMenu: {
-            fontSize: '2.5rem',
-            color: theme.tertiary,
-            cursor: 'pointer',
-            transform: 'translateY(-10px)',
-            transition: 'color 0.3s',
-            '&:hover': { color: theme.primary },
-            [t.breakpoints.down('md')]: { fontSize: '2.5rem' },
-            [t.breakpoints.down('sm')]: { fontSize: '2rem' },
-        },
-        MuiDrawer: {
-            padding: '0em 1.8em',
-            width: '14em',
-            fontFamily: 'var(--primaryFont)',
-            fontStyle: 'normal',
-            fontWeight: 'normal',
-            fontSize: '24px',
-            background: theme.secondary,
-            overflow: 'hidden',
-            borderTopLeftRadius: '40px',
-            borderBottomLeftRadius: '40px',
-            [t.breakpoints.down('md')]: { width: '12em' },
-        },
-        closebtnIcon: {
-            fontSize: '2rem',
-            fontWeight: 'bold',
-            cursor: 'pointer',
-            color: theme.primary,
-            position: 'absolute',
-            right: 40,
-            top: 40,
-            transition: 'color 0.2s',
-            '&:hover': { color: theme.tertiary },
-            [t.breakpoints.down('md')]: { right: 20, top: 20 },
-        },
-        drawerItem: {
-            margin: '2rem auto',
-            borderRadius: '78.8418px',
-            background: 'white',
-            color: theme.primary,
-            width: '100%',
-            height: '60px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-evenly',
-            padding: '0 30px',
-            boxSizing: 'border-box',
-            border: '2px solid',
-            borderColor: theme.primary,
-            transition: 'background-color 0.2s, color 0.2s',
-            '&:hover': { background: theme.primary, color: theme.secondary },
-            [t.breakpoints.down('md')]: { width: '100%', padding: '0 25px', height: '55px' },
-        },
-        drawerLinks: {
-            fontFamily: 'var(--primaryFont)',
-            width: '55%',
-            fontSize: '1.3rem',
-            fontWeight: 600,
-            [t.breakpoints.down('md')]: { fontSize: '1.125rem' },
-        },
-        drawerIcon: {
-            fontSize: '1.6rem',
-            [t.breakpoints.down('md')]: { fontSize: '1.385rem' },
-        },
-    }));
+    // inline styles that depend on theme, memoized so they don't recreate on every render
+    const drawerPaperStyle = useMemo(() => ({
+        background: theme.secondary,
+    }), [theme.secondary]);
 
-    const classes = useStyles();
-
-    const shortname = (name) => name.replace('Dott.ssa', '');
-
-    const navItems = [
-        { to: '/',           icon: <IoHomeSharp className={classes.drawerIcon} />,      label: 'Home' },
-        { to: '/#about',     icon: <FaUser className={classes.drawerIcon} />,           label: 'Su di me' },
-        { to: '/#education', icon: <HiDocumentText className={classes.drawerIcon} />,  label: 'Formazione' },
-        { to: '/#services',  icon: <BsFillGearFill className={classes.drawerIcon} />,  label: 'Servizi' },
-        { to: '/#contacts',  icon: <MdPhone className={classes.drawerIcon} />,         label: 'Contatti' },
-    ];
+    const drawerItemStyle = useMemo(() => ({
+        color: theme.primary,
+        borderColor: theme.primary,
+    }), [theme.primary]);
 
     return (
         <div className='navbar'>
@@ -125,6 +127,7 @@ function Navbar() {
                 </h1>
                 <IoMenuSharp
                     className={classes.navMenu}
+                    style={{ color: theme.tertiary }}
                     onClick={handleDrawerOpen}
                     aria-label='Menu'
                 />
@@ -138,6 +141,7 @@ function Navbar() {
                 anchor='right'
                 open={open}
                 classes={{ paper: classes.MuiDrawer }}
+                PaperProps={{ style: drawerPaperStyle }}
                 className='drawer'
                 disableScrollLock={true}
             >
@@ -151,6 +155,7 @@ function Navbar() {
                             }
                         }}
                         className={classes.closebtnIcon}
+                        style={{ color: theme.primary }}
                         role='button'
                         tabIndex='0'
                         aria-label='Close'
@@ -159,18 +164,20 @@ function Navbar() {
                 <br />
                 <div className='drawer-content' onClick={handleDrawerClose}>
                     <div className='navLink--container'>
-                        {navItems.map((item, i) => (
+                        {NAV_ITEMS.map(({ to, Icon, label }, i) => (
                             <motion.div
-                                key={item.to}
+                                key={to}
                                 custom={i}
                                 variants={fadeRightVariant}
                                 initial='hidden'
                                 animate={open ? 'visible' : 'hidden'}
                             >
-                                <NavLink to={item.to} smooth={true} spy='true' duration={2000}>
-                                    <div className={classes.drawerItem}>
-                                        {item.icon}
-                                        <span className={classes.drawerLinks}>{item.label}</span>
+                                <NavLink to={to} smooth={true} spy='true' duration={2000}>
+                                    <div className={classes.drawerItem} style={drawerItemStyle}>
+                                        <Icon className={classes.drawerIcon} />
+                                        <span className={classes.drawerLinks} style={{ color: theme.primary }}>
+                                            {label}
+                                        </span>
                                     </div>
                                 </NavLink>
                             </motion.div>
@@ -182,7 +189,7 @@ function Navbar() {
                             alt='brain'
                             className='navbar--image'
                             variants={fadeRightVariant}
-                            custom={navItems.length}
+                            custom={NAV_ITEMS.length}
                             initial='hidden'
                             animate={open ? 'visible' : 'hidden'}
                         />
