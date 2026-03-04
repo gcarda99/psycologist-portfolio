@@ -149,6 +149,12 @@ All site content lives in `src/data/`. Edit the corresponding files:
 
 ---
 
+## Credits
+
+This project is based on and evolved from [developer-portfolio](https://github.com/hhhrrrttt222111/developer-portfolio) by [Hemanth R](https://github.com/hhhrrrttt222111), adapted and extended for a professional psychologist portfolio.
+
+---
+
 ## Author
 
 Developed by [Giuseppe Cardaropoli](https://github.com/gcarda99)
