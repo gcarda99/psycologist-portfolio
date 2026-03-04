@@ -8,7 +8,7 @@ import ScrollToTop from './utils/ScrollToTop';
 
 import './App.css';
 
-const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy/PrivacyPolicy'));
+const InfoLegale = lazy(() => import('./pages/InfoLegale/InfoLegale'));
 // const BlogPage = lazy(() => import('./pages/Blog/BlogPage'));
 // const ProjectPage = lazy(() => import('./pages/Project/ProjectPage'));
 
@@ -23,7 +23,7 @@ function App() {
                 <Suspense fallback={<div />}>
                     <Routes>
                         <Route path="/" element={<Main />} />
-                        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                        <Route path="/info-legale" element={<InfoLegale />} />
                         {/* <Route path="/blog" element={<BlogPage />} /> */}
                         {/* <Route path="/projects" element={<ProjectPage />} /> */}
                         <Route path="*" element={<Navigate to="/" replace />} />
