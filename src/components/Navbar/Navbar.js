@@ -25,14 +25,13 @@ const fadeRightVariant = {
 };
 
 const NAV_ITEMS = [
-    { to: '/',           Icon: IoHomeSharp,     label: 'Home' },
-    { to: '/#about',     Icon: FaUser,          label: 'Su di me' },
-    { to: '/#education', Icon: HiDocumentText,  label: 'Formazione' },
-    { to: '/#services',  Icon: BsFillGearFill,  label: 'Servizi' },
-    { to: '/#contacts',  Icon: MdPhone,         label: 'Contatti' },
+    { to: '/',           Icon: IoHomeSharp,    label: 'Home' },
+    { to: '/#about',     Icon: FaUser,         label: 'Su di me' },
+    { to: '/#education', Icon: HiDocumentText, label: 'Formazione' },
+    { to: '/#services',  Icon: BsFillGearFill, label: 'Servizi' },
+    { to: '/#contacts',  Icon: MdPhone,        label: 'Contatti' },
 ];
 
-// makeStyles moved outside the component so it's created only once
 const useStyles = makeStyles((t) => ({
     navMenu: {
         fontSize: '2.5rem',
@@ -64,20 +63,9 @@ const useStyles = makeStyles((t) => ({
         transition: 'color 0.2s',
         [t.breakpoints.down('md')]: { right: 20, top: 20 },
     },
-    drawerItem: {
-        margin: '2rem auto',
-        borderRadius: '78.8418px',
-        background: 'white',
-        width: '100%',
-        height: '60px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-        padding: '0 30px',
-        boxSizing: 'border-box',
-        border: '2px solid',
-        transition: 'background-color 0.2s, color 0.2s',
-        [t.breakpoints.down('md')]: { width: '100%', padding: '0 25px', height: '55px' },
+    drawerIcon: {
+        fontSize: '1.6rem',
+        [t.breakpoints.down('md')]: { fontSize: '1.385rem' },
     },
     drawerLinks: {
         fontFamily: 'var(--primaryFont)',
@@ -86,10 +74,6 @@ const useStyles = makeStyles((t) => ({
         fontWeight: 600,
         [t.breakpoints.down('md')]: { fontSize: '1.125rem' },
     },
-    drawerIcon: {
-        fontSize: '1.6rem',
-        [t.breakpoints.down('md')]: { fontSize: '1.385rem' },
-    },
 }));
 
 const shortname = (name) => name.replace('Dott.ssa', '');
@@ -97,27 +81,34 @@ const shortname = (name) => name.replace('Dott.ssa', '');
 function Navbar() {
     const { theme, setHandleDrawer } = useContext(ThemeContext);
     const [open, setOpen] = useState(false);
+    const [hoveredIndex, setHoveredIndex] = useState(null);
     const classes = useStyles();
 
-    const handleDrawerOpen = () => {
-        setOpen(true);
-        setHandleDrawer();
-    };
+    const handleDrawerOpen = () => { setOpen(true); setHandleDrawer(); };
+    const handleDrawerClose = () => { setOpen(false); setHandleDrawer(); };
 
-    const handleDrawerClose = () => {
-        setOpen(false);
-        setHandleDrawer();
-    };
-
-    // inline styles that depend on theme, memoized so they don't recreate on every render
     const drawerPaperStyle = useMemo(() => ({
         background: theme.secondary,
     }), [theme.secondary]);
 
-    const drawerItemStyle = useMemo(() => ({
-        color: theme.primary,
-        borderColor: theme.primary,
-    }), [theme.primary]);
+    // base: white bg, purple text/border
+    // hover: purple bg (tertiary), white text
+    const getItemStyle = (isHovered) => ({
+        margin: '1.5rem auto',
+        borderRadius: '78.8418px',
+        width: '100%',
+        height: '60px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        padding: '0 30px',
+        boxSizing: 'border-box',
+        border: `2px solid ${theme.primary}`,
+        backgroundColor: isHovered ? theme.tertiary : theme.primary,
+        color: isHovered ? theme.primary : theme.secondary,
+        transition: 'background-color 250ms ease-in-out, color 250ms ease-in-out, transform 250ms ease-in-out',
+        cursor: 'pointer',
+    });
 
     return (
         <div className='navbar'>
@@ -162,7 +153,7 @@ function Navbar() {
                     />
                 </div>
                 <br />
-                <div className='drawer-content' onClick={handleDrawerClose}>
+                <div className='drawer-content'>
                     <div className='navLink--container'>
                         {NAV_ITEMS.map(({ to, Icon, label }, i) => (
                             <motion.div
@@ -171,11 +162,15 @@ function Navbar() {
                                 variants={fadeRightVariant}
                                 initial='hidden'
                                 animate={open ? 'visible' : 'hidden'}
+                                whileHover={{ scale: 1.05 }}
+                                onHoverStart={() => setHoveredIndex(i)}
+                                onHoverEnd={() => setHoveredIndex(null)}
+                                onClick={handleDrawerClose}
                             >
                                 <NavLink to={to} smooth={true} spy='true' duration={2000}>
-                                    <div className={classes.drawerItem} style={drawerItemStyle}>
+                                    <div style={getItemStyle(hoveredIndex === i)}>
                                         <Icon className={classes.drawerIcon} />
-                                        <span className={classes.drawerLinks} style={{ color: theme.primary }}>
+                                        <span className={classes.drawerLinks}>
                                             {label}
                                         </span>
                                     </div>
