@@ -30,7 +30,6 @@
     font-family: var(--primaryFont), serif;
     font-size: 3.5rem;
     margin-bottom: 2.5rem;
-
 }
 
 .contacts-body {
@@ -179,6 +178,9 @@
 @media (min-width: 992px) and (max-width: 1380px) {
     .contacts--img {
         display: none;
+    }
+    .contacts--container h1 {
+        text-align: center;
     }
 }
 

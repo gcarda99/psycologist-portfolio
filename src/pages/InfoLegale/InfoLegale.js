@@ -6,7 +6,7 @@ import { headerData } from '../../data/headerData';
 
 function InfoLegale() {
     return (
-        <div className="privacy-policy">
+        <div className="info-legale">
             <Helmet>
                 <title>{headerData.name}</title>
             </Helmet>
