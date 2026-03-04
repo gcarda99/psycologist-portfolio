@@ -1,42 +1,42 @@
 # 🧠 Portfolio — Dott.ssa Albano Mariaelisabetta
 
-Sito portfolio professionale per la Dott.ssa Albano Mariaelisabetta, Psicologa iscritta all'Albo degli Psicologi della Campania.
+Professional portfolio website for Dott.ssa Albano Mariaelisabetta, Psychologist registered with the Albo degli Psicologi della Campania.
 
 Built with **React 18** + **Vite 6** + **Material UI 6**.
 
 ---
 
-## Sezioni
+## Sections
 
-- **Home** — Landing page con presentazione e social
-- **Su di me** — Descrizione professionale e valori
-- **Formazione** — Percorso accademico e specializzazioni
-- **Servizi** — Tipologie di consulenza offerte
-- **Contatti** — Form di contatto e riferimenti
+- **Home** — Landing page with introduction and social links
+- **About me** — Professional background and values
+- **Education** — Academic path and specializations
+- **Services** — Types of consultations offered
+- **Contacts** — Contact form and references
 
 ---
 
-## Stack tecnico
+## Tech Stack
 
-| Categoria | Tecnologia |
+| Category | Technology |
 |---|---|
 | Framework | React 18 |
 | Build tool | Vite 6 |
 | UI Library | Material UI 6 |
-| Animazioni | Framer Motion 12 |
+| Animations | Framer Motion 12 |
 | Routing | React Router DOM 6 |
-| Icone | React Icons 5 |
+| Icons | React Icons 5 |
 | Form validation | Validator 13 |
 
 ---
 
-## Sviluppo locale
+## Local Development
 
-### Requisiti
+### Requirements
 - [Node.js](https://nodejs.org/) >= 18
 - [Git](https://git-scm.com/)
 
-### Installazione
+### Installation
 
 ```bash
 git clone https://github.com/gcarda99/psycologist-portfolio.git
@@ -44,14 +44,14 @@ cd psycologist-portfolio
 npm install
 ```
 
-### Avvio dev server
+### Start dev server
 
 ```bash
 npm run dev
 # → http://localhost:8080
 ```
 
-### Build di produzione
+### Production build
 
 ```bash
 npm run build
@@ -66,19 +66,19 @@ npm run preview
 
 ---
 
-## Condivisione locale con ngrok
+## Sharing locally with ngrok
 
-Per condividere il dev server con link pubblico temporaneo:
+To share the dev server via a temporary public link:
 
 ```bash
-# Terminale 1
+# Terminal 1
 npm run dev
 
-# Terminale 2
+# Terminal 2
 ngrok http http://localhost:8080
 ```
 
-Alternativa senza account (Cloudflare Tunnel):
+Alternative without an account (Cloudflare Tunnel):
 
 ```bash
 npx cloudflared tunnel --url http://localhost:8080
@@ -86,7 +86,7 @@ npx cloudflared tunnel --url http://localhost:8080
 
 ---
 
-## Struttura del progetto
+## Project Structure
 
 ```
 ├── index.html
@@ -109,7 +109,7 @@ npx cloudflared tunnel --url http://localhost:8080
     │   └── Footer
     ├── contexts
     │   └── ThemeContext.js
-    ├── data              ← contenuti modificabili
+    ├── data              ← editable content
     │   ├── headerData.js
     │   ├── aboutData.js
     │   ├── educationData.js
@@ -124,31 +124,31 @@ npx cloudflared tunnel --url http://localhost:8080
 
 ---
 
-## Personalizzazione contenuti
+## Content Customization
 
-Tutti i contenuti del sito si trovano in `src/data/`. Modificare i file corrispondenti:
+All site content lives in `src/data/`. Edit the corresponding files:
 
-| File | Contenuto |
+| File | Content |
 |---|---|
-| `headerData.js` | Nome, titolo, foto, descrizione |
-| `aboutData.js` | Testo sezione "Su di me" |
-| `educationData.js` | Percorso formativo |
-| `servicesData.js` | Servizi offerti |
-| `contactsData.js` | Email, telefono, indirizzo |
-| `socialsData.js` | Link social (LinkedIn, Instagram, TikTok) |
-| `themeData.js` | Colori del tema |
+| `headerData.js` | Name, title, photo, description |
+| `aboutData.js` | "About me" section text |
+| `educationData.js` | Academic background |
+| `servicesData.js` | Services offered |
+| `contactsData.js` | Email, phone, address |
+| `socialsData.js` | Social links (LinkedIn, Instagram, TikTok) |
+| `themeData.js` | Theme colors |
 
 ---
 
-## Branch
+## Branches
 
-| Branch | Descrizione |
+| Branch | Description |
 |---|---|
-| `main` | Versione stabile |
-| `feat/migrate-to-vite` | Migrazione da CRA a Vite (branch attivo) |
+| `main` | Stable version |
+| `feat/migrate-to-vite` | Migration from CRA to Vite (active branch) |
 
 ---
 
-## Autore
+## Author
 
 Developed by [Giuseppe Cardaropoli](https://github.com/gcarda99)
