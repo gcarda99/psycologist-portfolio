@@ -33,14 +33,6 @@ const NAV_ITEMS = [
 ];
 
 const useStyles = makeStyles((t) => ({
-    navMenu: {
-        fontSize: '2.5rem',
-        cursor: 'pointer',
-        transform: 'translateY(-10px)',
-        transition: 'color 0.3s',
-        [t.breakpoints.down('md')]: { fontSize: '2.5rem' },
-        [t.breakpoints.down('sm')]: { fontSize: '2rem' },
-    },
     MuiDrawer: {
         padding: '0em 1.8em',
         width: '14em',
@@ -90,6 +82,7 @@ function Navbar() {
     const [open, setOpen] = useState(false);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [closeHovered, setCloseHovered] = useState(false);
+    const [menuHovered, setMenuHovered] = useState(false);
     const classes = useStyles();
 
     const handleDrawerOpen = () => { setOpen(true); setHandleDrawer(); };
@@ -105,12 +98,23 @@ function Navbar() {
                 <h1 style={{ color: theme.secondary }}>
                     {shortname(headerData.name)}
                 </h1>
-                <IoMenuSharp
-                    className={classes.navMenu}
-                    style={{ color: theme.tertiary }}
+                <motion.div
+                    style={{
+                        display: 'inline-flex',
+                        cursor: 'pointer',
+                        color: menuHovered ? '#111' : theme.tertiary,
+                        fontSize: '2.5rem',
+                        transform: 'translateY(-10px)',
+                        transition: 'color 250ms ease-in-out',
+                    }}
+                    whileHover={{ scale: 1.2 }}
+                    onHoverStart={() => setMenuHovered(true)}
+                    onHoverEnd={() => setMenuHovered(false)}
                     onClick={handleDrawerOpen}
                     aria-label='Menu'
-                />
+                >
+                    <IoMenuSharp />
+                </motion.div>
             </div>
             <Drawer
                 variant='temporary'
