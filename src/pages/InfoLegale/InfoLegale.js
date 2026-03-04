@@ -1,10 +1,15 @@
 import './InfoLegale.css';
-import { privacyPolicyData } from '../../data/privacyPolicyData';
 import React from 'react';
+import { Helmet } from 'react-helmet';
+import { privacyPolicyData } from '../../data/privacyPolicyData';
+import { headerData } from '../../data/headerData';
 
 function InfoLegale() {
     return (
-        <div className="info-legale">
+        <div className="privacy-policy">
+            <Helmet>
+                <title>{headerData.name}</title>
+            </Helmet>
             <div className="container">
                 <h1>Privacy Policy</h1>
                 <p><strong>Ultimo aggiornamento:</strong> {privacyPolicyData.lastUpdate}</p>
