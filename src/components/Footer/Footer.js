@@ -45,7 +45,7 @@ function Footer() {
                         {footerData?.iva && footerData?.iva.trim() !== "" && (
                             <>
                                 <br/>
-                                P.IVA: {footerData.iva}
+                                Partita IVA: {footerData.iva}
                             </>
                         )}
                     </p>

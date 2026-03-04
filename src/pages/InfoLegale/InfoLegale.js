@@ -21,10 +21,10 @@ function InfoLegale() {
                     <a href={privacyPolicyData.alboUrl} target="_blank" rel="noreferrer">{privacyPolicyData.albo}</a><br />
                     {privacyPolicyData?.iva && privacyPolicyData?.iva.trim() !== '' && (
                         <>
-                            <br />
-                            P.IVA: {privacyPolicyData.iva}
+                            Partita IVA: {privacyPolicyData.iva}
                         </>
                     )}
+                    <br/>
                     Email: <a href={'mailto:' + privacyPolicyData.email}>{privacyPolicyData.email}</a>
                 </p>
 
