@@ -17,6 +17,11 @@
   justify-content: space-between;
 }
 
+.about .line-styling--bottom {
+  top: auto;
+  bottom: 50px;
+}
+
 .about .line-styling .style-circle{
   width: 10px;
   height: 10px;
@@ -32,8 +37,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 4rem;
     padding-top: 8rem;
+    padding-bottom: 8rem;
     height: fit-content;
 }
 
@@ -94,16 +101,23 @@
     top: 20px;
   }
 
+  .about .line-styling--bottom {
+    top: auto;
+    bottom: 20px;
+  }
+
   .about {
       padding: 0 1.7rem;
   }
 
     .about-body {
         padding-top: 2rem;
+        padding-bottom: 2rem;
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
         justify-content: space-evenly;
+        gap: 0;
     }
 
     .about-description{
