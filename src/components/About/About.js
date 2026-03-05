@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import './About.css';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import { aboutData } from '../../data/aboutData'
-import brain from '../../assets/png/brain.png'
+import brain from '../../assets/webp/brain.webp'
 
 
 

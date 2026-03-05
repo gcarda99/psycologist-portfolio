@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
 
 import { ThemeContext } from '../../contexts/ThemeContext';
-import workImage from '../../assets/png/work.png'
+import workImage from '../../assets/webp/work.webp'
 
 import './Experience.css';
 

@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles';
 import { FaPlay, FaCode } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
-import placeholder from '../../../assets/png/placeholder.png';
+import placeholder from '../../../assets/webp/placeholder.webp';
 import './SingleProject.css';
 
 const fadeUpVariant = {

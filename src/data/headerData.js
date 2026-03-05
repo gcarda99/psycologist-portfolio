@@ -1,4 +1,4 @@
-import landing from '../assets/png/landing.jpg'
+import landing from '../assets/webp/landing.webp'
 
 export const headerData = {
     name: 'Dott.ssa Albano Mariaelisabetta',

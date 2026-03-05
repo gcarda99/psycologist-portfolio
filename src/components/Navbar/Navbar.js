@@ -13,7 +13,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import './Navbar.css';
 import { headerData } from '../../data/headerData';
 import { ThemeContext } from '../../contexts/ThemeContext';
-import brain from '../../assets/png/brain.png';
+import brain from '../../assets/webp/brain.webp';
 
 const fadeRightVariant = {
     hidden: { opacity: 0, x: 40 },
