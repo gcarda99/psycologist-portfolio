@@ -1,6 +1,7 @@
 .about {
     min-height: 100vh;
     position: relative;
+    padding: 0 3.7rem;
 }
 
 .about .line-styling{
@@ -70,6 +71,9 @@
 }
 
 @media (min-width: 992px) and (max-width: 1380px) {
+    .about {
+        padding: 0 2.7rem;
+    }
 
     .about-description > h2 {
       font-size: 3.3rem;
@@ -90,6 +94,10 @@
     top: 20px;
   }
 
+  .about {
+      padding: 0 1.7rem;
+  }
+
     .about-body {
         padding-top: 2rem;
         display: flex;
@@ -101,9 +109,7 @@
     .about-description{
         flex: 0.6;
         box-sizing: border-box;
-        /* padding: 5% 10%; */
-        padding: 20px;
-
+        padding: 20px 0;
     }
 
     .about-description > h2 {
@@ -123,6 +129,9 @@
 }
 
 @media screen and (max-width: 800px){
+  .about {
+      padding: 0 1rem;
+  }
   .about .line-styling .style-circle{
     width: 8px;
     height: 8px;
@@ -135,6 +144,9 @@
 }
 
 @media screen and (max-width: 600px){
+  .about {
+      padding: 0 0.5rem;
+  }
 
   .about .line-styling .style-circle{
     width: 5px;
