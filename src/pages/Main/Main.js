@@ -1,7 +1,8 @@
 import React, { lazy, Suspense } from 'react'
 import { Helmet } from 'react-helmet'
 
-import { Navbar, Landing } from '../../components'
+import Navbar from '../../components/Navbar/Navbar'
+import Landing from '../../components/Landing/Landing'
 import { headerData } from '../../data/headerData'
 
 const About = lazy(() => import('../../components/About/About'))
