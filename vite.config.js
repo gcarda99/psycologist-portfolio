@@ -1,8 +1,23 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import compression from 'vite-plugin-compression';
 
 export default defineConfig(({ mode }) => ({
-    plugins: [react()],
+    plugins: [
+        react(),
+        // Genera file .gz (Gzip)
+        compression({
+            algorithm: 'gzip',
+            ext: '.gz',
+            threshold: 1024,
+        }),
+        // Genera file .br (Brotli) — compressione migliore
+        compression({
+            algorithm: 'brotliCompress',
+            ext: '.br',
+            threshold: 1024,
+        }),
+    ],
     esbuild: {
         loader: 'jsx',
         include: ['src/**/*.js', 'src/**/*.jsx'],
@@ -25,6 +40,8 @@ export default defineConfig(({ mode }) => ({
         outDir: 'build',
         sourcemap: false,
         minify: 'esbuild',
+        cssCodeSplit: true,
+        chunkSizeWarningLimit: 600,
         rollupOptions: {
             output: {
                 manualChunks: {
