@@ -1,133 +1,109 @@
-import React, {useContext, useState} from 'react';
-import {NavHashLink as NavLink} from '@xzar90/react-router-hash-link';
-import Fade from 'react-reveal/Fade';
-import {IoHomeSharp, IoMenuSharp} from 'react-icons/io5';
-import {HiDocumentText} from 'react-icons/hi';
-import {BsFillGearFill} from 'react-icons/bs';
-import {MdPhone} from 'react-icons/md';
-import {FaUser} from 'react-icons/fa';
+import React, { useContext, useState, useMemo } from 'react';
+import { NavHashLink as NavLink } from '@xzar90/react-router-hash-link';
+import { motion } from 'framer-motion';
+import { IoHomeSharp, IoMenuSharp } from 'react-icons/io5';
+import { HiDocumentText } from 'react-icons/hi';
+import { BsFillGearFill } from 'react-icons/bs';
+import { MdPhone } from 'react-icons/md';
+import { FaUser } from 'react-icons/fa';
 import { makeStyles } from '@mui/styles';
 import Drawer from '@mui/material/Drawer';
 import CloseIcon from '@mui/icons-material/Close';
 
 import './Navbar.css';
-import {headerData} from '../../data/headerData';
-import {ThemeContext} from '../../contexts/ThemeContext';
-
+import { headerData } from '../../data/headerData';
+import { ThemeContext } from '../../contexts/ThemeContext';
 import brain from '../../assets/png/brain.png';
 
+const fadeRightVariant = {
+    hidden: { opacity: 0, x: 40 },
+    visible: (i) => ({
+        opacity: 1,
+        x: 0,
+        transition: { duration: 0.35, delay: i * 0.08 },
+    }),
+};
+
+const NAV_ITEMS = [
+    { to: '/',           Icon: IoHomeSharp,    label: 'Home' },
+    { to: '/#about',     Icon: FaUser,         label: 'Su di me' },
+    { to: '/#education', Icon: HiDocumentText, label: 'Formazione' },
+    { to: '/#services',  Icon: BsFillGearFill, label: 'Servizi' },
+    { to: '/#contacts',  Icon: MdPhone,        label: 'Contatti' },
+];
+
+const useStyles = makeStyles((t) => ({
+    navMenu: {
+        fontSize: '2.5rem',
+        cursor: 'pointer',
+        transform: 'translateY(-10px)',
+        transition: 'color 0.3s',
+        [t.breakpoints.down('md')]: { fontSize: '2.5rem' },
+        [t.breakpoints.down('sm')]: { fontSize: '2rem' },
+    },
+    MuiDrawer: {
+        padding: '0em 1.8em',
+        width: '14em',
+        fontFamily: 'var(--primaryFont)',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '24px',
+        overflow: 'hidden',
+        borderTopLeftRadius: '40px',
+        borderBottomLeftRadius: '40px',
+        [t.breakpoints.down('md')]: { width: '12em' },
+    },
+    drawerIcon: {
+        fontSize: '1.4rem',
+        flexShrink: 0,
+        width: '1.6rem',
+        textAlign: 'center',
+        [t.breakpoints.down('md')]: { fontSize: '1.2rem' },
+    },
+    drawerLinks: {
+        fontFamily: 'var(--primaryFont)',
+        fontSize: '1.2rem',
+        fontWeight: 600,
+        whiteSpace: 'nowrap',
+        flex: 1,
+        textAlign: 'center',
+        [t.breakpoints.down('md')]: { fontSize: '1.05rem' },
+    },
+}));
+
+const shortname = (name) => name.replace('Dott.ssa', '');
+
+const getItemStyle = (isHovered, theme) => ({
+    margin: '1.2rem auto',
+    borderRadius: '78.8418px',
+    width: '100%',
+    height: '56px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    padding: '0 1.4rem',
+    boxSizing: 'border-box',
+    gap: '0.6rem',
+    border: `2px solid ${isHovered ? '#111' : theme.primary}`,
+    backgroundColor: isHovered ? '#111' : theme.primary,
+    color: isHovered ? '#fff' : theme.secondary,
+    transition: 'background-color 250ms ease-in-out, color 250ms ease-in-out, border-color 250ms ease-in-out',
+    cursor: 'pointer',
+});
 
 function Navbar() {
     const { theme, setHandleDrawer } = useContext(ThemeContext);
-
     const [open, setOpen] = useState(false);
-
-    const handleDrawerOpen = () => {
-        setOpen(true);
-        setHandleDrawer();
-    };
-
-    const handleDrawerClose = () => {
-        setOpen(false);
-        setHandleDrawer();
-    };
-
-    const useStyles = makeStyles((t) => ({
-        navMenu: {
-            fontSize: '2.5rem',
-            color: theme.tertiary,
-            cursor: 'pointer',
-            transform: 'translateY(-10px)',
-            transition: 'color 0.3s',
-            '&:hover': {
-                color: theme.primary,
-            },
-            [t.breakpoints.down('md')]: {
-                fontSize: '2.5rem',
-            },
-            [t.breakpoints.down('sm')]: {
-                fontSize: '2rem',
-            },
-        },
-        MuiDrawer: {
-            padding: '0em 1.8em',
-            width: '14em',
-            fontFamily: ' var(--primaryFont)',
-            fontStyle: ' normal',
-            fontWeight: ' normal',
-            fontSize: ' 24px',
-            background: theme.secondary,
-            overflow: 'hidden',
-            borderTopLeftRadius: '40px',
-            borderBottomLeftRadius: '40px',
-            [t.breakpoints.down('md')]: {
-                width: '12em',
-            },
-        },
-        closebtnIcon: {
-            fontSize: '2rem',
-            fontWeight: 'bold',
-            cursor: 'pointer',
-            color: theme.primary,
-            position: 'absolute',
-            right: 40,
-            top: 40,
-            transition: 'color 0.2s',
-            '&:hover': {
-                color: theme.tertiary,
-            },
-            [t.breakpoints.down('md')]: {
-                right: 20,
-                top: 20,
-            },
-        },
-        drawerItem: {
-            margin: '2rem auto',
-            borderRadius: '78.8418px',
-            background: "white",
-            color: theme.primary,
-            width: '100%',
-            height: '60px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-evenly',
-            padding: '0 30px',
-            boxSizing: 'border-box',
-            border: '2px solid',
-            borderColor: theme.primary,
-            transition: 'background-color 0.2s, color 0.2s',
-            '&:hover': {
-                background: theme.primary,
-                color: theme.secondary,
-            },
-            [t.breakpoints.down('md')]: {
-                width: '100%',
-                padding: '0 25px',
-                height: '55px',
-            },
-        },
-        drawerLinks: {
-            fontFamily: 'var(--primaryFont)',
-            width: '55%',
-            fontSize: '1.3rem',
-            fontWeight: 600,
-            [t.breakpoints.down('md')]: {
-                fontSize: '1.125rem',
-            },
-        },
-        drawerIcon: {
-            fontSize: '1.6rem',
-            [t.breakpoints.down('md')]: {
-                fontSize: '1.385rem',
-            },
-        },
-    }));
-
+    const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [closeHovered, setCloseHovered] = useState(false);
     const classes = useStyles();
 
-    const shortname = (name) => {
-        return name.replace("Dott.ssa", "");
-    };
+    const handleDrawerOpen = () => { setOpen(true); setHandleDrawer(); };
+    const handleDrawerClose = () => { setOpen(false); setHandleDrawer(); };
+
+    const drawerPaperStyle = useMemo(() => ({
+        background: theme.secondary,
+    }), [theme.secondary]);
 
     return (
         <div className='navbar'>
@@ -135,9 +111,9 @@ function Navbar() {
                 <h1 style={{ color: theme.secondary }}>
                     {shortname(headerData.name)}
                 </h1>
-
                 <IoMenuSharp
                     className={classes.navMenu}
+                    style={{ color: theme.tertiary }}
                     onClick={handleDrawerOpen}
                     aria-label='Menu'
                 />
@@ -145,20 +121,30 @@ function Navbar() {
             <Drawer
                 variant='temporary'
                 onClose={(event, reason) => {
-                    if (reason !== 'backdropClick') {
-                        handleDrawerClose();
-                    } else if (reason !== 'escapeKeyDown') {
-                        handleDrawerClose();
-                    }
+                    if (reason !== 'backdropClick') handleDrawerClose();
+                    else if (reason !== 'escapeKeyDown') handleDrawerClose();
                 }}
                 anchor='right'
                 open={open}
                 classes={{ paper: classes.MuiDrawer }}
+                PaperProps={{ style: drawerPaperStyle }}
                 className='drawer'
                 disableScrollLock={true}
             >
                 <div className='div-closebtn'>
-                    <CloseIcon
+                    <motion.div
+                        style={{
+                            position: 'absolute',
+                            right: 40,
+                            top: 40,
+                            display: 'inline-flex',
+                            cursor: 'pointer',
+                            color: closeHovered ? '#111' : theme.primary,
+                            transition: 'color 250ms ease-in-out',
+                        }}
+                        whileHover={{ scale: 1.2 }}
+                        onHoverStart={() => setCloseHovered(true)}
+                        onHoverEnd={() => setCloseHovered(false)}
                         onClick={handleDrawerClose}
                         onKeyDown={(e) => {
                             if (e.key === ' ' || e.key === 'Enter') {
@@ -166,110 +152,49 @@ function Navbar() {
                                 handleDrawerClose();
                             }
                         }}
-                        className={classes.closebtnIcon}
                         role='button'
                         tabIndex='0'
                         aria-label='Close'
-                    />
+                    >
+                        <CloseIcon style={{ fontSize: '2rem', fontWeight: 'bold' }} />
+                    </motion.div>
                 </div>
                 <br />
-
-                <div className="drawer-content" onClick={handleDrawerClose}>
+                <div className='drawer-content'>
                     <div className='navLink--container'>
-                        <Fade right>
-                            <NavLink
-                                to='/'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
+                        {NAV_ITEMS.map(({ to, Icon, label }, i) => (
+                            <motion.div
+                                key={to}
+                                custom={i}
+                                variants={fadeRightVariant}
+                                initial='hidden'
+                                animate={open ? 'visible' : 'hidden'}
+                                whileHover={{ scale: 1.05 }}
+                                onHoverStart={() => setHoveredIndex(i)}
+                                onHoverEnd={() => setHoveredIndex(null)}
+                                onClick={handleDrawerClose}
                             >
-                                <div className={classes.drawerItem}>
-                                    <IoHomeSharp
-                                        className={classes.drawerIcon}
-                                    />
-                                    <span className={classes.drawerLinks}>
-                                        Home
-                                    </span>
-                                </div>
-                            </NavLink>
-                        </Fade>
-
-                        <Fade right>
-                            <NavLink
-                                to='/#about'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
-                            >
-                                <div className={classes.drawerItem}>
-                                    <FaUser className={classes.drawerIcon} />
-                                    <span className={classes.drawerLinks}>
-                                        Su di me
-                                    </span>
-                                </div>
-                            </NavLink>
-                        </Fade>
-
-                        <Fade right>
-                            <NavLink
-                                to='/#education'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
-                            >
-                                <div className={classes.drawerItem}>
-                                    <HiDocumentText
-                                        className={classes.drawerIcon}
-                                    />
-                                    <span className={classes.drawerLinks}>
-                                        Formazione
-                                    </span>
-                                </div>
-                            </NavLink>
-                        </Fade>
-
-                        <Fade right>
-                            <NavLink
-                                to='/#services'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
-                            >
-                                <div className={classes.drawerItem}>
-                                    <BsFillGearFill
-                                        className={classes.drawerIcon}
-                                    />
-                                    <span className={classes.drawerLinks}>
-                                        Servizi
-                                    </span>
-                                </div>
-                            </NavLink>
-                        </Fade>
-
-                        <Fade right>
-                            <NavLink
-                                to='/#contacts'
-                                smooth={true}
-                                spy='true'
-                                duration={2000}
-                            >
-                                <div className={classes.drawerItem}>
-                                    <MdPhone className={classes.drawerIcon} />
-                                    <span className={classes.drawerLinks}>
-                                        Contatti
-                                    </span>
-                                </div>
-                            </NavLink>
-                        </Fade>
+                                <NavLink to={to} smooth={true} spy='true' duration={2000}>
+                                    <div style={getItemStyle(hoveredIndex === i, theme)}>
+                                        <Icon className={classes.drawerIcon} />
+                                        <span className={classes.drawerLinks}>
+                                            {label}
+                                        </span>
+                                    </div>
+                                </NavLink>
+                            </motion.div>
+                        ))}
                     </div>
-                    <div className="navbar--image-container">
-                        <Fade right>
-                            <img
-                                src={brain}
-                                alt='brain'
-                                className='navbar--image'
-                            />
-                        </Fade>
+                    <div className='navbar--image-container'>
+                        <motion.img
+                            src={brain}
+                            alt='brain'
+                            className='navbar--image'
+                            variants={fadeRightVariant}
+                            custom={NAV_ITEMS.length}
+                            initial='hidden'
+                            animate={open ? 'visible' : 'hidden'}
+                        />
                     </div>
                 </div>
             </Drawer>

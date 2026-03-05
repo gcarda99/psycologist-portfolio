@@ -45,7 +45,7 @@ function Footer() {
                         {footerData?.iva && footerData?.iva.trim() !== "" && (
                             <>
                                 <br/>
-                                P.IVA: {footerData.iva}
+                                Partita IVA: {footerData.iva}
                             </>
                         )}
                     </p>
@@ -64,7 +64,7 @@ function Footer() {
                 <div className="footer-column">
                     <h3 className="footer-subtitle">Legale</h3>
                     <ul>
-                        <li><a href="/privacy-policy" target="_blank">Privacy Policy</a></li>
+                        <li><a href="/info-legale" target="_blank">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>
