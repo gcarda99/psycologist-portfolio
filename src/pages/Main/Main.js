@@ -24,14 +24,14 @@ function Main() {
 
             <Suspense fallback={<div />}>
                 <About />
+                <Services />
                 <Education />
                 {/*<Skills />*/}
                 {/*<Experience/>*/}
-                <Projects />
                 {/*<Achievement/>*/}
-                <Services />
                 {/*<Testimonials/>*/}
                 {/*<Blog/>*/}
+                <Projects />
                 <Contacts />
                 <Footer />
             </Suspense>
