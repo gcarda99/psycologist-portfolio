@@ -28,12 +28,13 @@
 .service-icon {
     position: absolute;
     top: 15%;
+    color: #eaeaea;
     /* transform: translateY(-50%); */
 }
 
 .service-icon > svg {
     font-size: 2.8rem;
-    /* color: #000000; */
+    color: #eaeaea;
 }
 
 .single-service:hover svg{
@@ -86,7 +87,7 @@
     font-size: 16px;
     text-align: center;
     line-height: 110%;
-    color: #000000;
+    color: #eaeaea;
 }
 
 @media screen and (max-width: 800px) {

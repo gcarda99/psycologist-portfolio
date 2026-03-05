@@ -24,7 +24,7 @@ function SingleService({ id, title, icon }) {
         >
             <div className="service-content" style={{ color: theme.tertiary }}>
                 <i className="service-icon">{icon}</i>
-                <h4 style={{ color: theme.tertiary }}>{title}</h4>
+                <h4 style={{ color: theme.secondary }}>{title}</h4>
             </div>
         </motion.div>
     );

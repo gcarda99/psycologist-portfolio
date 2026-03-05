@@ -1,83 +1,62 @@
 /* eslint-disable */
-import {BiShoppingBag, BiPencil} from "react-icons/bi";
-import {BsCodeSlash, BsClipboardData} from "react-icons/bs";
-import {AiOutlineMail, AiFillAudio} from "react-icons/ai";
-import {
-    FaInternetExplorer,
-    FaChalkboardTeacher,
-    FaCameraRetro,
-    FaPinterest,
-    FaVideo,
-    FaTabletAlt,
-    FaRegNewspaper
-} from "react-icons/fa";
+import {BsClipboardData} from "react-icons/bs";
+import {FaChalkboardTeacher, FaChild} from "react-icons/fa";
+import {LuBrain} from "react-icons/lu";
+import {MdCastForEducation, MdFamilyRestroom, MdOutlinePsychologyAlt} from "react-icons/md";
+import {GiBrainstorm} from "react-icons/gi";
+import {FaHandHoldingMedical, FaHandsHoldingChild} from "react-icons/fa6";
 
 
 export const servicesData = [
     {
         id: 1,
-        title: 'Marketing',
-        icon: <BiShoppingBag/>
+        title: 'Supporto Psicologico (bambini, coppie, adulti)',
+        icon: <MdOutlinePsychologyAlt/>
     },
     {
         id: 2,
-        title: 'Content Writing',
-        icon: <BiPencil/>
+        title: 'Parent Training',
+        icon: <MdFamilyRestroom/>
     },
     {
         id: 3,
-        title: 'Email Marketing',
-        icon: <AiOutlineMail/>
+        title: 'Potenziamento Abilità Cognitive',
+        icon: <GiBrainstorm/>
     },
     {
         id: 4,
-        title: 'Internet Research',
-        icon: <FaInternetExplorer/>
+        title: 'Potenziamento degli Apprendimenti',
+        icon: <LuBrain/>
     },
     {
         id: 5,
-        title: 'Tutoring',
+        title: 'Tutoring DSA e BES',
         icon: <FaChalkboardTeacher/>
     },
 
     {
         id: 6,
-        title: 'Web Design',
-        icon: <BsCodeSlash/>
+        title: 'Supporto alla Genitorialità',
+        icon: <FaHandsHoldingChild/>
     },
     {
         id: 7,
-        title: 'Photography',
-        icon: <FaCameraRetro/>
+        title: 'Orientamento Scolastico e Lavorativo',
+        icon: <MdCastForEducation/>
     },
     {
         id: 8,
-        title: 'Pinterest Virtual Assistant',
-        icon: <FaPinterest/>
+        title: 'Trattamento ADHD (adulti e bambini)',
+        icon: <FaChild/>
     },
     {
         id: 9,
-        title: 'Video Editing',
-        icon: <FaVideo/>
-    },
-    {
-        id: 10,
-        title: 'Data Entry',
+        title: 'Valutazioni Psicodiagnostiche',
         icon: <BsClipboardData/>
     },
     {
-        id: 11,
-        title: 'Ebook Writing',
-        icon: <FaTabletAlt/>
-    },
-    {
-        id: 12,
-        title: 'Audio Transcription',
-        icon: <AiFillAudio/>
-    },
-    {
-        id: 13,
-        title: 'Blog Posting',
-        icon: <FaRegNewspaper/>
+        id: 10,
+        title: 'Riabilitazione Neuropsicologica (adulti e bambini)',
+        icon: <FaHandHoldingMedical/>
     }
 ]
