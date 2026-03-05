@@ -37,8 +37,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
-    gap: 4rem;
+    justify-content: space-around;
     padding-top: 8rem;
     padding-bottom: 8rem;
     height: fit-content;
@@ -117,7 +116,6 @@
         flex-direction: column-reverse;
         align-items: center;
         justify-content: space-evenly;
-        gap: 0;
     }
 
     .about-description{
