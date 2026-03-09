@@ -1,4 +1,4 @@
-import React, { useContext, useState, useMemo } from 'react';
+import React, { useContext, useState, useMemo, useEffect } from 'react';
 import { NavHashLink as NavLink } from '@xzar90/react-router-hash-link';
 import { motion } from 'framer-motion';
 import { IoHomeSharp, IoMenuSharp } from 'react-icons/io5';
@@ -57,6 +57,13 @@ function Navbar() {
     const [open, setOpen] = useState(false);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [closeHovered, setCloseHovered] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => setScrolled(window.scrollY > 10);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const handleDrawerOpen = () => { setOpen(true); setHandleDrawer(); };
     const handleDrawerClose = () => { setOpen(false); setHandleDrawer(); };
@@ -75,7 +82,7 @@ function Navbar() {
     }), [theme.secondary]);
 
     return (
-        <div className='navbar'>
+        <div className={`navbar${scrolled ? ' scrolled' : ''}`}>
             <div className='navbar--container'>
                 <h1 style={{ color: theme.secondary }}>
                     {shortname(headerData.name)}
