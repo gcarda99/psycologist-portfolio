@@ -6,9 +6,9 @@ import { HiDocumentText } from 'react-icons/hi';
 import { BsFillGearFill } from 'react-icons/bs';
 import { MdPhone } from 'react-icons/md';
 import { FaUser } from 'react-icons/fa';
-import { makeStyles } from '@mui/styles';
 import Drawer from '@mui/material/Drawer';
 import CloseIcon from '@mui/icons-material/Close';
+import { Box } from '@mui/material';
 
 import './Navbar.css';
 import { headerData } from '../../data/headerData';
@@ -31,45 +31,6 @@ const NAV_ITEMS = [
     { to: '/#services',  Icon: BsFillGearFill, label: 'Servizi' },
     { to: '/#contacts',  Icon: MdPhone,        label: 'Contatti' },
 ];
-
-const useStyles = makeStyles((t) => ({
-    navMenu: {
-        fontSize: '2.5rem',
-        cursor: 'pointer',
-        transform: 'translateY(-10px)',
-        transition: 'color 0.3s',
-        [t.breakpoints.down('md')]: { fontSize: '2.5rem' },
-        [t.breakpoints.down('sm')]: { fontSize: '2rem' },
-    },
-    MuiDrawer: {
-        padding: '0em 1.8em',
-        width: '14em',
-        fontFamily: 'var(--primaryFont)',
-        fontStyle: 'normal',
-        fontWeight: 'normal',
-        fontSize: '24px',
-        overflow: 'hidden',
-        borderTopLeftRadius: '40px',
-        borderBottomLeftRadius: '40px',
-        [t.breakpoints.down('md')]: { width: '12em' },
-    },
-    drawerIcon: {
-        fontSize: '1.4rem',
-        flexShrink: 0,
-        width: '1.6rem',
-        textAlign: 'center',
-        [t.breakpoints.down('md')]: { fontSize: '1.2rem' },
-    },
-    drawerLinks: {
-        fontFamily: 'var(--primaryFont)',
-        fontSize: '1.2rem',
-        fontWeight: 600,
-        whiteSpace: 'nowrap',
-        flex: 1,
-        textAlign: 'center',
-        [t.breakpoints.down('md')]: { fontSize: '1.05rem' },
-    },
-}));
 
 const shortname = (name) => name.replace('Dott.ssa', '');
 
@@ -96,13 +57,21 @@ function Navbar() {
     const [open, setOpen] = useState(false);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [closeHovered, setCloseHovered] = useState(false);
-    const classes = useStyles();
 
     const handleDrawerOpen = () => { setOpen(true); setHandleDrawer(); };
     const handleDrawerClose = () => { setOpen(false); setHandleDrawer(); };
 
     const drawerPaperStyle = useMemo(() => ({
         background: theme.secondary,
+        padding: '0em 1.8em',
+        width: '14em',
+        fontFamily: 'var(--primaryFont)',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '24px',
+        overflow: 'hidden',
+        borderTopLeftRadius: '40px',
+        borderBottomLeftRadius: '40px',
     }), [theme.secondary]);
 
     return (
@@ -111,9 +80,15 @@ function Navbar() {
                 <h1 style={{ color: theme.secondary }}>
                     {shortname(headerData.name)}
                 </h1>
-                <IoMenuSharp
-                    className={classes.navMenu}
-                    style={{ color: theme.tertiary }}
+                <Box
+                    component={IoMenuSharp}
+                    sx={{
+                        fontSize: { xs: '2rem', sm: '2rem', md: '2.5rem' },
+                        cursor: 'pointer',
+                        transform: 'translateY(-10px)',
+                        transition: 'color 0.3s',
+                        color: theme.tertiary,
+                    }}
                     onClick={handleDrawerOpen}
                     aria-label='Menu'
                 />
@@ -126,7 +101,6 @@ function Navbar() {
                 }}
                 anchor='right'
                 open={open}
-                classes={{ paper: classes.MuiDrawer }}
                 PaperProps={{ style: drawerPaperStyle }}
                 className='drawer'
                 disableScrollLock={true}
@@ -176,8 +150,23 @@ function Navbar() {
                             >
                                 <NavLink to={to} smooth={true} spy='true' duration={2000}>
                                     <div style={getItemStyle(hoveredIndex === i, theme)}>
-                                        <Icon className={classes.drawerIcon} />
-                                        <span className={classes.drawerLinks}>
+                                        <Box
+                                            component={Icon}
+                                            sx={{
+                                                fontSize: { xs: '1.2rem', md: '1.4rem' },
+                                                flexShrink: 0,
+                                                width: '1.6rem',
+                                                textAlign: 'center',
+                                            }}
+                                        />
+                                        <span style={{
+                                            fontFamily: 'var(--primaryFont)',
+                                            fontSize: 'clamp(1.05rem, 1.2rem, 1.2rem)',
+                                            fontWeight: 600,
+                                            whiteSpace: 'nowrap',
+                                            flex: 1,
+                                            textAlign: 'center',
+                                        }}>
                                             {label}
                                         </span>
                                     </div>
