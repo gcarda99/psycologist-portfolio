@@ -39,18 +39,14 @@
 }
 
 /*
-  Flexbox con wrap e justify-content: center.
-  max-width limita la larghezza a 5 card + 4 gap così
-  ogni riga non ne contiene mai più di 5 e l'ultima riga
-  risulta automaticamente centrata.
-  Desktop: 5*180px + 4*72px (4.5rem@16px) = 900+288 = 1188px
+  Desktop large: 5 * 220px + 4 * 72px (4.5rem) = 1100 + 288 = 1388px
 */
 .services-bodycontainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 4.5rem;
-    max-width: 1188px;
+    max-width: 1388px;
     width: 100%;
     margin: 0 auto;
 }
@@ -61,7 +57,9 @@
     }
 }
 
-/* Laptop medio: max 4 per riga — 4*180 + 3*48 = 720+144 = 864px */
+/*
+  Laptop medio: 4 * 200px + 3 * 48px (3rem) = 800 + 144 = 944px
+*/
 @media (min-width: 992px) and (max-width: 1380px) {
     .services {
         padding: 2.7rem;
@@ -71,11 +69,13 @@
     }
     .services-bodycontainer {
         gap: 3rem;
-        max-width: 864px;
+        max-width: 944px;
     }
 }
 
-/* Tablet: max 3 per riga — 3*160 + 2*40 = 480+80 = 560px */
+/*
+  Tablet: 3 * 180px + 2 * 40px (2.5rem) = 540 + 80 = 620px
+*/
 @media screen and (max-width: 992px) {
     .services {
         padding: 1.7rem;
@@ -88,11 +88,13 @@
     }
     .services-bodycontainer {
         gap: 2.5rem;
-        max-width: 560px;
+        max-width: 620px;
     }
 }
 
-/* Mobile grande: max 2 per riga — 2*160 + 1*32 = 320+32 = 352px */
+/*
+  Mobile grande: 2 * 160px + 1 * 32px (2rem) = 320 + 32 = 352px
+*/
 @media screen and (max-width: 800px) {
     .services {
         padding: 1rem;
@@ -113,7 +115,9 @@
     }
 }
 
-/* Mobile piccolo: max 2 per riga — 2*150 + 1*16 = 300+16 = 316px */
+/*
+  Mobile piccolo: 2 * 150px + 1 * 16px (1rem) = 300 + 16 = 316px
+*/
 @media screen and (max-width: 600px) {
     .services {
         padding: 0.5rem;
