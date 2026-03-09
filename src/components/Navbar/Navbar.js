@@ -27,8 +27,8 @@ const fadeRightVariant = {
 const NAV_ITEMS = [
     { to: '/',           Icon: IoHomeSharp,    label: 'Home' },
     { to: '/#about',     Icon: FaUser,         label: 'Su di me' },
-    { to: '/#education', Icon: HiDocumentText, label: 'Formazione' },
     { to: '/#services',  Icon: BsFillGearFill, label: 'Servizi' },
+    { to: '/#education', Icon: HiDocumentText, label: 'Formazione' },
     { to: '/#contacts',  Icon: MdPhone,        label: 'Contatti' },
 ];
 
