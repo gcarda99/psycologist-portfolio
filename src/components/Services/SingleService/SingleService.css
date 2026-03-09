@@ -74,21 +74,21 @@
         padding: 1.6rem 1.2rem;
     }
     .service-icon > svg {
-        font-size: 4rem;
+        font-size: 4.5rem;
     }
     .service-content > h4 {
-        font-size: 19px;
+        font-size: 20px;
     }
 }
 
 /* Desktop standard */
 @media (min-width: 1380px) and (max-width: 2559px) {
     .service-content > h4 {
-        font-size: 15px;
+        font-size: 16px;
     }
 }
 
-/* Laptop medio */
+/* Laptop */
 @media (min-width: 992px) and (max-width: 1380px) {
     .single-service {
         width: 200px;
@@ -117,7 +117,7 @@
     }
 }
 
-/* Mobile grande */
+/* Huge Mobile */
 @media screen and (max-width: 800px) {
     .single-service {
         width: 160px;
@@ -132,7 +132,7 @@
     }
 }
 
-/* Mobile piccolo */
+/* Small Mobile */
 @media screen and (max-width: 600px) {
     .single-service {
         width: 150px;
