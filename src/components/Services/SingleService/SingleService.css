@@ -62,6 +62,22 @@
     color: #eaeaea;
 }
 
+/* 2K */
+@media (min-width: 2560px) {
+    .single-service {
+        width: 280px;
+        height: 280px;
+        border-radius: 28px;
+        padding: 1.8rem;
+    }
+    .service-icon > svg {
+        font-size: 4.2rem;
+    }
+    .service-content > h4 {
+        font-size: 20px;
+    }
+}
+
 /* Laptop medio */
 @media (min-width: 992px) and (max-width: 1380px) {
     .single-service {
