@@ -53,19 +53,22 @@
 
 /*
   2K: 5 * 280px + 4 * 96px (6rem) = 1400 + 384 = 1784px
+  padding sul root, max-width sul body interno
 */
 @media (min-width: 2560px) {
     .services {
         padding: 4rem 6rem;
-        max-width: 2400px;
-        margin-left: auto;
-        margin-right: auto;
-        box-sizing: border-box;
     }
 
     .services-header > h1 {
         font-size: 5rem;
         margin-bottom: 2rem;
+    }
+
+    .services-body {
+        max-width: 2400px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .services-body > p {

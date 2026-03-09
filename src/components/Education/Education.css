@@ -104,12 +104,15 @@
 
 /* ── 2K (2560px+) ─────────────────────────────────────── */
 @media (min-width: 2560px) {
+    /* padding sul root, max-width sul body interno */
     .education {
         padding: 0 6rem;
+    }
+
+    .education-body {
         max-width: 2400px;
         margin-left: auto;
         margin-right: auto;
-        box-sizing: border-box;
     }
 
     .education-description > h1 {
