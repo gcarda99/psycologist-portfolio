@@ -92,8 +92,6 @@
     pointer-events: none;
     align-items: center;
     justify-content: center;
-
-    /* sticky configuration */
     position: sticky;
     top: 2rem;
     align-self: flex-start;
@@ -104,38 +102,68 @@
     width: 70%;
 }
 
+/* ── 2K (2560px+) ─────────────────────────────────────── */
 @media (min-width: 2560px) {
-    .education-description > h1{
-        font-size: 4rem;
+    .education {
+        padding: 0 6rem;
+        max-width: 2400px;
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
+    }
+
+    .education-description > h1 {
+        font-size: 5rem;
+        margin-bottom: 3rem;
+    }
+
+    .education-card {
+        width: 95%;
+        padding: 2rem 2.5rem;
+        border-radius: 28px;
+        margin-bottom: 2rem;
+    }
+
+    .educard-img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .educard-img > img {
+        width: 55px;
+    }
+
+    .education-details {
+        margin-left: 1.2rem;
     }
 
     .education-details > .years {
-        font-size: 1.3rem;
-    }
-
-    .education-details > .grade {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+        margin-bottom: 0.6rem;
     }
 
     .education-details > .course {
         font-size: 1.7rem;
-        font-weight: 600;
     }
 
     .education-details > .institution {
         font-size: 1.55rem;
     }
+
+    .education-details > .grade {
+        font-size: 1.2rem;
+        margin-top: 0.6rem;
+    }
 }
 
-
-
+/* ── Laptop medio ─────────────────────────────────────── */
 @media (min-width: 992px) and (max-width: 1380px) {
     .education {
         padding: 0 2.7rem;
     }
 }
 
-
+/* ── Tablet ───────────────────────────────────────────── */
 @media screen and (max-width: 992px) {
     .education {
         min-height: 100%;
@@ -181,7 +209,6 @@
         width: 45px;
         height: 45px;
     }
-    
     .educard-img > img {
         width: 30px;
     }
@@ -189,27 +216,22 @@
         font-size: 0.85rem;
         margin-bottom: 0.45rem;
     }
-
     .education-details > .grade {
         font-size: 0.85rem;
     }
-    
     .education-details > .course {
         font-size: 1.125rem;
         line-height: 126%;
     }
-    
     .education-details > .institution {
         margin-top: 0.25rem;
         margin-bottom: 0.25rem;
         font-size: 1.05rem;
         line-height: 126%;
     }
-
     .education-details {
         width: 100%;
     }
-
 }
 
 @media screen and (max-width: 600px) {
@@ -219,15 +241,12 @@
     .education-description > h1{
         font-size: 2.5rem;
     }
-
     .education-details > .course {
         font-size: 1rem;
     }
-
     .education-details > .institution {
         font-size: 0.9rem;
     }
-
     .education-details > .grade {
         font-size: 0.8rem;
     }
