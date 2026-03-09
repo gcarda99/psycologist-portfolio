@@ -8,12 +8,14 @@
     align-items: center;
     justify-content: space-evenly;
     padding: 1.2rem 1rem;
-    transition: transform 300ms ease-in-out;
+    transition: transform 300ms ease-in-out, background-color 300ms ease-in-out;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .single-service:hover {
-    transform: scale(1.15);
+    transform: scale(1.12);
+    box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.35);
 }
 
 .service-content {
@@ -31,6 +33,7 @@
     justify-content: center;
     color: #eaeaea;
     flex-shrink: 0;
+    transition: transform 300ms ease-in-out;
 }
 
 .service-icon > svg {
@@ -63,6 +66,7 @@
     word-break: break-word;
     hyphens: auto;
     max-width: 100%;
+    transition: color 300ms ease-in-out;
 }
 
 /* 2K */

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { motion } from 'framer-motion';
 
 import { ThemeContext } from '../../../contexts/ThemeContext';
@@ -11,16 +11,21 @@ const fadeUpVariant = {
 
 function SingleService({ id, title, icon }) {
     const { theme } = useContext(ThemeContext);
+    const [hovered, setHovered] = useState(false);
 
     return (
         <motion.div
             key={id}
             className="single-service"
-            style={{ backgroundColor: theme.primary400 }}
+            style={{
+                backgroundColor: hovered ? '#1a1a1a' : theme.primary400,
+            }}
             variants={fadeUpVariant}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
         >
             <div className="service-content" style={{ color: theme.tertiary }}>
                 <i className="service-icon">{icon}</i>
