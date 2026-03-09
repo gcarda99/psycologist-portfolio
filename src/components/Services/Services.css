@@ -38,13 +38,19 @@
     margin-bottom: 6rem;
 }
 
-/* Grid: max 5 colonne, card centrate */
+/*
+  auto-fill: riempie la riga con quante colonne ci stanno.
+  max-width = (N * card) + ((N-1) * gap)
+  Desktop: 5 * 180px + 4 * 72px (4.5rem) = 900 + 288 = 1188px
+*/
 .services-bodycontainer {
     display: grid;
-    grid-template-columns: repeat(5, 180px);
+    grid-template-columns: repeat(auto-fill, 180px);
     justify-content: center;
     gap: 4.5rem;
     width: 100%;
+    max-width: 1188px;   /* max 5 colonne */
+    margin: 0 auto;
 }
 
 @media (min-width: 2560px) {
@@ -53,6 +59,7 @@
     }
 }
 
+/* Laptop medio: max 4 per riga — 4*180 + 3*48 = 720+144 = 864px */
 @media (min-width: 992px) and (max-width: 1380px) {
     .services {
         padding: 2.7rem;
@@ -60,13 +67,14 @@
     .services-body > p {
         width: 70%;
     }
-    /* Su schermi medi: max 4 per riga */
     .services-bodycontainer {
-        grid-template-columns: repeat(4, 180px);
+        grid-template-columns: repeat(auto-fill, 180px);
         gap: 3rem;
+        max-width: 864px;    /* max 4 colonne */
     }
 }
 
+/* Tablet: max 3 per riga — 3*160 + 2*40 = 480+80 = 560px */
 @media screen and (max-width: 992px) {
     .services {
         padding: 1.7rem;
@@ -77,13 +85,14 @@
         text-align: center;
         margin-bottom: 4rem;
     }
-    /* Tablet: max 3 per riga */
     .services-bodycontainer {
-        grid-template-columns: repeat(3, 160px);
+        grid-template-columns: repeat(auto-fill, 160px);
         gap: 2.5rem;
+        max-width: 560px;    /* max 3 colonne */
     }
 }
 
+/* Mobile grande: max 2 per riga — 2*160 + 1*32 = 320+32 = 352px */
 @media screen and (max-width: 800px) {
     .services {
         padding: 1rem;
@@ -98,13 +107,14 @@
         text-align: center;
         margin-bottom: 3rem;
     }
-    /* Mobile grande: max 2 per riga */
     .services-bodycontainer {
-        grid-template-columns: repeat(2, 160px);
+        grid-template-columns: repeat(auto-fill, 160px);
         gap: 2rem;
+        max-width: 352px;    /* max 2 colonne */
     }
 }
 
+/* Mobile piccolo: max 2 per riga — 2*150 + 1*16 = 300+16 = 316px */
 @media screen and (max-width: 600px) {
     .services {
         padding: 0.5rem;
@@ -116,9 +126,9 @@
     .services-body p {
         width: 80%;
     }
-    /* Mobile piccolo: max 2 per riga, card più piccole */
     .services-bodycontainer {
-        grid-template-columns: repeat(2, 150px);
+        grid-template-columns: repeat(auto-fill, 150px);
         gap: 1rem;
+        max-width: 316px;    /* max 2 colonne */
     }
 }
