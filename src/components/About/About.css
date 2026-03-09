@@ -76,6 +76,22 @@
     flex: 0.5;
 }
 
+@media (min-width: 2560px) {
+    .about-description > p {
+        font-size: 1.75rem;
+    }
+    .about-img {
+        margin-top: 40px;
+        pointer-events: none;
+        scale: 1.5;
+    }
+
+    .about-img > img {
+        width: 380px;
+        flex: 0.5;
+    }
+}
+
 @media (min-width: 992px) and (max-width: 1380px) {
     .about {
         padding: 0 2.7rem;

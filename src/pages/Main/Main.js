@@ -31,7 +31,7 @@ function Main() {
                 {/*<Achievement/>*/}
                 {/*<Testimonials/>*/}
                 {/*<Blog/>*/}
-                <Projects />
+                {/*<Projects />*/}
                 <Contacts />
                 <Footer />
             </Suspense>

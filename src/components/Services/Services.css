@@ -46,6 +46,12 @@
     flex-wrap: wrap;
 }
 
+@media (min-width: 2560px) {
+    .services-body > p {
+        font-size: 1.75rem;
+    }
+}
+
 
 @media (min-width: 992px) and (max-width: 1380px) {
     .services {
