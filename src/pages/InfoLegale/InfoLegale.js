@@ -1,14 +1,13 @@
 import './InfoLegale.css';
 import React from 'react';
-import { Helmet } from 'react-helmet';
-import { privacyPolicyData } from '../../data/privacyPolicyData';
-import { headerData } from '../../data/headerData';
+import {Helmet} from 'react-helmet';
+import {privacyPolicyData} from '../../data/privacyPolicyData';
 
 function InfoLegale() {
     return (
         <div className="info-legale">
             <Helmet>
-                <title>{headerData.name}</title>
+                <title>{privacyPolicyData.name}</title>
             </Helmet>
             <div className="container">
                 <h1>Privacy Policy</h1>
@@ -16,9 +15,10 @@ function InfoLegale() {
 
                 <h2>1. Titolare del trattamento</h2>
                 <p>
-                    Dott.ssa <strong>{privacyPolicyData.name}</strong><br />
+                    Dott.ssa <strong>{privacyPolicyData.name}</strong><br/>
                     Psicologa, iscritta all'Albo degli Psicologi della Campania n.{' '}
-                    <a href={privacyPolicyData.alboUrl} target="_blank" rel="noreferrer">{privacyPolicyData.albo}</a><br />
+                    <a href={privacyPolicyData.alboUrl} target="_blank"
+                       rel="noreferrer">{privacyPolicyData.albo}</a><br/>
                     {privacyPolicyData?.iva && privacyPolicyData?.iva.trim() !== '' && (
                         <>
                             Partita IVA: {privacyPolicyData.iva}
@@ -26,6 +26,8 @@ function InfoLegale() {
                     )}
                     <br/>
                     Email: <a href={'mailto:' + privacyPolicyData.email}>{privacyPolicyData.email}</a>
+                    <br/>
+                    PEC: <a href={'mailto:' + privacyPolicyData.pec}>{privacyPolicyData.pec}</a>
                 </p>
 
                 <h2>2. Tipologie di dati raccolti</h2>
