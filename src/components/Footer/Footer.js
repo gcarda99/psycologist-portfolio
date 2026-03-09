@@ -1,50 +1,44 @@
-import React, {useContext} from 'react'
-import './Footer.css'
-import {ThemeContext} from '../../contexts/ThemeContext'
-import {socialsData} from '../../data/socialsData'
-import {footerData} from '../../data/footerData'
-import {FaAt, FaEnvelope, FaInstagram, FaLinkedinIn, FaTiktok} from "react-icons/fa";
-import { makeStyles } from '@mui/styles';
+import React, { useContext } from 'react';
+import { styled } from '@mui/material/styles';
+import './Footer.css';
+import { ThemeContext } from '../../contexts/ThemeContext';
+import { socialsData } from '../../data/socialsData';
+import { footerData } from '../../data/footerData';
+import { FaAt, FaEnvelope, FaInstagram, FaLinkedinIn, FaTiktok } from 'react-icons/fa';
 
 function Footer() {
+    const { theme } = useContext(ThemeContext);
 
-    const {theme} = useContext(ThemeContext)
-
-    const useStyles = makeStyles((t) => ({
-        socialIcon: {
-            width: '45px',
-            height: '45px',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '21px',
-            backgroundColor: theme.secondary,
-            color: theme.primary,
-            transition: '250ms ease-in-out',
-            '&:hover': {
-                transform: 'scale(1.1)',
-                color: theme.secondary,
-                backgroundColor: theme.tertiary,
-            },
-        }
+    const SocialIcon = styled('a')(() => ({
+        width: '45px',
+        height: '45px',
+        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: '21px',
+        backgroundColor: theme.secondary,
+        color: theme.primary,
+        transition: '250ms ease-in-out',
+        '&:hover': {
+            transform: 'scale(1.1)',
+            color: theme.secondary,
+            backgroundColor: theme.tertiary,
+        },
     }));
-
-    const classes = useStyles();
 
     return (
         <div className="footer">
             <div className="footer-container">
-
                 <div className="footer-column">
                     <h2 className="footer-title">{footerData.name}</h2>
                     <p className="footer-text">
                         Iscritta all'Albo degli Psicologi della Regione Campania
-                        <br/>
+                        <br />
                         n. <a href={footerData.alboUrl} target="_blank" rel="noreferrer">{footerData.albo}</a>
-                        {footerData?.iva && footerData?.iva.trim() !== "" && (
+                        {footerData?.iva && footerData?.iva.trim() !== '' && (
                             <>
-                                <br/>
+                                <br />
                                 Partita IVA: {footerData.iva}
                             </>
                         )}
@@ -71,72 +65,43 @@ function Footer() {
 
             <div className='footer-socialmedia-icons'>
                 {socialsData.linkedIn && (
-                    <a
-                        href={socialsData.linkedIn}
-                        target='_blank'
-                        rel='noreferrer'
-                        className={classes.socialIcon}
-                    >
-                        <FaLinkedinIn aria-label='LinkedIn'/>
-                    </a>
+                    <SocialIcon href={socialsData.linkedIn} target='_blank' rel='noreferrer'>
+                        <FaLinkedinIn aria-label='LinkedIn' />
+                    </SocialIcon>
                 )}
                 {socialsData.instagram && (
-                    <a
-                        href={socialsData.instagram}
-                        target='_blank'
-                        rel='noreferrer'
-                        className={classes.socialIcon}
-                    >
-                        <FaInstagram aria-label='Instagram'/>
-                    </a>
+                    <SocialIcon href={socialsData.instagram} target='_blank' rel='noreferrer'>
+                        <FaInstagram aria-label='Instagram' />
+                    </SocialIcon>
                 )}
                 {socialsData.tikTok && (
-                    <a
-                        href={socialsData.tikTok}
-                        target='_blank'
-                        rel='noreferrer'
-                        className={classes.socialIcon}
-                    >
-                        <FaTiktok aria-label='Tiktok'/>
-                    </a>
+                    <SocialIcon href={socialsData.tikTok} target='_blank' rel='noreferrer'>
+                        <FaTiktok aria-label='Tiktok' />
+                    </SocialIcon>
                 )}
                 {socialsData.gmail && (
-                    <a
-                        href={socialsData.gmail}
-                        target='_blank'
-                        rel='noreferrer'
-                        className={classes.socialIcon}
-                    >
-                        <FaEnvelope aria-label='Gmail'/>
-                    </a>
+                    <SocialIcon href={socialsData.gmail} target='_blank' rel='noreferrer'>
+                        <FaEnvelope aria-label='Gmail' />
+                    </SocialIcon>
                 )}
                 {socialsData.pec && (
-                    <a
-                        href={socialsData.pec}
-                        target='_blank'
-                        rel='noreferrer'
-                        className={classes.socialIcon}
-                    >
-                        <FaAt aria-label='PEC'/>
-                    </a>
+                    <SocialIcon href={socialsData.pec} target='_blank' rel='noreferrer'>
+                        <FaAt aria-label='PEC' />
+                    </SocialIcon>
                 )}
             </div>
 
             <div className="footer-bottom">
                 © {new Date().getFullYear()} {footerData.name} - Tutti i diritti riservati
-                <p style={{color: "white"}}>
+                <p style={{ color: 'white' }}>
                     Made with
-                    <span style={{color: "red", margin: '0 0.5rem -1rem 0.5rem'}}>
-                    ❤
-                </span>
-                    by <a style={{color: "white", textDecoration: "underline"}}
-                          href='https://www.linkedin.com/in/giuseppe-cardaropoli/'>Giuseppe
-                    Cardaropoli</a>
+                    <span style={{ color: 'red', margin: '0 0.5rem -1rem 0.5rem' }}>❤</span>
+                    by <a style={{ color: 'white', textDecoration: 'underline' }}
+                        href='https://www.linkedin.com/in/giuseppe-cardaropoli/'>Giuseppe Cardaropoli</a>
                 </p>
             </div>
         </div>
     );
 }
 
-export default Footer
-
+export default Footer;

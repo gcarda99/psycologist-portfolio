@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@mui/styles';
+import { styled } from '@mui/material/styles';
 import { FaPlay, FaCode } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
@@ -12,32 +12,23 @@ const fadeUpVariant = {
 };
 
 function SingleProject({ id, name, desc, tags, code, demo, image, theme }) {
-    const useStyles = makeStyles(() => ({
-        iconBtn: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: 40,
-            height: 40,
-            borderRadius: 50,
-            border: `2px solid ${theme.tertiary}`,
-            color: theme.tertiary,
-            transition: 'all 0.2s',
-            '&:hover': {
-                backgroundColor: theme.secondary,
-                color: theme.primary,
-                transform: 'scale(1.1)',
-                border: `2px solid ${theme.secondary}`,
-            },
-        },
-        icon: {
-            fontSize: '1.1rem',
-            transition: 'all 0.2s',
-            '&:hover': {},
+    const IconBtn = styled('a')(() => ({
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 40,
+        height: 40,
+        borderRadius: 50,
+        border: `2px solid ${theme.tertiary}`,
+        color: theme.tertiary,
+        transition: 'all 0.2s',
+        '&:hover': {
+            backgroundColor: theme.secondary,
+            color: theme.primary,
+            transform: 'scale(1.1)',
+            border: `2px solid ${theme.secondary}`,
         },
     }));
-
-    const classes = useStyles();
 
     return (
         <motion.div
@@ -58,32 +49,30 @@ function SingleProject({ id, name, desc, tags, code, demo, image, theme }) {
                 </h2>
                 <img src={image ? image : placeholder} alt={name} />
                 <div className="project--showcaseBtn">
-                    <a
+                    <IconBtn
                         href={demo}
                         target="_blank"
                         rel="noreferrer"
-                        className={classes.iconBtn}
                         aria-labelledby={`${name.replace(' ', '-').toLowerCase()} ${name.replace(' ', '-').toLowerCase()}-demo`}
                     >
                         <FaPlay
                             id={`${name.replace(' ', '-').toLowerCase()}-demo`}
-                            className={classes.icon}
+                            style={{ fontSize: '1.1rem', transition: 'all 0.2s' }}
                             aria-label="Demo"
                         />
-                    </a>
-                    <a
+                    </IconBtn>
+                    <IconBtn
                         href={code}
                         target="_blank"
                         rel="noreferrer"
-                        className={classes.iconBtn}
                         aria-labelledby={`${name.replace(' ', '-').toLowerCase()} ${name.replace(' ', '-').toLowerCase()}-code`}
                     >
                         <FaCode
                             id={`${name.replace(' ', '-').toLowerCase()}-code`}
-                            className={classes.icon}
+                            style={{ fontSize: '1.1rem', transition: 'all 0.2s' }}
                             aria-label="Code"
                         />
-                    </a>
+                    </IconBtn>
                 </div>
             </div>
             <p
