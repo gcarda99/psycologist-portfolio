@@ -26,6 +26,7 @@
     align-items: center;
     justify-content: flex-start;
     margin-bottom: 2rem;
+    width: 100%;
 }
 
 .services-body > p {
@@ -37,13 +38,13 @@
     margin-bottom: 6rem;
 }
 
+/* Grid: max 5 colonne, card centrate */
 .services-bodycontainer {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(5, 180px);
     justify-content: center;
     gap: 4.5rem;
     width: 100%;
-    flex-wrap: wrap;
 }
 
 @media (min-width: 2560px) {
@@ -52,7 +53,6 @@
     }
 }
 
-
 @media (min-width: 992px) and (max-width: 1380px) {
     .services {
         padding: 2.7rem;
@@ -60,22 +60,26 @@
     .services-body > p {
         width: 70%;
     }
+    /* Su schermi medi: max 4 per riga */
+    .services-bodycontainer {
+        grid-template-columns: repeat(4, 180px);
+        gap: 3rem;
+    }
 }
-
 
 @media screen and (max-width: 992px) {
     .services {
         padding: 1.7rem;
     }
-
     .services-body > p {
         font-size: 1.25rem;
         width: 85%;
         text-align: center;
         margin-bottom: 4rem;
     }
-
+    /* Tablet: max 3 per riga */
     .services-bodycontainer {
+        grid-template-columns: repeat(3, 160px);
         gap: 2.5rem;
     }
 }
@@ -94,8 +98,9 @@
         text-align: center;
         margin-bottom: 3rem;
     }
-
+    /* Mobile grande: max 2 per riga */
     .services-bodycontainer {
+        grid-template-columns: repeat(2, 160px);
         gap: 2rem;
     }
 }
@@ -108,24 +113,12 @@
         font-size: 2.5rem;
         margin-bottom: 20px;
     }
-    .services-body p{
+    .services-body p {
         width: 80%;
     }
+    /* Mobile piccolo: max 2 per riga, card più piccole */
     .services-bodycontainer {
+        grid-template-columns: repeat(2, 150px);
         gap: 1rem;
     }
-}
-
-@media screen and (max-width: 400px) {
-
-}
-  
-@media only screen and (min-device-width: 320px) and (max-device-width: 
-  480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) {
-
-}
-
-
-@media only screen and (device-width: 768px) {
-
 }
