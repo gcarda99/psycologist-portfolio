@@ -39,17 +39,19 @@
 }
 
 /*
-  auto-fill: riempie la riga con quante colonne ci stanno.
-  max-width = (N * card) + ((N-1) * gap)
-  Desktop: 5 * 180px + 4 * 72px (4.5rem) = 900 + 288 = 1188px
+  Flexbox con wrap e justify-content: center.
+  max-width limita la larghezza a 5 card + 4 gap così
+  ogni riga non ne contiene mai più di 5 e l'ultima riga
+  risulta automaticamente centrata.
+  Desktop: 5*180px + 4*72px (4.5rem@16px) = 900+288 = 1188px
 */
 .services-bodycontainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 180px);
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 4.5rem;
+    max-width: 1188px;
     width: 100%;
-    max-width: 1188px;   /* max 5 colonne */
     margin: 0 auto;
 }
 
@@ -68,9 +70,8 @@
         width: 70%;
     }
     .services-bodycontainer {
-        grid-template-columns: repeat(auto-fill, 180px);
         gap: 3rem;
-        max-width: 864px;    /* max 4 colonne */
+        max-width: 864px;
     }
 }
 
@@ -86,9 +87,8 @@
         margin-bottom: 4rem;
     }
     .services-bodycontainer {
-        grid-template-columns: repeat(auto-fill, 160px);
         gap: 2.5rem;
-        max-width: 560px;    /* max 3 colonne */
+        max-width: 560px;
     }
 }
 
@@ -108,9 +108,8 @@
         margin-bottom: 3rem;
     }
     .services-bodycontainer {
-        grid-template-columns: repeat(auto-fill, 160px);
         gap: 2rem;
-        max-width: 352px;    /* max 2 colonne */
+        max-width: 352px;
     }
 }
 
@@ -127,8 +126,7 @@
         width: 80%;
     }
     .services-bodycontainer {
-        grid-template-columns: repeat(auto-fill, 150px);
         gap: 1rem;
-        max-width: 316px;    /* max 2 colonne */
+        max-width: 316px;
     }
 }
