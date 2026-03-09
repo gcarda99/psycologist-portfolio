@@ -51,6 +51,7 @@ function Footer() {
                         <li><a href="/#">Homepage</a></li>
                         <li><a href="/#about">Chi sono</a></li>
                         <li><a href="/#services">Servizi</a></li>
+                        <li><a href="/#education">Formazione</a></li>
                         <li><a href="/#contacts">Contatti</a></li>
                     </ul>
                 </div>
