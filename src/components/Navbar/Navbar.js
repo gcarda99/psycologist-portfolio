@@ -75,14 +75,17 @@ function Navbar() {
     }), [theme.secondary]);
 
     return (
-        <>
-            {/* Burger icon sticky — sempre visibile durante lo scroll */}
-            <div className='navbar--burger-sticky'>
+        <div className='navbar'>
+            <div className='navbar--container'>
+                <h1 style={{ color: theme.secondary }}>
+                    {shortname(headerData.name)}
+                </h1>
                 <Box
                     component={IoMenuSharp}
                     sx={{
                         fontSize: { xs: '2rem', sm: '2rem', md: '2.5rem' },
                         cursor: 'pointer',
+                        transform: 'translateY(-10px)',
                         transition: 'color 0.3s',
                         color: theme.tertiary,
                     }}
@@ -90,18 +93,6 @@ function Navbar() {
                     aria-label='Menu'
                 />
             </div>
-
-            {/* Navbar originale con nome — rimane absolute in cima */}
-            <div className='navbar'>
-                <div className='navbar--container'>
-                    <h1 style={{ color: theme.secondary }}>
-                        {shortname(headerData.name)}
-                    </h1>
-                    {/* Placeholder per mantenere il layout della navbar originale */}
-                    <Box sx={{ width: { xs: '2rem', md: '2.5rem' } }} />
-                </div>
-            </div>
-
             <Drawer
                 variant='temporary'
                 onClose={(event, reason) => {
@@ -196,7 +187,7 @@ function Navbar() {
                     </div>
                 </div>
             </Drawer>
-        </>
+        </div>
     );
 }
 
