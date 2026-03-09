@@ -6,7 +6,7 @@ import './Education.css'
 import EducationCard from './EducationCard';
 
 import {educationData} from '../../data/educationData'
-import graduationImage from '../../assets/png/graduation.png'
+import graduationImage from '../../assets/webp/graduation.webp'
 
 
 function Education() {

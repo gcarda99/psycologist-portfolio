@@ -1,6 +1,7 @@
 .about {
     min-height: 100vh;
     position: relative;
+    padding: 0 3.7rem;
 }
 
 .about .line-styling{
@@ -14,6 +15,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.about .line-styling--bottom {
+  top: auto;
+  bottom: 50px;
 }
 
 .about .line-styling .style-circle{
@@ -33,6 +39,7 @@
     align-items: center;
     justify-content: space-around;
     padding-top: 8rem;
+    padding-bottom: 8rem;
     height: fit-content;
 }
 
@@ -69,7 +76,26 @@
     flex: 0.5;
 }
 
+@media (min-width: 2560px) {
+    .about-description > p {
+        font-size: 1.75rem;
+    }
+    .about-img {
+        margin-top: 40px;
+        pointer-events: none;
+        scale: 1.5;
+    }
+
+    .about-img > img {
+        width: 380px;
+        flex: 0.5;
+    }
+}
+
 @media (min-width: 992px) and (max-width: 1380px) {
+    .about {
+        padding: 0 2.7rem;
+    }
 
     .about-description > h2 {
       font-size: 3.3rem;
@@ -90,8 +116,18 @@
     top: 20px;
   }
 
+  .about .line-styling--bottom {
+    top: auto;
+    bottom: 20px;
+  }
+
+  .about {
+      padding: 0 1.7rem;
+  }
+
     .about-body {
         padding-top: 2rem;
+        padding-bottom: 2rem;
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
@@ -101,9 +137,7 @@
     .about-description{
         flex: 0.6;
         box-sizing: border-box;
-        /* padding: 5% 10%; */
-        padding: 20px;
-
+        padding: 20px 0;
     }
 
     .about-description > h2 {
@@ -123,6 +157,9 @@
 }
 
 @media screen and (max-width: 800px){
+  .about {
+      padding: 0 1rem;
+  }
   .about .line-styling .style-circle{
     width: 8px;
     height: 8px;
@@ -135,6 +172,9 @@
 }
 
 @media screen and (max-width: 600px){
+  .about {
+      padding: 0 0.5rem;
+  }
 
   .about .line-styling .style-circle{
     width: 5px;

@@ -2,19 +2,18 @@ import React, { useContext, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 
 import { ThemeContext } from './contexts/ThemeContext';
-import { Main } from './pages';
-import { BackToTop } from './components';
 import ScrollToTop from './utils/ScrollToTop';
+import BackToTop from './components/BackToTop/BackToTop';
 
 import './App.css';
 
+const Main = lazy(() => import('./pages/Main/Main'));
 const InfoLegale = lazy(() => import('./pages/InfoLegale/InfoLegale'));
 // const BlogPage = lazy(() => import('./pages/Blog/BlogPage'));
 // const ProjectPage = lazy(() => import('./pages/Project/ProjectPage'));
 
 function App() {
     const { theme } = useContext(ThemeContext);
-    console.log('used theme: ' + theme.type);
 
     return (
         <div className="app">

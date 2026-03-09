@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import placeholder from '../../../assets/png/placeholder.png';
+import placeholder from '../../../assets/webp/placeholder.webp';
 import './SingleBlog.css';
 
 const fadeUpVariant = {

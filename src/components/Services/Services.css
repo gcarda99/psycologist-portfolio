@@ -26,6 +26,7 @@
     align-items: center;
     justify-content: flex-start;
     margin-bottom: 2rem;
+    width: 100%;
 }
 
 .services-body > p {
@@ -37,16 +38,54 @@
     margin-bottom: 6rem;
 }
 
+/*
+  Desktop large: 5 * 220px + 4 * 72px (4.5rem) = 1100 + 288 = 1388px
+*/
 .services-bodycontainer {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 4.5rem;
+    max-width: 1388px;
     width: 100%;
-    flex-wrap: wrap;
+    margin: 0 auto;
 }
 
+/*
+  2K: 5 * 280px + 4 * 96px (6rem) = 1400 + 384 = 1784px
+  padding sul root, max-width sul body interno
+*/
+@media (min-width: 2560px) {
+    .services {
+        padding: 4rem 6rem;
+    }
 
+    .services-header > h1 {
+        font-size: 5rem;
+        margin-bottom: 2rem;
+    }
+
+    .services-body {
+        max-width: 2400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .services-body > p {
+        font-size: 2rem;
+        margin-bottom: 7rem;
+        width: 55%;
+    }
+
+    .services-bodycontainer {
+        gap: 6rem;
+        max-width: 1784px;
+    }
+}
+
+/*
+  Laptop medio: 4 * 200px + 3 * 48px (3rem) = 800 + 144 = 944px
+*/
 @media (min-width: 992px) and (max-width: 1380px) {
     .services {
         padding: 2.7rem;
@@ -54,26 +93,34 @@
     .services-body > p {
         width: 70%;
     }
+    .services-bodycontainer {
+        gap: 3rem;
+        max-width: 944px;
+    }
 }
 
-
+/*
+  Tablet: 3 * 180px + 2 * 40px (2.5rem) = 540 + 80 = 620px
+*/
 @media screen and (max-width: 992px) {
     .services {
         padding: 1.7rem;
     }
-
     .services-body > p {
         font-size: 1.25rem;
         width: 85%;
         text-align: center;
         margin-bottom: 4rem;
     }
-
     .services-bodycontainer {
         gap: 2.5rem;
+        max-width: 620px;
     }
 }
 
+/*
+  Mobile grande: 2 * 160px + 1 * 32px (2rem) = 320 + 32 = 352px
+*/
 @media screen and (max-width: 800px) {
     .services {
         padding: 1rem;
@@ -88,12 +135,15 @@
         text-align: center;
         margin-bottom: 3rem;
     }
-
     .services-bodycontainer {
         gap: 2rem;
+        max-width: 352px;
     }
 }
 
+/*
+  Mobile piccolo: 2 * 150px + 1 * 16px (1rem) = 300 + 16 = 316px
+*/
 @media screen and (max-width: 600px) {
     .services {
         padding: 0.5rem;
@@ -102,24 +152,11 @@
         font-size: 2.5rem;
         margin-bottom: 20px;
     }
-    .services-body p{
+    .services-body p {
         width: 80%;
     }
     .services-bodycontainer {
         gap: 1rem;
+        max-width: 316px;
     }
-}
-
-@media screen and (max-width: 400px) {
-
-}
-  
-@media only screen and (min-device-width: 320px) and (max-device-width: 
-  480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) {
-
-}
-
-
-@media only screen and (device-width: 768px) {
-
 }

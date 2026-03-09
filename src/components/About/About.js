@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import './About.css';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import { aboutData } from '../../data/aboutData'
-import brain from '../../assets/png/brain.png'
+import brain from '../../assets/webp/brain.webp'
 
 
 
@@ -29,8 +29,12 @@ function About() {
                     />
                 </div>
             </div>
+            <div className="line-styling line-styling--bottom">
+              <div className="style-line" style={{backgroundColor: theme.primary}}></div>
+              <div className="style-circle" style={{backgroundColor: theme.primary}}></div>
+              <div className="style-circle" style={{backgroundColor: theme.primary}}></div>
+            </div>
         </div>
-
     )
 }
 
