@@ -5,11 +5,11 @@ import Navbar from '../../components/Navbar/Navbar'
 import Landing from '../../components/Landing/Landing'
 import { headerData } from '../../data/headerData'
 
-const About = lazy(() => import(/* @vite-prefetch */ '../../components/About/About'))
-const Services = lazy(() => import(/* @vite-prefetch */ '../../components/Services/Services'))
-const Education = lazy(() => import(/* @vite-prefetch */ '../../components/Education/Education'))
-const Contacts = lazy(() => import(/* @vite-prefetch */ '../../components/Contacts/Contacts'))
-const Footer = lazy(() => import(/* @vite-prefetch */ '../../components/Footer/Footer'))
+const About = lazy(() => import('../../components/About/About'))
+const Services = lazy(() => import('../../components/Services/Services'))
+const Education = lazy(() => import('../../components/Education/Education'))
+const Contacts = lazy(() => import('../../components/Contacts/Contacts'))
+const Footer = lazy(() => import('../../components/Footer/Footer'))
 
 // Placeholder minimo: mantiene il colore di sfondo ed evita flash bianchi
 const SectionSkeleton = () => (
