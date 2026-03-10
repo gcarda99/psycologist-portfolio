@@ -12,8 +12,6 @@ const InfoLegale = lazy(() => import('./pages/InfoLegale/InfoLegale'));
 // const BlogPage = lazy(() => import('./pages/Blog/BlogPage'));
 // const ProjectPage = lazy(() => import('./pages/Project/ProjectPage'));
 
-// Mostrato solo se il chunk della pagina non è ancora disponibile (es. 3G lenta).
-// Evita la pagina completamente bianca al primo caricamento.
 const PageSkeleton = () => (
     <div style={{
         backgroundColor: '#eaeaea',
@@ -27,7 +25,12 @@ function App() {
 
     return (
         <div className="app">
-            <Router>
+            <Router
+                future={{
+                    v7_startTransition: true,
+                    v7_relativeSplatPath: true,
+                }}
+            >
                 <ScrollToTop />
                 <Suspense fallback={<PageSkeleton />}>
                     <Routes>

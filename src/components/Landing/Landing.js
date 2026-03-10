@@ -89,7 +89,6 @@ function Landing() {
                         )}
                     </div>
                 </div>
-                {/* SVG decorativo mobile: gestito via CSS (display:none su desktop) */}
                 <div className="custom-shape-divider-top-1757341859">
                     <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg"
                          className="transition duration-300 ease-in-out delay-150">
@@ -131,7 +130,7 @@ function Landing() {
                                 <NavLink
                                     to='/#contacts'
                                     smooth={true}
-                                    spy='true'
+                                    spy={true}
                                     duration={2000}
                                 >
                                     <Button sx={contactBtnStyle}>
