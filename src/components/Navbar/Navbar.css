@@ -55,9 +55,9 @@
     will-change: transform, opacity;
 }
 
-/* Desktop: nessun blur */
+/* Desktop: nessun blur, opacità alta per mascherare la divisione del landing */
 .drawer > .MuiBackdrop-root {
-    background: rgba(33, 33, 33, 0.45) !important;
+    background: rgba(20, 20, 20, 0.75) !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     will-change: opacity;
