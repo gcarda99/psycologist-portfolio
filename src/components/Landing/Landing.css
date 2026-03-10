@@ -119,6 +119,11 @@
     font-family: var(--primaryFont), sans-serif;
 }
 
+/* SVG decorativo: nascosto di default, visibile solo su mobile */
+.custom-shape-divider-top-1757341859 {
+    display: none;
+}
+
 @media (min-width: 2560px) {
     .landing--social {
         font-size: 50px;
@@ -322,6 +327,7 @@
     }
 
     .custom-shape-divider-top-1757341859 {
+        display: block;
         transform: rotate(180deg);
         position: absolute;
         top: 20vh;
