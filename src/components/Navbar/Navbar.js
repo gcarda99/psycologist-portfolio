@@ -53,13 +53,13 @@ const getItemStyle = (isHovered, theme) => ({
 });
 
 function Navbar() {
-    const { theme, setHandleDrawer } = useContext(ThemeContext);
+    const { theme } = useContext(ThemeContext);
     const [open, setOpen] = useState(false);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [closeHovered, setCloseHovered] = useState(false);
 
-    const handleDrawerOpen = () => { setOpen(true); setHandleDrawer(); };
-    const handleDrawerClose = () => { setOpen(false); setHandleDrawer(); };
+    const handleDrawerOpen = () => setOpen(true);
+    const handleDrawerClose = () => setOpen(false);
 
     const drawerPaperStyle = useMemo(() => ({
         background: theme.secondary,
@@ -97,10 +97,7 @@ function Navbar() {
             </div>
             <Drawer
                 variant='temporary'
-                onClose={(event, reason) => {
-                    if (reason !== 'backdropClick') handleDrawerClose();
-                    else if (reason !== 'escapeKeyDown') handleDrawerClose();
-                }}
+                onClose={handleDrawerClose}
                 anchor='right'
                 open={open}
                 PaperProps={{ style: drawerPaperStyle }}
