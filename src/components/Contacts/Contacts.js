@@ -12,12 +12,12 @@ import {ThemeContext} from '../../contexts/ThemeContext';
 import {contactsData} from '../../data/contactsData';
 import './Contacts.css';
 
-const SERVICE_ID   = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const TPL_PSICOLOGA = import.meta.env.VITE_EMAILJS_TEMPLATE_PSICOLOGA;
-const TPL_AUTOREPLY = import.meta.env.VITE_EMAILJS_TEMPLATE_AUTOREPLY;
-const PUBLIC_KEY   = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_REQUEST = import.meta.env.VITE_EMAILJS_TEMPLATE_REQUEST;
+const TEMPLATE_REPLY = import.meta.env.VITE_EMAILJS_TEMPLATE_AUTOREPLY;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-if (!SERVICE_ID || !TPL_PSICOLOGA || !TPL_AUTOREPLY || !PUBLIC_KEY) {
+if (!SERVICE_ID || !TEMPLATE_REQUEST || !TEMPLATE_REPLY || !PUBLIC_KEY) {
     console.error('EmailJS: una o più variabili d\'ambiente sono mancanti. Controlla il file .env.');
 }
 
@@ -32,9 +32,9 @@ function Contacts() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const isSubmittingRef = useRef(false);
 
-    const { theme } = useContext(ThemeContext);
+    const {theme} = useContext(ThemeContext);
 
-    const FormInput = styled('input')(({ theme: t }) => ({
+    const FormInput = styled('input')(({theme: t}) => ({
         border: `4px solid ${theme.primary80}`,
         backgroundColor: theme.secondary,
         color: theme.tertiary,
@@ -46,7 +46,7 @@ function Contacts() {
         },
     }));
 
-    const FormTextarea = styled('textarea')(({ theme: t }) => ({
+    const FormTextarea = styled('textarea')(({theme: t}) => ({
         border: `4px solid ${theme.primary80}`,
         backgroundColor: theme.secondary,
         color: theme.tertiary,
@@ -58,7 +58,7 @@ function Contacts() {
         },
     }));
 
-    const FormLabel = styled('label')(({ theme: t }) => ({
+    const FormLabel = styled('label')(({theme: t}) => ({
         backgroundColor: theme.secondary,
         color: theme.primary,
         fontFamily: 'var(--primaryFont)',
@@ -69,7 +69,7 @@ function Contacts() {
         display: 'inline-flex',
     }));
 
-    const SocialIcon = styled('div')(({ theme: t }) => ({
+    const SocialIcon = styled('div')(({theme: t}) => ({
         width: '45px',
         height: '45px',
         borderRadius: '50%',
@@ -87,7 +87,7 @@ function Contacts() {
         },
     }));
 
-    const DetailsIcon = styled('div')(({ theme: t }) => ({
+    const DetailsIcon = styled('div')(({theme: t}) => ({
         backgroundColor: theme.primary,
         color: theme.secondary,
         borderRadius: '50%',
@@ -106,7 +106,7 @@ function Contacts() {
         },
     }));
 
-    const SubmitBtn = styled('button')(({ theme: t }) => ({
+    const SubmitBtn = styled('button')(({theme: t}) => ({
         backgroundColor: theme.primary,
         color: theme.secondary,
         transition: '250ms ease-in-out',
@@ -149,7 +149,7 @@ function Contacts() {
                     subject: trimmedSubject,
                     message: trimmedMessage,
                     date: now.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }),
-                    time: now.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' }),
+                    time: now.toLocaleTimeString('it-IT', {hour: '2-digit', minute: '2-digit'}),
                 };
 
                 Promise.all([
@@ -272,7 +272,7 @@ function Contacts() {
                                 </div>
                             </form>
                             <Snackbar
-                                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                                anchorOrigin={{vertical: 'top', horizontal: 'center'}}
                                 open={open}
                                 autoHideDuration={4000}
                                 onClose={handleClose}
