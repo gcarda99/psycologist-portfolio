@@ -46,8 +46,8 @@ export default defineConfig(({ mode }) => ({
         rollupOptions: {
             output: {
                 manualChunks: {
-                    'vendor-react':  ['react', 'react-dom', 'react-router-dom'],
-                    'vendor-mui':    ['@mui/material', '@mui/icons-material', '@mui/styles'],
+                    'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+                    'vendor-mui':   ['@mui/material', '@mui/icons-material'],
                     'vendor-motion': ['framer-motion'],
                     // 'vendor-icons': ['react-icons'] rimosso — Rollup ora fa
                     // tree-shaking sui singoli import (es. react-icons/fa6)
