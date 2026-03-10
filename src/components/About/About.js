@@ -5,10 +5,7 @@ import { ThemeContext } from '../../contexts/ThemeContext';
 import { aboutData } from '../../data/aboutData'
 import brain from '../../assets/webp/brain.webp'
 
-
-
 function About() {
-
     const { theme } = useContext(ThemeContext);
     return (
         <div className="about" id="about" style={{backgroundColor: theme.secondary}}>
@@ -23,9 +20,11 @@ function About() {
                     <p style={{color:theme.tertiary80}}>{aboutData.description1}<br/><br/>{aboutData.description2}<br/><br/>{aboutData.description3}</p>
                 </div>
                 <div className="about-img">
-                    <img 
+                    <img
                         src={brain}
                         alt="brain"
+                        loading="lazy"
+                        decoding="async"
                     />
                 </div>
             </div>

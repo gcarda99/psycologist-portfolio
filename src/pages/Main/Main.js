@@ -1,16 +1,19 @@
 import React, { lazy, Suspense } from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
 import Navbar from '../../components/Navbar/Navbar'
 import Landing from '../../components/Landing/Landing'
 import { headerData } from '../../data/headerData'
 
 const About = lazy(() => import('../../components/About/About'))
-const Education = lazy(() => import('../../components/Education/Education'))
-const Projects = lazy(() => import('../../components/Projects/Projects'))
 const Services = lazy(() => import('../../components/Services/Services'))
+const Education = lazy(() => import('../../components/Education/Education'))
 const Contacts = lazy(() => import('../../components/Contacts/Contacts'))
 const Footer = lazy(() => import('../../components/Footer/Footer'))
+
+const SectionSkeleton = () => (
+    <div style={{ backgroundColor: '#eaeaea', minHeight: '100px' }} />
+)
 
 function Main() {
     return (
@@ -22,17 +25,23 @@ function Main() {
             <Navbar />
             <Landing />
 
-            <Suspense fallback={<div />}>
+            <Suspense fallback={<SectionSkeleton />}>
                 <About />
+            </Suspense>
+
+            <Suspense fallback={<SectionSkeleton />}>
                 <Services />
+            </Suspense>
+
+            <Suspense fallback={<SectionSkeleton />}>
                 <Education />
-                {/*<Skills />*/}
-                {/*<Experience/>*/}
-                {/*<Achievement/>*/}
-                {/*<Testimonials/>*/}
-                {/*<Blog/>*/}
-                {/*<Projects />*/}
+            </Suspense>
+
+            <Suspense fallback={<SectionSkeleton />}>
                 <Contacts />
+            </Suspense>
+
+            <Suspense fallback={<SectionSkeleton />}>
                 <Footer />
             </Suspense>
         </div>

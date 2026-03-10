@@ -16,11 +16,22 @@
         <meta property="og:type" content="website"/>
         <meta property="og:description"
               content="Psicologa iscritta all'Albo degli Psicologi della Campania. Supporto psicologico individuale, consulenze e percorsi di crescita personale."/>
+        <meta property="og:image" content="/favicon.png"/>
 
         <meta name="twitter:title" content="Dott.ssa Albano Mariaelisabetta — Psicologa"/>
         <meta name="twitter:description"
               content="Psicologa iscritta all'Albo degli Psicologi della Campania. Supporto psicologico individuale, consulenze e percorsi di crescita personale."/>
-        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:image" content="/favicon.png"/>
+
+        <!-- Preload LCP image: inizia il download prima che React monti il componente -->
+        <link rel="preload" as="image" href="/src/assets/webp/landing.webp" type="image/webp"/>
+
+        <!-- Google Fonts: preconnect per ridurre latenza DNS/TLS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <!-- Solo Poppins (primaryFont attivo) -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"/>
 
         <title>Dott.ssa Albano Mariaelisabetta</title>
     </head>

@@ -12,14 +12,27 @@ const InfoLegale = lazy(() => import('./pages/InfoLegale/InfoLegale'));
 // const BlogPage = lazy(() => import('./pages/Blog/BlogPage'));
 // const ProjectPage = lazy(() => import('./pages/Project/ProjectPage'));
 
+const PageSkeleton = () => (
+    <div style={{
+        backgroundColor: '#eaeaea',
+        minHeight: '100vh',
+        width: '100%',
+    }} />
+);
+
 function App() {
     const { theme } = useContext(ThemeContext);
 
     return (
         <div className="app">
-            <Router>
+            <Router
+                future={{
+                    v7_startTransition: true,
+                    v7_relativeSplatPath: true,
+                }}
+            >
                 <ScrollToTop />
-                <Suspense fallback={<div />}>
+                <Suspense fallback={<PageSkeleton />}>
                     <Routes>
                         <Route path="/" element={<Main />} />
                         <Route path="/info-legale" element={<InfoLegale />} />

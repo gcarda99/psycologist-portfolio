@@ -3,7 +3,6 @@ import { styled } from '@mui/material/styles';
 import { FaPlay, FaCode } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
-import placeholder from '../../../assets/webp/placeholder.webp';
 import './SingleProject.css';
 
 const fadeUpVariant = {
@@ -47,7 +46,7 @@ function SingleProject({ id, name, desc, tags, code, demo, image, theme }) {
                 >
                     {name}
                 </h2>
-                <img src={image ? image : placeholder} alt={name} />
+                {image && <img src={image} alt={name} />}
                 <div className="project--showcaseBtn">
                     <IconBtn
                         href={demo}

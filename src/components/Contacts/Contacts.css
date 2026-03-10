@@ -165,6 +165,8 @@
     bottom: 0;
     width: 100%;
     overflow: hidden;
+    /* SVG decorativo: non deve intercettare click sul form */
+    pointer-events: none;
 }
 
 .custom-shape-divider-bottom-1757341859 svg {
@@ -175,7 +177,7 @@
     fill: #823ae0;
 }
 
-/* ── 2K (2560px+) ───────────────────────────────────────── */
+/* ── 2K (2560px+) ──────────────────────────────────────────────── */
 @media (min-width: 2560px) {
     .contacts--container {
         padding: 3rem 6rem 4rem;
@@ -251,7 +253,7 @@
     }
 }
 
-/* ── Laptop medio ───────────────────────────────────────── */
+/* ── Laptop medio ──────────────────────────────────────────────── */
 @media (min-width: 992px) and (max-width: 1380px) {
     .contacts--container {
         padding: 2rem 2.7rem 3rem;
@@ -264,7 +266,7 @@
     }
 }
 
-/* ── Tablet + Mobile ──────────────────────────────────────── */
+/* ── Tablet + Mobile ──────────────────────────────────────────────── */
 @media screen and (max-width: 992px) {
     .contacts--img {
         display: none;

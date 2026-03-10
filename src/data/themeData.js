@@ -5,6 +5,3 @@ import {purpleThemeLight} from '../theme/theme'
 export const themeData = {
     theme: purpleThemeLight,
 }
-
-
-// Choose theme from above

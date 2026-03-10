@@ -15,7 +15,6 @@ function SingleService({ id, title, icon }) {
 
     return (
         <motion.div
-            key={id}
             className="single-service"
             style={{
                 backgroundColor: hovered ? '#1a1a1a' : theme.primary400,
@@ -28,7 +27,7 @@ function SingleService({ id, title, icon }) {
             onMouseLeave={() => setHovered(false)}
         >
             <div className="service-content" style={{ color: theme.tertiary }}>
-                <i className="service-icon">{icon}</i>
+                <span className="service-icon">{icon}</span>
                 <h4 style={{ color: theme.secondary }}>{title}</h4>
             </div>
         </motion.div>

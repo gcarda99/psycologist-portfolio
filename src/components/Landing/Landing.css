@@ -24,7 +24,6 @@
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-    transition: opacity 0.3s;
     z-index: 50;
 }
 
@@ -118,6 +117,11 @@
     justify-content: center;
     gap: 5rem;
     font-family: var(--primaryFont), sans-serif;
+}
+
+/* SVG decorativo: nascosto di default, visibile solo su mobile */
+.custom-shape-divider-top-1757341859 {
+    display: none;
 }
 
 @media (min-width: 2560px) {
@@ -323,6 +327,7 @@
     }
 
     .custom-shape-divider-top-1757341859 {
+        display: block;
         transform: rotate(180deg);
         position: absolute;
         top: 20vh;
