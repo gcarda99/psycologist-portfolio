@@ -12,10 +12,14 @@ import {ThemeContext} from '../../contexts/ThemeContext';
 import {contactsData} from '../../data/contactsData';
 import './Contacts.css';
 
-const SERVICE_ID    = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const TPL_PSICOLOGA  = import.meta.env.VITE_EMAILJS_TEMPLATE_PSICOLOGA;
-const TPL_AUTOREPLY  = import.meta.env.VITE_EMAILJS_TEMPLATE_AUTOREPLY;
-const PUBLIC_KEY    = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const SERVICE_ID   = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TPL_PSICOLOGA = import.meta.env.VITE_EMAILJS_TEMPLATE_PSICOLOGA;
+const TPL_AUTOREPLY = import.meta.env.VITE_EMAILJS_TEMPLATE_AUTOREPLY;
+const PUBLIC_KEY   = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+if (!SERVICE_ID || !TPL_PSICOLOGA || !TPL_AUTOREPLY || !PUBLIC_KEY) {
+    console.error('EmailJS: una o più variabili d\'ambiente sono mancanti. Controlla il file .env.');
+}
 
 function Contacts() {
     const [open, setOpen] = useState(false);
@@ -123,45 +127,54 @@ function Contacts() {
 
         if (isSubmittingRef.current) return;
 
-        if (name && email && subject && message) {
-            if (isEmail(email)) {
+        const trimmedName    = name.trim();
+        const trimmedEmail   = email.trim();
+        const trimmedSubject = subject.trim();
+        const trimmedMessage = message.trim();
+
+        if (trimmedName && trimmedEmail && trimmedSubject && trimmedMessage) {
+            if (trimmedMessage.length < 10) {
+                setErrMsg('Il messaggio è troppo breve (minimo 10 caratteri)');
+                setOpen(true);
+                return;
+            }
+            if (isEmail(trimmedEmail)) {
                 isSubmittingRef.current = true;
                 setIsSubmitting(true);
 
                 const now = new Date();
                 const templateParams = {
-                    name,
-                    email,
-                    subject,
-                    message,
+                    name:    trimmedName,
+                    email:   trimmedEmail,
+                    subject: trimmedSubject,
+                    message: trimmedMessage,
                     date: now.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }),
                     time: now.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' }),
                 };
 
-                emailjs
-                    .send(SERVICE_ID, TPL_PSICOLOGA, templateParams, PUBLIC_KEY)
-                    .then(() =>
-                        emailjs.send(SERVICE_ID, TPL_AUTOREPLY, templateParams, PUBLIC_KEY)
-                    )
-                    .then(() => {
-                        setSuccess(true);
-                        setErrMsg('');
-                        setName('');
-                        setEmail('');
-                        setSubject('');
-                        setMessage('');
-                        setTimeout(() => {
-                            setSuccess(false);
-                            setIsSubmitting(false);
-                            isSubmittingRef.current = false;
-                        }, 3000);
-                    })
-                    .catch(() => {
-                        setErrMsg('Errore nell\'invio. Riprova più tardi.');
-                        setOpen(true);
+                Promise.all([
+                    emailjs.send(SERVICE_ID, TPL_PSICOLOGA, templateParams, PUBLIC_KEY),
+                    emailjs.send(SERVICE_ID, TPL_AUTOREPLY, templateParams, PUBLIC_KEY),
+                ])
+                .then(() => {
+                    setSuccess(true);
+                    setErrMsg('');
+                    setName('');
+                    setEmail('');
+                    setSubject('');
+                    setMessage('');
+                    setTimeout(() => {
+                        setSuccess(false);
                         setIsSubmitting(false);
                         isSubmittingRef.current = false;
-                    });
+                    }, 3000);
+                })
+                .catch(() => {
+                    setErrMsg('Errore nell\'invio. Riprova più tardi.');
+                    setOpen(true);
+                    setIsSubmitting(false);
+                    isSubmittingRef.current = false;
+                });
             } else {
                 setErrMsg('Email non valida');
                 setOpen(true);
