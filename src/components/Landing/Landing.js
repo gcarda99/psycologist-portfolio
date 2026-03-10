@@ -13,7 +13,6 @@ import { FaWhatsapp } from 'react-icons/fa';
 function Landing() {
     const { theme } = useContext(ThemeContext);
 
-    // theme non cambia mai a runtime: useMemo evita di ricreare l'oggetto ad ogni render
     const contactBtnStyle = useMemo(() => ({
         backgroundColor: theme.primary,
         color: theme.secondary,
