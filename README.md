@@ -27,6 +27,17 @@ Built with **React 18** + **Vite 6** + **Material UI 6**.
 | Routing | React Router DOM 6 |
 | Icons | React Icons 5 |
 | Form validation | Validator 13 |
+| Email service | EmailJS |
+
+---
+
+## Roadmap
+
+- [ ] Loading skeleton / splash screen template
+- [ ] Dynamic detail page for each service
+- [ ] Blog page — import posts/reels from the professional Instagram profile
+- [ ] Google Maps location embed
+- [ ] Google Reviews integration
 
 ---
 
@@ -106,6 +117,7 @@ npx cloudflared tunnel --url http://localhost:8080
     │   ├── Landing
     │   ├── Navbar
     │   ├── Services
+    │   ├── WaveDivider
     │   └── Footer
     ├── contexts
     │   └── ThemeContext.js
@@ -119,7 +131,9 @@ npx cloudflared tunnel --url http://localhost:8080
     │   └── themeData.js
     ├── pages
     │   └── Main
-    └── theme
+    ├── theme
+    └── utils
+        └── ScrollToTop.js
 ```
 
 ---
@@ -145,7 +159,6 @@ All site content lives in `src/data/`. Edit the corresponding files:
 | Branch | Description |
 |---|---|
 | `main` | Stable version |
-| `feat/migrate-to-vite` | Migration from CRA to Vite (active branch) |
 
 ---
 
