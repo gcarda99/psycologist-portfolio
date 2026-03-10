@@ -12,7 +12,6 @@ const fadeUpVariant = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-// Fuori dal render: MUI non ricrea il componente styled ad ogni re-render
 const Card = styled(motion.div)(({ ownerState }) => ({
     backgroundColor: ownerState.primary30,
     '&:hover': {

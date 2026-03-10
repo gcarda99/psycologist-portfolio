@@ -6,7 +6,6 @@ import { socialsData } from '../../data/socialsData';
 import { footerData } from '../../data/footerData';
 import { FaAt, FaEnvelope, FaInstagram, FaLinkedinIn, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 
-// Fuori dal render: MUI non ricrea il componente styled ad ogni re-render
 const SocialIcon = styled('a')(({ ownerState }) => ({
     width: '45px',
     height: '45px',

@@ -5,7 +5,6 @@ import { themeData } from '../data/themeData'
 export const ThemeContext = createContext()
 
 function ThemeContextProvider(props) {
-    // eslint-disable-next-line
     const [theme] = useState(themeData.theme)
 
     const value = { theme }
