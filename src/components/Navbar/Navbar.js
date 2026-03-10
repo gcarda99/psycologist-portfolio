@@ -13,7 +13,6 @@ import { Box } from '@mui/material';
 import './Navbar.css';
 import { headerData } from '../../data/headerData';
 import { ThemeContext } from '../../contexts/ThemeContext';
-import brain from '../../assets/webp/brain.webp';
 
 const fadeRightVariant = {
     hidden: { opacity: 0, x: 40 },
@@ -34,8 +33,6 @@ const NAV_ITEMS = [
 
 const shortname = (name) => name.replace('Dott.ssa', '');
 
-// Componente separato per ogni link: hover state locale,
-// evita re-render di tutti i link al cambio di hoveredIndex globale
 function NavItem({ to, Icon, label, theme, onClose, custom, open }) {
     const [hovered, setHovered] = useState(false);
 
@@ -69,7 +66,7 @@ function NavItem({ to, Icon, label, theme, onClose, custom, open }) {
             onClick={onClose}
             style={{ willChange: 'transform, opacity' }}
         >
-            <NavLink to={to} smooth={true} spy='true' duration={2000}>
+            <NavLink to={to} smooth={true} spy={true} duration={2000}>
                 <div style={itemStyle}>
                     <Box
                         component={Icon}
@@ -191,18 +188,6 @@ function Navbar() {
                                 open={open}
                             />
                         ))}
-                    </div>
-                    <div className='navbar--image-container'>
-                        <motion.img
-                            src={brain}
-                            alt='brain'
-                            className='navbar--image'
-                            variants={fadeRightVariant}
-                            custom={NAV_ITEMS.length}
-                            initial='hidden'
-                            animate={open ? 'visible' : 'hidden'}
-                            style={{ willChange: 'transform, opacity' }}
-                        />
                     </div>
                 </div>
             </Drawer>
