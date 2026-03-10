@@ -12,10 +12,10 @@ import {ThemeContext} from '../../contexts/ThemeContext';
 import {contactsData} from '../../data/contactsData';
 import './Contacts.css';
 
-const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const SERVICE_ID      = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_REQUEST = import.meta.env.VITE_EMAILJS_TEMPLATE_REQUEST;
-const TEMPLATE_REPLY = import.meta.env.VITE_EMAILJS_TEMPLATE_AUTOREPLY;
-const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const TEMPLATE_REPLY  = import.meta.env.VITE_EMAILJS_TEMPLATE_AUTOREPLY;
+const PUBLIC_KEY      = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 if (!SERVICE_ID || !TEMPLATE_REQUEST || !TEMPLATE_REPLY || !PUBLIC_KEY) {
     console.error('EmailJS: una o più variabili d\'ambiente sono mancanti. Controlla il file .env.');
@@ -67,24 +67,6 @@ function Contacts() {
         padding: '0 5px',
         transform: 'translate(25px,50%)',
         display: 'inline-flex',
-    }));
-
-    const SocialIcon = styled('div')(({theme: t}) => ({
-        width: '45px',
-        height: '45px',
-        borderRadius: '50%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: '21px',
-        backgroundColor: theme.primary,
-        color: theme.secondary,
-        transition: '250ms ease-in-out',
-        '&:hover': {
-            transform: 'scale(1.1)',
-            color: theme.secondary,
-            backgroundColor: theme.tertiary,
-        },
     }));
 
     const DetailsIcon = styled('div')(({theme: t}) => ({
@@ -148,13 +130,13 @@ function Contacts() {
                     email:   trimmedEmail,
                     subject: trimmedSubject,
                     message: trimmedMessage,
-                    date: now.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }),
+                    date: now.toLocaleDateString('it-IT', {day: 'numeric', month: 'long', year: 'numeric'}),
                     time: now.toLocaleTimeString('it-IT', {hour: '2-digit', minute: '2-digit'}),
                 };
 
                 Promise.all([
-                    emailjs.send(SERVICE_ID, TPL_PSICOLOGA, templateParams, PUBLIC_KEY),
-                    emailjs.send(SERVICE_ID, TPL_AUTOREPLY, templateParams, PUBLIC_KEY),
+                    emailjs.send(SERVICE_ID, TEMPLATE_REQUEST, templateParams, PUBLIC_KEY),
+                    emailjs.send(SERVICE_ID, TEMPLATE_REPLY, templateParams, PUBLIC_KEY),
                 ])
                 .then(() => {
                     setSuccess(true);
@@ -328,7 +310,7 @@ function Contacts() {
                 <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg"
                      className="transition duration-300 ease-in-out delay-150">
                     <path
-                        d="M 0,400 L 0,75 C 74.44102564102565,81.77435897435898 148.8820512820513,88.54871794871795 238,80 C 327.1179487179487,71.45128205128205 430.9128205128204,47.579487179487174 520,38 C 609.0871794871796,28.420512820512823 683.4666666666667,33.13333333333333 751,43 C 818.5333333333333,52.86666666666667 879.220512820513,67.8871794871795 958,80 C 1036.779487179487,92.1128205128205 1133.651282051282,101.31794871794871 1217,100 C 1300.348717948718,98.68205128205129 1370.1743589743592,86.84102564102565 1440,75 L 1440,400 L 0,400 Z"
+                        d="M 0,400 L 0,75 C 74.44102564102565,81.77435897435898 148.8820512820513,88.54871794871795 238,80 C 327.1179487179487,71.45128205128205 430.9128205128204,47.579487179487174 520,38 C 609.0871794871796,28.420512820512823 683.4666666666667,33.13333333333333 751,43 C 818.5333233333,52.86666666666667 879.220512820513,67.8871794871795 958,80 C 1036.779487179487,92.1128205128205 1133.651282051282,101.31794871794871 1217,100 C 1300.348717948718,98.68205128205129 1370.1743589743592,86.84102564102565 1440,75 L 1440,400 L 0,400 Z"
                         stroke="none" strokeWidth="0" fill="#823ae0" fillOpacity="0.4"
                         className="transition-all duration-300 ease-in-out delay-150 path-0"></path>
                     <path
