@@ -308,16 +308,21 @@ function Contacts() {
                                 href={`${contactsData.whatsapp}`}
                                 className='personal-details'
                                 style={{textDecoration: 'none'}}
-                                onMouseEnter={() => setWhatsappHover(true)}
-                                onMouseLeave={() => setWhatsappHover(false)}
                             >
                                 <DetailsIcon ownerState={theme}><FaWhatsapp/></DetailsIcon>
-                                <p style={{
-                                    color: whatsappHover ? theme.primary : theme.tertiary,
-                                    textDecoration: whatsappHover ? 'underline' : 'none',
-                                    transition: 'color 0.2s',
-                                }}>
-                                    Scrivimi su Whatsapp
+                                <p style={{color: theme.tertiary}}>
+                                    Scrivimi su{' '}
+                                    <span
+                                        style={{
+                                            color: whatsappHover ? theme.primary : theme.tertiary,
+                                            textDecoration: whatsappHover ? 'underline' : 'none',
+                                            transition: 'color 0.2s',
+                                        }}
+                                        onMouseEnter={() => setWhatsappHover(true)}
+                                        onMouseLeave={() => setWhatsappHover(false)}
+                                    >
+                                        WhatsApp
+                                    </span>
                                 </p>
                             </a>
                             <a href={`mailto:${contactsData.email}`} className='personal-details'>
