@@ -96,6 +96,7 @@ function Contacts() {
     const [success, setSuccess] = useState(false);
     const [errMsg, setErrMsg] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [whatsappHover, setWhatsappHover] = useState(false);
     const isSubmittingRef = useRef(false);
 
     const {theme} = useContext(ThemeContext);
@@ -303,9 +304,21 @@ function Contacts() {
                                 <DetailsIcon ownerState={theme}><FiPhone/></DetailsIcon>
                                 <p style={{color: theme.tertiary}}>{contactsData.phone}</p>
                             </a>
-                            <a href={`${contactsData.whatsapp}`} className='personal-details'>
+                            <a
+                                href={`${contactsData.whatsapp}`}
+                                className='personal-details'
+                                style={{textDecoration: 'none'}}
+                                onMouseEnter={() => setWhatsappHover(true)}
+                                onMouseLeave={() => setWhatsappHover(false)}
+                            >
                                 <DetailsIcon ownerState={theme}><FaWhatsapp/></DetailsIcon>
-                                <p style={{color: theme.tertiary}}>Scrivimi su Whatsapp</p>
+                                <p style={{
+                                    color: whatsappHover ? theme.primary : theme.tertiary,
+                                    textDecoration: whatsappHover ? 'underline' : 'none',
+                                    transition: 'color 0.2s',
+                                }}>
+                                    Scrivimi su Whatsapp
+                                </p>
                             </a>
                             <a href={`mailto:${contactsData.email}`} className='personal-details'>
                                 <DetailsIcon ownerState={theme}><FiAtSign/></DetailsIcon>
