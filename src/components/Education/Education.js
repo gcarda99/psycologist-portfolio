@@ -32,7 +32,12 @@ function Education() {
                     ))}
                 </div>
                 <div className="education-image">
-                    <img src={graduationImage} alt=""/>
+                    <img
+                        src={graduationImage}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                    />
                 </div>
             </div>
         </div>
