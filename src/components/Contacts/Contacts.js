@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
 import {IconButton, Snackbar, SnackbarContent} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import isEmail from 'validator/lib/isEmail';
@@ -26,6 +26,7 @@ function Contacts() {
     const [success, setSuccess] = useState(false);
     const [errMsg, setErrMsg] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const isSubmittingRef = useRef(false);
 
     const { theme } = useContext(ThemeContext);
 
@@ -120,8 +121,11 @@ function Contacts() {
     const handleContactForm = (e) => {
         e.preventDefault();
 
+        if (isSubmittingRef.current) return;
+
         if (name && email && subject && message) {
             if (isEmail(email)) {
+                isSubmittingRef.current = true;
                 setIsSubmitting(true);
 
                 const now = new Date();
@@ -149,12 +153,14 @@ function Contacts() {
                         setTimeout(() => {
                             setSuccess(false);
                             setIsSubmitting(false);
+                            isSubmittingRef.current = false;
                         }, 3000);
                     })
                     .catch(() => {
                         setErrMsg('Errore nell\'invio. Riprova più tardi.');
                         setOpen(true);
                         setIsSubmitting(false);
+                        isSubmittingRef.current = false;
                     });
             } else {
                 setErrMsg('Email non valida');
