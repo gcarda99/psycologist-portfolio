@@ -52,11 +52,13 @@
     width: 10rem;
     object-fit: contain;
     display: none;
+    will-change: transform, opacity;
 }
 
 .drawer > .MuiBackdrop-root {
     background: rgba(33, 33, 33, 0.15) !important;
     backdrop-filter: blur(20px) !important;
+    will-change: opacity;
 }
 
 @media (min-width: 2560px) {

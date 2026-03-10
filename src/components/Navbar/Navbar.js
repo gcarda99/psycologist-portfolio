@@ -20,7 +20,7 @@ const fadeRightVariant = {
     visible: (i) => ({
         opacity: 1,
         x: 0,
-        transition: { duration: 0.35, delay: i * 0.08 },
+        transition: { duration: 0.22, delay: i * 0.05 },
     }),
 };
 
@@ -72,6 +72,8 @@ function Navbar() {
         overflow: 'hidden',
         borderTopLeftRadius: '40px',
         borderBottomLeftRadius: '40px',
+        willChange: 'transform',
+        transform: 'translateZ(0)',
     }), [theme.secondary]);
 
     return (
@@ -115,6 +117,7 @@ function Navbar() {
                             cursor: 'pointer',
                             color: closeHovered ? '#111' : theme.primary,
                             transition: 'color 250ms ease-in-out',
+                            willChange: 'transform',
                         }}
                         whileHover={{ scale: 1.2 }}
                         onHoverStart={() => setCloseHovered(true)}
@@ -147,6 +150,7 @@ function Navbar() {
                                 onHoverStart={() => setHoveredIndex(i)}
                                 onHoverEnd={() => setHoveredIndex(null)}
                                 onClick={handleDrawerClose}
+                                style={{ willChange: 'transform, opacity' }}
                             >
                                 <NavLink to={to} smooth={true} spy='true' duration={2000}>
                                     <div style={getItemStyle(hoveredIndex === i, theme)}>
@@ -183,6 +187,7 @@ function Navbar() {
                             custom={NAV_ITEMS.length}
                             initial='hidden'
                             animate={open ? 'visible' : 'hidden'}
+                            style={{ willChange: 'transform, opacity' }}
                         />
                     </div>
                 </div>
