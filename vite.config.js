@@ -40,6 +40,7 @@ export default defineConfig(({ mode }) => ({
         outDir: 'build',
         sourcemap: false,
         minify: 'esbuild',
+        target: 'esnext',
         cssCodeSplit: true,
         chunkSizeWarningLimit: 600,
         rollupOptions: {
@@ -48,7 +49,9 @@ export default defineConfig(({ mode }) => ({
                     'vendor-react':  ['react', 'react-dom', 'react-router-dom'],
                     'vendor-mui':    ['@mui/material', '@mui/icons-material', '@mui/styles'],
                     'vendor-motion': ['framer-motion'],
-                    'vendor-icons':  ['react-icons'],
+                    // 'vendor-icons': ['react-icons'] rimosso — Rollup ora fa
+                    // tree-shaking sui singoli import (es. react-icons/fa6)
+                    // includendo solo le icone effettivamente usate
                 },
             },
         },
