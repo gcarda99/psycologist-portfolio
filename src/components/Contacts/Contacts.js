@@ -21,6 +21,71 @@ if (!SERVICE_ID || !TEMPLATE_REQUEST || !TEMPLATE_REPLY || !PUBLIC_KEY) {
     console.error('EmailJS: una o più variabili d\'ambiente sono mancanti. Controlla il file .env.');
 }
 
+const FormInput = styled('input')(({ownerState}) => ({
+    border: `4px solid ${ownerState.primary80}`,
+    backgroundColor: ownerState.secondary,
+    color: ownerState.tertiary,
+    fontFamily: 'var(--primaryFont)',
+    fontWeight: 500,
+    transition: 'border 0.2s ease-in-out',
+    '&:focus': {
+        border: `4px solid ${ownerState.primary600}`,
+    },
+}));
+
+const FormTextarea = styled('textarea')(({ownerState}) => ({
+    border: `4px solid ${ownerState.primary80}`,
+    backgroundColor: ownerState.secondary,
+    color: ownerState.tertiary,
+    fontFamily: 'var(--primaryFont)',
+    fontWeight: 500,
+    transition: 'border 0.2s ease-in-out',
+    '&:focus': {
+        border: `4px solid ${ownerState.primary600}`,
+    },
+}));
+
+const FormLabel = styled('label')(({ownerState}) => ({
+    backgroundColor: ownerState.secondary,
+    color: ownerState.primary,
+    fontFamily: 'var(--primaryFont)',
+    fontWeight: 600,
+    fontSize: '0.9rem',
+    padding: '0 5px',
+    transform: 'translate(25px,50%)',
+    display: 'inline-flex',
+}));
+
+const DetailsIcon = styled('div')(({ownerState}) => ({
+    backgroundColor: ownerState.primary,
+    color: ownerState.secondary,
+    borderRadius: '50%',
+    width: '45px',
+    height: '45px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '23px',
+    transition: '250ms ease-in-out',
+    flexShrink: 0,
+    '&:hover': {
+        transform: 'scale(1.1)',
+        color: ownerState.secondary,
+        backgroundColor: ownerState.tertiary,
+    },
+}));
+
+const SubmitBtn = styled('button')(({ownerState}) => ({
+    backgroundColor: ownerState.primary,
+    color: ownerState.secondary,
+    transition: '250ms ease-in-out',
+    '&:hover': {
+        transform: 'scale(1.08)',
+        color: ownerState.secondary,
+        backgroundColor: ownerState.tertiary,
+    },
+}));
+
 function Contacts() {
     const [open, setOpen] = useState(false);
     const [name, setName] = useState('');
@@ -33,71 +98,6 @@ function Contacts() {
     const isSubmittingRef = useRef(false);
 
     const {theme} = useContext(ThemeContext);
-
-    const FormInput = styled('input')(({theme: t}) => ({
-        border: `4px solid ${theme.primary80}`,
-        backgroundColor: theme.secondary,
-        color: theme.tertiary,
-        fontFamily: 'var(--primaryFont)',
-        fontWeight: 500,
-        transition: 'border 0.2s ease-in-out',
-        '&:focus': {
-            border: `4px solid ${theme.primary600}`,
-        },
-    }));
-
-    const FormTextarea = styled('textarea')(({theme: t}) => ({
-        border: `4px solid ${theme.primary80}`,
-        backgroundColor: theme.secondary,
-        color: theme.tertiary,
-        fontFamily: 'var(--primaryFont)',
-        fontWeight: 500,
-        transition: 'border 0.2s ease-in-out',
-        '&:focus': {
-            border: `4px solid ${theme.primary600}`,
-        },
-    }));
-
-    const FormLabel = styled('label')(({theme: t}) => ({
-        backgroundColor: theme.secondary,
-        color: theme.primary,
-        fontFamily: 'var(--primaryFont)',
-        fontWeight: 600,
-        fontSize: '0.9rem',
-        padding: '0 5px',
-        transform: 'translate(25px,50%)',
-        display: 'inline-flex',
-    }));
-
-    const DetailsIcon = styled('div')(({theme: t}) => ({
-        backgroundColor: theme.primary,
-        color: theme.secondary,
-        borderRadius: '50%',
-        width: '45px',
-        height: '45px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: '23px',
-        transition: '250ms ease-in-out',
-        flexShrink: 0,
-        '&:hover': {
-            transform: 'scale(1.1)',
-            color: theme.secondary,
-            backgroundColor: theme.tertiary,
-        },
-    }));
-
-    const SubmitBtn = styled('button')(({theme: t}) => ({
-        backgroundColor: theme.primary,
-        color: theme.secondary,
-        transition: '250ms ease-in-out',
-        '&:hover': {
-            transform: 'scale(1.08)',
-            color: theme.secondary,
-            backgroundColor: theme.tertiary,
-        },
-    }));
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') return;
@@ -190,8 +190,9 @@ function Contacts() {
                         <div className='contacts-form'>
                             <form onSubmit={handleContactForm}>
                                 <div className='input-container'>
-                                    <FormLabel htmlFor='Name'>Nome</FormLabel>
+                                    <FormLabel ownerState={theme} htmlFor='Name'>Nome</FormLabel>
                                     <FormInput
+                                        ownerState={theme}
                                         placeholder='Sigmund Freud'
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
@@ -201,8 +202,9 @@ function Contacts() {
                                     />
                                 </div>
                                 <div className='input-container'>
-                                    <FormLabel htmlFor='Email'>Email</FormLabel>
+                                    <FormLabel ownerState={theme} htmlFor='Email'>Email</FormLabel>
                                     <FormInput
+                                        ownerState={theme}
                                         placeholder='sigmund@freud.brain'
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
@@ -212,8 +214,9 @@ function Contacts() {
                                     />
                                 </div>
                                 <div className='input-container'>
-                                    <FormLabel htmlFor='Oggetto'>Oggetto</FormLabel>
+                                    <FormLabel ownerState={theme} htmlFor='Oggetto'>Oggetto</FormLabel>
                                     <FormInput
+                                        ownerState={theme}
                                         placeholder='Appuntamento giorno/mese/anno'
                                         value={subject}
                                         onChange={(e) => setSubject(e.target.value)}
@@ -223,8 +226,9 @@ function Contacts() {
                                     />
                                 </div>
                                 <div className='input-container'>
-                                    <FormLabel htmlFor='Message'>Messaggio</FormLabel>
+                                    <FormLabel ownerState={theme} htmlFor='Message'>Messaggio</FormLabel>
                                     <FormTextarea
+                                        ownerState={theme}
                                         placeholder='Scrivi il tuo messaggio....'
                                         value={message}
                                         onChange={(e) => setMessage(e.target.value)}
@@ -236,6 +240,7 @@ function Contacts() {
 
                                 <div className='submit-btn'>
                                     <SubmitBtn
+                                        ownerState={theme}
                                         type='submit'
                                         disabled={isSubmitting}
                                         style={{
@@ -294,15 +299,15 @@ function Contacts() {
 
                         <div className='contacts-details'>
                             <a href={`mailto:${contactsData.email}`} className='personal-details'>
-                                <DetailsIcon><FiAtSign/></DetailsIcon>
+                                <DetailsIcon ownerState={theme}><FiAtSign/></DetailsIcon>
                                 <p style={{color: theme.tertiary}}>{contactsData.email}</p>
                             </a>
                             <a href={`tel:${contactsData.phone.replace(" ", "")}`} className='personal-details'>
-                                <DetailsIcon><FiPhone/></DetailsIcon>
+                                <DetailsIcon ownerState={theme}><FiPhone/></DetailsIcon>
                                 <p style={{color: theme.tertiary}}>{contactsData.phone}</p>
                             </a>
                             <div className='personal-details'>
-                                <DetailsIcon><HiOutlineLocationMarker/></DetailsIcon>
+                                <DetailsIcon ownerState={theme}><HiOutlineLocationMarker/></DetailsIcon>
                                 <p style={{color: theme.tertiary}}>
                                     {contactsData.address1}<br/>{contactsData.address2}
                                 </p>
