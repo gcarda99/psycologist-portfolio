@@ -108,6 +108,14 @@
     }
 }
 
+/* ── Mobile: max 4 icone per riga ───────────────────────────── */
+@media (max-width: 600px) {
+    .footer-socialmedia-icons {
+        /* 4 icone (50px) + 3 gap (24px) = 272px → 280px */
+        max-width: 280px;
+    }
+}
+
 /* ── 2K (2560px+) ───────────────────────────────────────── */
 @media (min-width: 2560px) {
     .footer-title {
