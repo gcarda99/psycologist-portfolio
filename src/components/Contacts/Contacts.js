@@ -7,6 +7,7 @@ import {AiOutlineCheckCircle, AiOutlineSend} from 'react-icons/ai';
 import {FiAtSign, FiPhone} from 'react-icons/fi';
 import {HiOutlineLocationMarker} from 'react-icons/hi';
 import emailjs from '@emailjs/browser';
+import {FaWhatsapp} from 'react-icons/fa';
 
 import {ThemeContext} from '../../contexts/ThemeContext';
 import {contactsData} from '../../data/contactsData';
@@ -298,13 +299,17 @@ function Contacts() {
                         </div>
 
                         <div className='contacts-details'>
-                            <a href={`mailto:${contactsData.email}`} className='personal-details'>
-                                <DetailsIcon ownerState={theme}><FiAtSign/></DetailsIcon>
-                                <p style={{color: theme.tertiary}}>{contactsData.email}</p>
-                            </a>
                             <a href={`tel:${contactsData.phone.replace(" ", "")}`} className='personal-details'>
                                 <DetailsIcon ownerState={theme}><FiPhone/></DetailsIcon>
                                 <p style={{color: theme.tertiary}}>{contactsData.phone}</p>
+                            </a>
+                            <a href={`${contactsData.whatsapp}`} className='personal-details'>
+                                <DetailsIcon ownerState={theme}><FaWhatsapp/></DetailsIcon>
+                                <p style={{color: theme.tertiary}}>Scrivimi su Whatsapp</p>
+                            </a>
+                            <a href={`mailto:${contactsData.email}`} className='personal-details'>
+                                <DetailsIcon ownerState={theme}><FiAtSign/></DetailsIcon>
+                                <p style={{color: theme.tertiary}}>{contactsData.email}</p>
                             </a>
                             <div className='personal-details'>
                                 <DetailsIcon ownerState={theme}><HiOutlineLocationMarker/></DetailsIcon>

@@ -8,6 +8,7 @@ import {headerData} from '../../data/headerData';
 import {socialsData} from '../../data/socialsData';
 
 import {FaEnvelope, FaInstagram, FaLinkedin, FaTiktok} from 'react-icons/fa6';
+import {FaWhatsapp} from "react-icons/fa";
 
 function Landing() {
     const {theme, drawerOpen} = useContext(ThemeContext);
@@ -43,12 +44,21 @@ function Landing() {
                     style={{backgroundColor: theme.primary}}
                 >
                     <div className='lcl--content'>
-                        {socialsData.linkedIn && (
-                            <a href={socialsData.linkedIn} target='_blank' rel='noreferrer'>
-                                <FaLinkedin
+                        {socialsData.gmail && (
+                            <a href={socialsData.gmail} target='_blank' rel='noreferrer'>
+                                <FaEnvelope
                                     className='landing--social'
                                     style={{color: theme.secondary}}
-                                    aria-label='LinkedIn'
+                                    aria-label='Gmail'
+                                />
+                            </a>
+                        )}
+                        {socialsData.whatsapp && (
+                            <a href={socialsData.whatsapp} target='_blank' rel='noreferrer'>
+                                <FaWhatsapp
+                                    className='landing--social'
+                                    style={{color: theme.secondary}}
+                                    aria-label='Whatsapp'
                                 />
                             </a>
                         )}
@@ -70,12 +80,12 @@ function Landing() {
                                 />
                             </a>
                         )}
-                        {socialsData.gmail && (
-                            <a href={socialsData.gmail} target='_blank' rel='noreferrer'>
-                                <FaEnvelope
+                        {socialsData.linkedIn && (
+                            <a href={socialsData.linkedIn} target='_blank' rel='noreferrer'>
+                                <FaLinkedin
                                     className='landing--social'
                                     style={{color: theme.secondary}}
-                                    aria-label='Gmail'
+                                    aria-label='LinkedIn'
                                 />
                             </a>
                         )}
