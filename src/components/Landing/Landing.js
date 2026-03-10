@@ -11,7 +11,7 @@ import {FaEnvelope, FaInstagram, FaLinkedin, FaTiktok} from 'react-icons/fa6';
 import {FaWhatsapp} from "react-icons/fa";
 
 function Landing() {
-    const {theme, drawerOpen} = useContext(ThemeContext);
+    const {theme} = useContext(ThemeContext);
 
     const isMobile = useMediaQuery('(max-width: 600px)');
 
@@ -115,7 +115,7 @@ function Landing() {
                     alt=''
                     className='landing--img'
                     style={{
-                        opacity: `${drawerOpen ? '0.7' : '1'}`,
+                        opacity: 1,
                         borderColor: theme.secondary,
                     }}
                 />
