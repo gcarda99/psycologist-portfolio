@@ -7,15 +7,13 @@ import { headerData } from '../../data/headerData'
 
 const About = lazy(() => import('../../components/About/About'))
 const Education = lazy(() => import('../../components/Education/Education'))
-const Projects = lazy(() => import('../../components/Projects/Projects'))
 const Services = lazy(() => import('../../components/Services/Services'))
 const Contacts = lazy(() => import('../../components/Contacts/Contacts'))
 const Footer = lazy(() => import('../../components/Footer/Footer'))
 
-// Skeleton minimo: stesso colore di sfondo della landing,
-// evita il flash bianco durante il lazy loading delle sezioni
-const PageSkeleton = () => (
-    <div style={{ backgroundColor: '#eaeaea', minHeight: '100vh' }} />
+// Placeholder minimo: mantiene il colore di sfondo ed evita flash bianchi
+const SectionSkeleton = () => (
+    <div style={{ backgroundColor: '#eaeaea', minHeight: '100px' }} />
 )
 
 function Main() {
@@ -28,17 +26,23 @@ function Main() {
             <Navbar />
             <Landing />
 
-            <Suspense fallback={<PageSkeleton />}>
+            <Suspense fallback={<SectionSkeleton />}>
                 <About />
+            </Suspense>
+
+            <Suspense fallback={<SectionSkeleton />}>
                 <Services />
+            </Suspense>
+
+            <Suspense fallback={<SectionSkeleton />}>
                 <Education />
-                {/*<Skills />*/}
-                {/*<Experience/>*/}
-                {/*<Achievement/>*/}
-                {/*<Testimonials/>*/}
-                {/*<Blog/>*/}
-                {/*<Projects />*/}
+            </Suspense>
+
+            <Suspense fallback={<SectionSkeleton />}>
                 <Contacts />
+            </Suspense>
+
+            <Suspense fallback={<SectionSkeleton />}>
                 <Footer />
             </Suspense>
         </div>
