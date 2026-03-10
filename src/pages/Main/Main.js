@@ -12,6 +12,12 @@ const Services = lazy(() => import('../../components/Services/Services'))
 const Contacts = lazy(() => import('../../components/Contacts/Contacts'))
 const Footer = lazy(() => import('../../components/Footer/Footer'))
 
+// Skeleton minimo: stesso colore di sfondo della landing,
+// evita il flash bianco durante il lazy loading delle sezioni
+const PageSkeleton = () => (
+    <div style={{ backgroundColor: '#eaeaea', minHeight: '100vh' }} />
+)
+
 function Main() {
     return (
         <div>
@@ -22,7 +28,7 @@ function Main() {
             <Navbar />
             <Landing />
 
-            <Suspense fallback={<div />}>
+            <Suspense fallback={<PageSkeleton />}>
                 <About />
                 <Services />
                 <Education />

@@ -34,28 +34,71 @@ const NAV_ITEMS = [
 
 const shortname = (name) => name.replace('Dott.ssa', '');
 
-const getItemStyle = (isHovered, theme) => ({
-    margin: '1.2rem auto',
-    borderRadius: '78.8418px',
-    width: '100%',
-    height: '56px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    padding: '0 1.4rem',
-    boxSizing: 'border-box',
-    gap: '0.6rem',
-    border: `2px solid ${isHovered ? '#111' : theme.primary}`,
-    backgroundColor: isHovered ? '#111' : theme.primary,
-    color: isHovered ? '#fff' : theme.secondary,
-    transition: 'background-color 250ms ease-in-out, color 250ms ease-in-out, border-color 250ms ease-in-out',
-    cursor: 'pointer',
-});
+// Componente separato per ogni link: hover state locale,
+// evita re-render di tutti i link al cambio di hoveredIndex globale
+function NavItem({ to, Icon, label, theme, onClose, custom, open }) {
+    const [hovered, setHovered] = useState(false);
+
+    const itemStyle = useMemo(() => ({
+        margin: '1.2rem auto',
+        borderRadius: '78.8418px',
+        width: '100%',
+        height: '56px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        padding: '0 1.4rem',
+        boxSizing: 'border-box',
+        gap: '0.6rem',
+        border: `2px solid ${hovered ? '#111' : theme.primary}`,
+        backgroundColor: hovered ? '#111' : theme.primary,
+        color: hovered ? '#fff' : theme.secondary,
+        transition: 'background-color 250ms ease-in-out, color 250ms ease-in-out, border-color 250ms ease-in-out',
+        cursor: 'pointer',
+    }), [hovered, theme.primary, theme.secondary]);
+
+    return (
+        <motion.div
+            custom={custom}
+            variants={fadeRightVariant}
+            initial='hidden'
+            animate={open ? 'visible' : 'hidden'}
+            whileHover={{ scale: 1.05 }}
+            onHoverStart={() => setHovered(true)}
+            onHoverEnd={() => setHovered(false)}
+            onClick={onClose}
+            style={{ willChange: 'transform, opacity' }}
+        >
+            <NavLink to={to} smooth={true} spy='true' duration={2000}>
+                <div style={itemStyle}>
+                    <Box
+                        component={Icon}
+                        sx={{
+                            fontSize: { xs: '1.2rem', md: '1.4rem' },
+                            flexShrink: 0,
+                            width: '1.6rem',
+                            textAlign: 'center',
+                        }}
+                    />
+                    <span style={{
+                        fontFamily: 'var(--primaryFont)',
+                        fontSize: 'clamp(1.05rem, 1.2rem, 1.2rem)',
+                        fontWeight: 600,
+                        whiteSpace: 'nowrap',
+                        flex: 1,
+                        textAlign: 'center',
+                    }}>
+                        {label}
+                    </span>
+                </div>
+            </NavLink>
+        </motion.div>
+    );
+}
 
 function Navbar() {
     const { theme } = useContext(ThemeContext);
     const [open, setOpen] = useState(false);
-    const [hoveredIndex, setHoveredIndex] = useState(null);
     const [closeHovered, setCloseHovered] = useState(false);
 
     const handleDrawerOpen = () => setOpen(true);
@@ -137,42 +180,16 @@ function Navbar() {
                 <div className='drawer-content'>
                     <div className='navLink--container'>
                         {NAV_ITEMS.map(({ to, Icon, label }, i) => (
-                            <motion.div
+                            <NavItem
                                 key={to}
+                                to={to}
+                                Icon={Icon}
+                                label={label}
+                                theme={theme}
+                                onClose={handleDrawerClose}
                                 custom={i}
-                                variants={fadeRightVariant}
-                                initial='hidden'
-                                animate={open ? 'visible' : 'hidden'}
-                                whileHover={{ scale: 1.05 }}
-                                onHoverStart={() => setHoveredIndex(i)}
-                                onHoverEnd={() => setHoveredIndex(null)}
-                                onClick={handleDrawerClose}
-                                style={{ willChange: 'transform, opacity' }}
-                            >
-                                <NavLink to={to} smooth={true} spy='true' duration={2000}>
-                                    <div style={getItemStyle(hoveredIndex === i, theme)}>
-                                        <Box
-                                            component={Icon}
-                                            sx={{
-                                                fontSize: { xs: '1.2rem', md: '1.4rem' },
-                                                flexShrink: 0,
-                                                width: '1.6rem',
-                                                textAlign: 'center',
-                                            }}
-                                        />
-                                        <span style={{
-                                            fontFamily: 'var(--primaryFont)',
-                                            fontSize: 'clamp(1.05rem, 1.2rem, 1.2rem)',
-                                            fontWeight: 600,
-                                            whiteSpace: 'nowrap',
-                                            flex: 1,
-                                            textAlign: 'center',
-                                        }}>
-                                            {label}
-                                        </span>
-                                    </div>
-                                </NavLink>
-                            </motion.div>
+                                open={open}
+                            />
                         ))}
                     </div>
                     <div className='navbar--image-container'>
