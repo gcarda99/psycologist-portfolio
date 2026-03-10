@@ -130,7 +130,7 @@ function Contacts() {
                     email,
                     subject,
                     message,
-                    date: now.toLocaleDateString('it-IT'),
+                    date: now.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }),
                     time: now.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' }),
                 };
 
