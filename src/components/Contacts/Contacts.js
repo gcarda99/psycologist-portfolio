@@ -6,10 +6,16 @@ import { styled } from '@mui/material/styles';
 import {AiOutlineCheckCircle, AiOutlineSend} from 'react-icons/ai';
 import {FiAtSign, FiPhone} from 'react-icons/fi';
 import {HiOutlineLocationMarker} from 'react-icons/hi';
+import emailjs from '@emailjs/browser';
 
 import {ThemeContext} from '../../contexts/ThemeContext';
 import {contactsData} from '../../data/contactsData';
 import './Contacts.css';
+
+const SERVICE_ID    = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TPL_PSICOLOGA  = import.meta.env.VITE_EMAILJS_TEMPLATE_PSICOLOGA;
+const TPL_AUTOREPLY  = import.meta.env.VITE_EMAILJS_TEMPLATE_AUTOREPLY;
+const PUBLIC_KEY    = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 function Contacts() {
     const [open, setOpen] = useState(false);
@@ -23,7 +29,6 @@ function Contacts() {
 
     const { theme } = useContext(ThemeContext);
 
-    // Styled components built at render time with current theme values
     const FormInput = styled('input')(({ theme: t }) => ({
         border: `4px solid ${theme.primary80}`,
         backgroundColor: theme.secondary,
@@ -118,27 +123,39 @@ function Contacts() {
         if (name && email && subject && message) {
             if (isEmail(email)) {
                 setIsSubmitting(true);
-                const formData = { name, email, subject, message };
 
-                console.log('name:', formData.name);
-                console.log('email:', formData.email);
-                console.log('subject:', formData.subject);
-                console.log('message:', formData.message);
+                const now = new Date();
+                const templateParams = {
+                    name,
+                    email,
+                    subject,
+                    message,
+                    date: now.toLocaleDateString('it-IT'),
+                    time: now.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' }),
+                };
 
-                setTimeout(() => {
-                    setSuccess(true);
-                    setErrMsg('');
-                    setName('');
-                    setEmail('');
-                    setSubject('');
-                    setMessage('');
-                    setOpen(false);
-
-                    setTimeout(() => {
-                        setSuccess(false);
+                emailjs
+                    .send(SERVICE_ID, TPL_PSICOLOGA, templateParams, PUBLIC_KEY)
+                    .then(() =>
+                        emailjs.send(SERVICE_ID, TPL_AUTOREPLY, templateParams, PUBLIC_KEY)
+                    )
+                    .then(() => {
+                        setSuccess(true);
+                        setErrMsg('');
+                        setName('');
+                        setEmail('');
+                        setSubject('');
+                        setMessage('');
+                        setTimeout(() => {
+                            setSuccess(false);
+                            setIsSubmitting(false);
+                        }, 3000);
+                    })
+                    .catch(() => {
+                        setErrMsg('Errore nell\'invio. Riprova più tardi.');
+                        setOpen(true);
                         setIsSubmitting(false);
-                    }, 3000);
-                }, 500);
+                    });
             } else {
                 setErrMsg('Email non valida');
                 setOpen(true);
