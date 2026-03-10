@@ -42,12 +42,15 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 0;
 }
 
 .landing--social {
-    font-size: 35px;
-    margin: 0 1rem;
+    font-size: clamp(18px, 2.8vw, 35px);
+    margin: 0 clamp(0.2rem, 0.7vw, 1rem);
     transition: transform 0.5s;
+    flex-shrink: 0;
 }
 
 .landing--social:hover {
@@ -204,8 +207,9 @@
         top: 35%;
     }
 
-    .landing--social {
-        font-size: 30px;
+    .lcl--content {
+        margin: 1.5rem 0.5rem;
+        justify-content: center;
     }
 
     .lcr--content {
@@ -238,6 +242,10 @@
         left: 35%;
     }
 
+    .lcl--content {
+        margin: 1rem 0.3rem;
+        justify-content: center;
+    }
 }
 
 
@@ -270,7 +278,6 @@
         padding: 2rem 2rem;
         flex: initial;
         height: 70%;
-        /*width: 100%;*/
         background-color: #eaeaea;
         align-items: center;
         justify-content: start;

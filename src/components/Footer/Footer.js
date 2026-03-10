@@ -4,7 +4,7 @@ import './Footer.css';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import { socialsData } from '../../data/socialsData';
 import { footerData } from '../../data/footerData';
-import { FaAt, FaEnvelope, FaInstagram, FaLinkedinIn, FaTiktok } from 'react-icons/fa';
+import {FaAt, FaEnvelope, FaInstagram, FaLinkedinIn, FaTiktok, FaWhatsapp} from 'react-icons/fa';
 
 function Footer() {
     const { theme } = useContext(ThemeContext);
@@ -65,9 +65,19 @@ function Footer() {
             </div>
 
             <div className='footer-socialmedia-icons'>
-                {socialsData.linkedIn && (
-                    <SocialIcon href={socialsData.linkedIn} target='_blank' rel='noreferrer'>
-                        <FaLinkedinIn aria-label='LinkedIn' />
+                {socialsData.gmail && (
+                    <SocialIcon href={socialsData.gmail} target='_blank' rel='noreferrer'>
+                        <FaEnvelope aria-label='Gmail' />
+                    </SocialIcon>
+                )}
+                {socialsData.pec && (
+                    <SocialIcon href={socialsData.pec} target='_blank' rel='noreferrer'>
+                        <FaAt aria-label='PEC' />
+                    </SocialIcon>
+                )}
+                {socialsData.whatsapp && (
+                    <SocialIcon href={socialsData.whatsapp} target='_blank' rel='noreferrer'>
+                        <FaWhatsapp aria-label='Whatsapp' />
                     </SocialIcon>
                 )}
                 {socialsData.instagram && (
@@ -80,14 +90,9 @@ function Footer() {
                         <FaTiktok aria-label='Tiktok' />
                     </SocialIcon>
                 )}
-                {socialsData.gmail && (
-                    <SocialIcon href={socialsData.gmail} target='_blank' rel='noreferrer'>
-                        <FaEnvelope aria-label='Gmail' />
-                    </SocialIcon>
-                )}
-                {socialsData.pec && (
-                    <SocialIcon href={socialsData.pec} target='_blank' rel='noreferrer'>
-                        <FaAt aria-label='PEC' />
+                {socialsData.linkedIn && (
+                    <SocialIcon href={socialsData.linkedIn} target='_blank' rel='noreferrer'>
+                        <FaLinkedinIn aria-label='LinkedIn' />
                     </SocialIcon>
                 )}
             </div>
