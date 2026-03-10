@@ -12,20 +12,22 @@ const fadeUpVariant = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
+// Fuori dal render: MUI non ricrea il componente styled ad ogni re-render
+const Card = styled(motion.div)(({ ownerState }) => ({
+    backgroundColor: ownerState.primary30,
+    '&:hover': {
+        backgroundColor: ownerState.primary50,
+    },
+}));
+
 function EducationCard({ id, institution, course, grade, thesis, startYear, endYear }) {
     const { theme } = useContext(ThemeContext);
-
-    const Card = styled(motion.div)(() => ({
-        backgroundColor: theme.primary30,
-        '&:hover': {
-            backgroundColor: theme.primary50,
-        },
-    }));
 
     return (
         <Card
             key={id}
             className="education-card"
+            ownerState={theme}
             variants={fadeUpVariant}
             initial="hidden"
             whileInView="visible"

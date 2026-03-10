@@ -4,28 +4,29 @@ import './Footer.css';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import { socialsData } from '../../data/socialsData';
 import { footerData } from '../../data/footerData';
-import {FaAt, FaEnvelope, FaInstagram, FaLinkedinIn, FaTiktok, FaWhatsapp} from 'react-icons/fa';
+import { FaAt, FaEnvelope, FaInstagram, FaLinkedinIn, FaTiktok, FaWhatsapp } from 'react-icons/fa';
+
+// Fuori dal render: MUI non ricrea il componente styled ad ogni re-render
+const SocialIcon = styled('a')(({ ownerState }) => ({
+    width: '45px',
+    height: '45px',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '21px',
+    backgroundColor: ownerState.secondary,
+    color: ownerState.primary,
+    transition: '250ms ease-in-out',
+    '&:hover': {
+        transform: 'scale(1.1)',
+        color: ownerState.secondary,
+        backgroundColor: ownerState.tertiary,
+    },
+}));
 
 function Footer() {
     const { theme } = useContext(ThemeContext);
-
-    const SocialIcon = styled('a')(() => ({
-        width: '45px',
-        height: '45px',
-        borderRadius: '50%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: '21px',
-        backgroundColor: theme.secondary,
-        color: theme.primary,
-        transition: '250ms ease-in-out',
-        '&:hover': {
-            transform: 'scale(1.1)',
-            color: theme.secondary,
-            backgroundColor: theme.tertiary,
-        },
-    }));
 
     return (
         <div className="footer">
@@ -66,32 +67,32 @@ function Footer() {
 
             <div className='footer-socialmedia-icons'>
                 {socialsData.gmail && (
-                    <SocialIcon href={socialsData.gmail} target='_blank' rel='noreferrer'>
+                    <SocialIcon ownerState={theme} href={socialsData.gmail} target='_blank' rel='noreferrer'>
                         <FaEnvelope aria-label='Gmail' />
                     </SocialIcon>
                 )}
                 {socialsData.pec && (
-                    <SocialIcon href={socialsData.pec} target='_blank' rel='noreferrer'>
+                    <SocialIcon ownerState={theme} href={socialsData.pec} target='_blank' rel='noreferrer'>
                         <FaAt aria-label='PEC' />
                     </SocialIcon>
                 )}
                 {socialsData.whatsapp && (
-                    <SocialIcon href={socialsData.whatsapp} target='_blank' rel='noreferrer'>
+                    <SocialIcon ownerState={theme} href={socialsData.whatsapp} target='_blank' rel='noreferrer'>
                         <FaWhatsapp aria-label='Whatsapp' />
                     </SocialIcon>
                 )}
                 {socialsData.instagram && (
-                    <SocialIcon href={socialsData.instagram} target='_blank' rel='noreferrer'>
+                    <SocialIcon ownerState={theme} href={socialsData.instagram} target='_blank' rel='noreferrer'>
                         <FaInstagram aria-label='Instagram' />
                     </SocialIcon>
                 )}
                 {socialsData.tikTok && (
-                    <SocialIcon href={socialsData.tikTok} target='_blank' rel='noreferrer'>
+                    <SocialIcon ownerState={theme} href={socialsData.tikTok} target='_blank' rel='noreferrer'>
                         <FaTiktok aria-label='Tiktok' />
                     </SocialIcon>
                 )}
                 {socialsData.linkedIn && (
-                    <SocialIcon href={socialsData.linkedIn} target='_blank' rel='noreferrer'>
+                    <SocialIcon ownerState={theme} href={socialsData.linkedIn} target='_blank' rel='noreferrer'>
                         <FaLinkedinIn aria-label='LinkedIn' />
                     </SocialIcon>
                 )}
