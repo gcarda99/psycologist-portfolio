@@ -33,7 +33,7 @@
 .drawer-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     height: 100%;
     align-items: center;
     width: 100%;
