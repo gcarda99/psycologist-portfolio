@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
 import Navbar from '../../components/Navbar/Navbar'
 import Landing from '../../components/Landing/Landing'
@@ -11,7 +11,6 @@ const Education = lazy(() => import('../../components/Education/Education'))
 const Contacts = lazy(() => import('../../components/Contacts/Contacts'))
 const Footer = lazy(() => import('../../components/Footer/Footer'))
 
-// Placeholder minimo: mantiene il colore di sfondo ed evita flash bianchi
 const SectionSkeleton = () => (
     <div style={{ backgroundColor: '#eaeaea', minHeight: '100px' }} />
 )
