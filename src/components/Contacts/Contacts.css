@@ -264,7 +264,7 @@
     }
 }
 
-/* ── Tablet ─────────────────────────────────────────────── */
+/* ── Tablet + Mobile ──────────────────────────────────────── */
 @media screen and (max-width: 992px) {
     .contacts--img {
         display: none;
@@ -273,6 +273,8 @@
     .contacts--container h1 {
         font-size: 3rem;
         margin-bottom: 30px;
+        text-align: center;
+        width: 100%;
     }
 
     .contacts--container {
@@ -348,6 +350,8 @@
     .contacts--container h1 {
         font-size: 2.5rem;
         margin-bottom: 20px;
+        text-align: center;
+        width: 100%;
     }
 
     .contacts--container {
