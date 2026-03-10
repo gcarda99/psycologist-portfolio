@@ -1,6 +1,6 @@
 # 🧠 Portfolio — Dott.ssa Albano Mariaelisabetta
 
-Professional portfolio website for Dott.ssa Albano Mariaelisabetta, Psychologist registered with the Albo degli Psicologi della Campania.
+Professional portfolio website for Dott.ssa Albano Mariaelisabetta (Psychologist).
 
 Built with **React 18** + **Vite 6** + **Material UI 6**.
 
@@ -10,8 +10,8 @@ Built with **React 18** + **Vite 6** + **Material UI 6**.
 
 - **Home** — Landing page with introduction and social links
 - **About me** — Professional background and values
-- **Education** — Academic path and specializations
 - **Services** — Types of consultations offered
+- **Education** — Academic path and specializations
 - **Contacts** — Contact form and references
 
 ---
