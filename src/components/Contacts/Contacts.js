@@ -19,7 +19,7 @@ const TEMPLATE_REPLY = import.meta.env.VITE_EMAILJS_TEMPLATE_AUTOREPLY;
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 if (!SERVICE_ID || !TEMPLATE_REQUEST || !TEMPLATE_REPLY || !PUBLIC_KEY) {
-    console.error('EmailJS: una o più variabili d\'ambiente sono mancanti. Controlla il file .env.');
+    console.error('EmailJS: una o pi\u00f9 variabili d\'ambiente sono mancanti. Controlla il file .env.');
 }
 
 const FormInput = styled('input')(({ownerState}) => ({
@@ -89,6 +89,7 @@ const SubmitBtn = styled('button')(({ownerState}) => ({
 
 function Contacts() {
     const [open, setOpen] = useState(false);
+    const [successOpen, setSuccessOpen] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
@@ -104,6 +105,11 @@ function Contacts() {
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') return;
         setOpen(false);
+    };
+
+    const handleSuccessClose = (event, reason) => {
+        if (reason === 'clickaway') return;
+        setSuccessOpen(false);
     };
 
     const handleContactForm = (e) => {
@@ -152,6 +158,7 @@ function Contacts() {
                 ])
                     .then(() => {
                         setSuccess(true);
+                        setSuccessOpen(true);
                         setErrMsg('');
                         setName('');
                         setEmail('');
@@ -164,7 +171,7 @@ function Contacts() {
                         }, 3000);
                     })
                     .catch(() => {
-                        setErrMsg('Errore nell\'invio. Riprova più tardi.');
+                        setErrMsg('Errore nell\'invio. Riprova pi\u00f9 tardi.');
                         setOpen(true);
                         setIsSubmitting(false);
                         isSubmittingRef.current = false;
@@ -270,6 +277,8 @@ function Contacts() {
                                     </SubmitBtn>
                                 </div>
                             </form>
+
+                            {/* Snackbar errore */}
                             <Snackbar
                                 anchorOrigin={{vertical: 'top', horizontal: 'center'}}
                                 open={open}
@@ -293,8 +302,44 @@ function Contacts() {
                                         backgroundColor: theme.primary,
                                         color: theme.secondary,
                                         fontFamily: 'var(--primaryFont)',
+                                        textAlign: 'center',
                                     }}
                                     message={errMsg}
+                                />
+                            </Snackbar>
+
+                            {/* Snackbar successo */}
+                            <Snackbar
+                                anchorOrigin={{vertical: 'top', horizontal: 'center'}}
+                                open={successOpen}
+                                autoHideDuration={5000}
+                                onClose={handleSuccessClose}
+                            >
+                                <SnackbarContent
+                                    action={
+                                        <React.Fragment>
+                                            <IconButton
+                                                size='small'
+                                                aria-label='close'
+                                                color='inherit'
+                                                onClick={handleSuccessClose}
+                                            >
+                                                <CloseIcon fontSize='small'/>
+                                            </IconButton>
+                                        </React.Fragment>
+                                    }
+                                    style={{
+                                        backgroundColor: theme.primary,
+                                        color: theme.secondary,
+                                        fontFamily: 'var(--primaryFont)',
+                                        textAlign: 'center',
+                                    }}
+                                    message={
+                                        <span style={{display: 'block', textAlign: 'center'}}>
+                                            Richiesta inviata con successo.<br/>
+                                            Controlla la tua casella di posta.
+                                        </span>
+                                    }
                                 />
                             </Snackbar>
                         </div>
