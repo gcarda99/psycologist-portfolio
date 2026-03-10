@@ -2,7 +2,7 @@ import React, {useContext, useRef, useState} from 'react';
 import {IconButton, Snackbar, SnackbarContent} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import isEmail from 'validator/lib/isEmail';
-import { styled } from '@mui/material/styles';
+import {styled} from '@mui/material/styles';
 import {AiOutlineCheckCircle, AiOutlineSend} from 'react-icons/ai';
 import {FiAtSign, FiPhone} from 'react-icons/fi';
 import {HiOutlineLocationMarker} from 'react-icons/hi';
@@ -12,10 +12,10 @@ import {ThemeContext} from '../../contexts/ThemeContext';
 import {contactsData} from '../../data/contactsData';
 import './Contacts.css';
 
-const SERVICE_ID      = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_REQUEST = import.meta.env.VITE_EMAILJS_TEMPLATE_REQUEST;
-const TEMPLATE_REPLY  = import.meta.env.VITE_EMAILJS_TEMPLATE_AUTOREPLY;
-const PUBLIC_KEY      = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const TEMPLATE_REPLY = import.meta.env.VITE_EMAILJS_TEMPLATE_AUTOREPLY;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 if (!SERVICE_ID || !TEMPLATE_REQUEST || !TEMPLATE_REPLY || !PUBLIC_KEY) {
     console.error('EmailJS: una o più variabili d\'ambiente sono mancanti. Controlla il file .env.');
@@ -109,14 +109,24 @@ function Contacts() {
 
         if (isSubmittingRef.current) return;
 
-        const trimmedName    = name.trim();
-        const trimmedEmail   = email.trim();
+        const trimmedName = name.trim();
+        const trimmedEmail = email.trim();
         const trimmedSubject = subject.trim();
         const trimmedMessage = message.trim();
 
         if (trimmedName && trimmedEmail && trimmedSubject && trimmedMessage) {
+            if (trimmedName.length < 3) {
+                setErrMsg('Nome troppo breve (minimo 3 caratteri)');
+                setOpen(true);
+                return;
+            }
+            if (trimmedSubject.length < 5) {
+                setErrMsg('Oggetto troppo breve (minimo 5 caratteri)');
+                setOpen(true);
+                return;
+            }
             if (trimmedMessage.length < 10) {
-                setErrMsg('Il messaggio è troppo breve (minimo 10 caratteri)');
+                setErrMsg('Messaggio troppo breve (minimo 10 caratteri)');
                 setOpen(true);
                 return;
             }
@@ -126,8 +136,8 @@ function Contacts() {
 
                 const now = new Date();
                 const templateParams = {
-                    name:    trimmedName,
-                    email:   trimmedEmail,
+                    name: trimmedName,
+                    email: trimmedEmail,
                     subject: trimmedSubject,
                     message: trimmedMessage,
                     date: now.toLocaleDateString('it-IT', {day: 'numeric', month: 'long', year: 'numeric'}),
@@ -138,25 +148,25 @@ function Contacts() {
                     emailjs.send(SERVICE_ID, TEMPLATE_REQUEST, templateParams, PUBLIC_KEY),
                     emailjs.send(SERVICE_ID, TEMPLATE_REPLY, templateParams, PUBLIC_KEY),
                 ])
-                .then(() => {
-                    setSuccess(true);
-                    setErrMsg('');
-                    setName('');
-                    setEmail('');
-                    setSubject('');
-                    setMessage('');
-                    setTimeout(() => {
-                        setSuccess(false);
+                    .then(() => {
+                        setSuccess(true);
+                        setErrMsg('');
+                        setName('');
+                        setEmail('');
+                        setSubject('');
+                        setMessage('');
+                        setTimeout(() => {
+                            setSuccess(false);
+                            setIsSubmitting(false);
+                            isSubmittingRef.current = false;
+                        }, 3000);
+                    })
+                    .catch(() => {
+                        setErrMsg('Errore nell\'invio. Riprova più tardi.');
+                        setOpen(true);
                         setIsSubmitting(false);
                         isSubmittingRef.current = false;
-                    }, 3000);
-                })
-                .catch(() => {
-                    setErrMsg('Errore nell\'invio. Riprova più tardi.');
-                    setOpen(true);
-                    setIsSubmitting(false);
-                    isSubmittingRef.current = false;
-                });
+                    });
             } else {
                 setErrMsg('Email non valida');
                 setOpen(true);
