@@ -5,23 +5,18 @@
   "type": "module",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
-    "@mui/material": "^6.1.7",
-    "@mui/icons-material": "^6.1.7",
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
-    "axios": "^1.13.5",
+    "@mui/icons-material": "^6.1.7",
+    "@mui/material": "^6.1.7",
+    "@xzar90/react-router-hash-link": "^6.0.4",
     "framer-motion": "^12.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-fast-marquee": "^1.6.5",
     "react-helmet": "^6.1.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^6.30.0",
-    "@xzar90/react-router-hash-link": "^6.0.4",
-    "react-slick": "^0.31.0",
-    "slick-carousel": "^1.8.1",
-    "validator": "^13.15.26",
-    "web-vitals": "^5.1.0"
+    "validator": "^13.15.26"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
