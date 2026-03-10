@@ -1,9 +1,5 @@
 import React from 'react';
 
-/**
- * SVG wave usato come divisore decorativo.
- * @param {string} className - classe CSS del wrapper (es. custom-shape-divider-top-... / bottom-...)
- */
 function WaveDivider({ className }) {
     return (
         <div className={className}>
