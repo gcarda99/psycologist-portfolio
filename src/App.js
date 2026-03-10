@@ -25,7 +25,12 @@ function App() {
 
     return (
         <div className="app">
-            <Router>
+            <Router
+                future={{
+                    v7_startTransition: true,
+                    v7_relativeSplatPath: true,
+                }}
+            >
                 <ScrollToTop />
                 <Suspense fallback={<PageSkeleton />}>
                     <Routes>
