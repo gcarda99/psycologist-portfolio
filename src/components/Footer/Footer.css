@@ -107,3 +107,26 @@
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+/* ── 2K (2560px+) ───────────────────────────────────────── */
+@media (min-width: 2560px) {
+    .footer-title {
+        font-size: 1.6rem;
+    }
+
+    .footer-subtitle {
+        font-size: 1.4rem;
+    }
+
+    .footer-text {
+        font-size: 1.3rem;
+    }
+
+    .footer-column ul li a {
+        font-size: 1.3rem;
+    }
+
+    .footer-bottom {
+        font-size: 1.3rem;
+    }
+}
