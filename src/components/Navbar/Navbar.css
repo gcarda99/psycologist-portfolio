@@ -55,21 +55,12 @@
     will-change: transform, opacity;
 }
 
-/* Mobile/tablet: blur ridotto a 8px (area piccola, costo accettabile) */
+/* Blur uniforme 8px su tutti gli schermi */
 .drawer > .MuiBackdrop-root {
     background: rgba(33, 33, 33, 0.25) !important;
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
     will-change: opacity;
-}
-
-/* Desktop 1080p+: blur disabilitato, compensato con opacità maggiore */
-@media (min-width: 1080px) {
-    .drawer > .MuiBackdrop-root {
-        background: rgba(33, 33, 33, 0.45) !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-    }
 }
 
 @media (min-width: 2560px) {
