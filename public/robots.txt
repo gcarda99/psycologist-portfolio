@@ -1,7 +1,6 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
-Disallow: /build/
 Disallow: /.env
 
 Sitemap: https://www.psicologalbano.it/sitemap.xml
