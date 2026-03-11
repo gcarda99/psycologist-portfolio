@@ -34,6 +34,10 @@ Tracciamento delle attività SEO, GEO e AEO per il sito della Dott.ssa Mariaelis
 - [x] **Instagram** — profilo attivo
 - [x] **TikTok** — profilo attivo
 
+### File tecnici
+- [x] **robots.txt** — presente in `public/robots.txt`, configurato correttamente (`Allow: /`, blocco `/build/` e `/.env`, link sitemap)
+- [x] **sitemap.xml** — presente in `public/sitemap.xml`
+
 ---
 
 ## 🔜 Da fare
@@ -46,8 +50,6 @@ Tracciamento delle attività SEO, GEO e AEO per il sito della Dott.ssa Mariaelis
 - [ ] **Psicologi.it** — registrare profilo gratuito su [psicologi.it](https://www.psicologi.it)
 - [ ] **GuidaPsicologi.it** — registrare profilo gratuito su [guidapsicologi.it](https://www.guidapsicologi.it)
 - [ ] **og:image dedicata** — sostituire `favicon.png` con un'immagine OG professionale (1200×630px) per migliorare le anteprime su social e WhatsApp
-- [ ] **Sitemap.xml** — generare e aggiungere `sitemap.xml` per accelerare l'indicizzazione
-- [ ] **robots.txt** — verificare/creare `robots.txt` corretto
 
 ### Bassa priorità / Futura
 - [ ] Varianti FAQ locali aggiuntive (es. "psicologa Castel San Giorgio", "psicologa provincia Salerno")
