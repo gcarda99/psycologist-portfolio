@@ -55,163 +55,174 @@
              JSON-LD — Schema.org structured data
         ════════════════════════════════════════════════ -->
         <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@graph": [
             {
-              "@type": "Person",
-              "@id": "https://www.psicologalbano.it/#person",
-              "name": "Mariaelisabetta Albano",
-              "alternateName": ["Elisabetta Albano", "Dott.ssa Albano", "Dott.ssa Mariaelisabetta Albano"],
-              "jobTitle": "Psicologa, Psicoterapeuta in formazione",
-              "description": "Psicologa iscritta all'Albo degli Psicologi della Campania e Psicoterapeuta in formazione ad orientamento sistemico-relazionale. Specializzata nel supporto psicologico di bambini, adolescenti, adulti e coppie, con focus sui disturbi dell'apprendimento, Parent Training e supporto alla genitorialità.",
-              "url": "https://www.psicologalbano.it/",
-              "image": "https://www.psicologalbano.it/favicon.png",
-              "knowsLanguage": "it",
-              "hasOccupation": {
-                "@type": "Occupation",
-                "name": "Psicologa",
-                "occupationLocation": {
-                  "@type": "Country",
-                  "name": "Italia"
-                }
-              },
-              "worksFor": [
-                { "@id": "https://www.psicologalbano.it/#localbusiness" },
-                { "@id": "https://www.psicologalbano.it/#salutepsy" },
-                { "@id": "https://www.psicologalbano.it/#metastudio" }
-              ]
-            },
-            {
-              "@type": "LocalBusiness",
-              "@id": "https://www.psicologalbano.it/#localbusiness",
-              "name": "Studio Psicologico Dott.ssa Mariaelisabetta Albano",
-              "description": "Studio psicologico specializzato nel supporto per bambini, adolescenti, adulti e coppie. Disturbi dell'apprendimento, Parent Training, supporto alla genitorialità. Consulenze in studio e online.",
-              "url": "https://www.psicologalbano.it/",
-              "image": "https://www.psicologalbano.it/favicon.png",
-              "telephone": "+393317047398",
-              "priceRange": "€€",
-              "currenciesAccepted": "EUR",
-              "paymentAccepted": "Contanti, Bonifico bancario",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Mercato San Severino",
-                "addressRegion": "SA",
-                "addressCountry": "IT"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "40.7844",
-                "longitude": "14.7547"
-              },
-              "areaServed": [
-                {
-                  "@type": "City",
-                  "name": "Mercato San Severino"
-                },
-                {
-                  "@type": "AdministrativeArea",
-                  "name": "Salerno"
-                },
-                {
-                  "@type": "Country",
-                  "name": "Italia",
-                  "description": "Consulenze online disponibili su tutto il territorio nazionale"
-                }
-              ],
-              "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "Servizi Psicologici",
-                "itemListElement": [
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Supporto psicologico individuale",
-                      "description": "Percorsi di supporto psicologico per adulti e adolescenti"
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "Person",
+                        "@id": "https://www.psicologalbano.it/#person",
+                        "name": "Mariaelisabetta Albano",
+                        "alternateName": [
+                            "Elisabetta Albano",
+                            "Dott.ssa Albano",
+                            "Dott.ssa Mariaelisabetta Albano"
+                        ],
+                        "jobTitle": "Psicologa, Psicoterapeuta in formazione",
+                        "description": "Psicologa iscritta all'Albo degli Psicologi della Campania e Psicoterapeuta in formazione ad orientamento sistemico-relazionale. Specializzata nel supporto psicologico di bambini, adolescenti, adulti e coppie, con focus sui disturbi dell'apprendimento, Parent Training e supporto alla genitorialità.",
+                        "url": "https://www.psicologalbano.it/",
+                        "image": "https://www.psicologalbano.it/favicon.png",
+                        "knowsLanguage": "it",
+                        "hasOccupation": {
+                            "@type": "Occupation",
+                            "name": "Psicologa",
+                            "occupationLocation": {
+                                "@type": "Country",
+                                "name": "Italia"
+                            }
+                        },
+                        "worksFor": [
+                            {
+                                "@id": "https://www.psicologalbano.it/#localbusiness"
+                            },
+                            {
+                                "@id": "https://www.psicologalbano.it/#salutepsy"
+                            },
+                            {
+                                "@id": "https://www.psicologalbano.it/#metastudio"
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "LocalBusiness",
+                        "@id": "https://www.psicologalbano.it/#localbusiness",
+                        "name": "Studio Psicologico Dott.ssa Mariaelisabetta Albano",
+                        "description": "Studio psicologico specializzato nel supporto per bambini, adolescenti, adulti e coppie. Disturbi dell'apprendimento, Parent Training, supporto alla genitorialità. Consulenze in studio e online.",
+                        "url": "https://www.psicologalbano.it/",
+                        "image": "https://www.psicologalbano.it/favicon.png",
+                        "telephone": "+393317047398",
+                        "priceRange": "€€",
+                        "currenciesAccepted": "EUR",
+                        "paymentAccepted": "Contanti, Bonifico bancario",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "addressLocality": "Mercato San Severino",
+                            "addressRegion": "SA",
+                            "addressCountry": "IT"
+                        },
+                        "geo": {
+                            "@type": "GeoCoordinates",
+                            "latitude": "40.7844",
+                            "longitude": "14.7547"
+                        },
+                        "areaServed": [
+                            {
+                                "@type": "City",
+                                "name": "Mercato San Severino"
+                            },
+                            {
+                                "@type": "AdministrativeArea",
+                                "name": "Salerno"
+                            },
+                            {
+                                "@type": "Country",
+                                "name": "Italia",
+                                "description": "Consulenze online disponibili su tutto il territorio nazionale"
+                            }
+                        ],
+                        "hasOfferCatalog": {
+                            "@type": "OfferCatalog",
+                            "name": "Servizi Psicologici",
+                            "itemListElement": [
+                                {
+                                    "@type": "Offer",
+                                    "itemOffered": {
+                                        "@type": "Service",
+                                        "name": "Supporto psicologico individuale",
+                                        "description": "Percorsi di supporto psicologico per adulti e adolescenti"
+                                    }
+                                },
+                                {
+                                    "@type": "Offer",
+                                    "itemOffered": {
+                                        "@type": "Service",
+                                        "name": "Supporto psicologico per bambini",
+                                        "description": "Valutazione e supporto psicologico per bambini in età evolutiva"
+                                    }
+                                },
+                                {
+                                    "@type": "Offer",
+                                    "itemOffered": {
+                                        "@type": "Service",
+                                        "name": "Terapia di coppia",
+                                        "description": "Percorsi di supporto psicologico per coppie"
+                                    }
+                                },
+                                {
+                                    "@type": "Offer",
+                                    "itemOffered": {
+                                        "@type": "Service",
+                                        "name": "Disturbi dell'apprendimento (DSA)",
+                                        "description": "Valutazione e supporto per disturbi specifici dell'apprendimento"
+                                    }
+                                },
+                                {
+                                    "@type": "Offer",
+                                    "itemOffered": {
+                                        "@type": "Service",
+                                        "name": "Parent Training",
+                                        "description": "Percorsi di formazione e supporto alla genitorialità"
+                                    }
+                                },
+                                {
+                                    "@type": "Offer",
+                                    "itemOffered": {
+                                        "@type": "Service",
+                                        "name": "Consulenza psicologica online",
+                                        "description": "Consulenze psicologiche a distanza disponibili su tutto il territorio nazionale"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "LocalBusiness",
+                        "@id": "https://www.psicologalbano.it/#salutepsy",
+                        "name": "SalutePsy",
+                        "description": "Centro di Psicologia, Neuropsicologia e Psicoterapia dove la Dott.ssa Mariaelisabetta Albano collabora come libera professionista (P.IVA).",
+                        "url": "https://www.salutepsy.it/",
+                        "telephone": "+393533866098",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "Via Palmiro Togliatti, 21",
+                            "postalCode": "84083",
+                            "addressLocality": "Castel San Giorgio",
+                            "addressRegion": "SA",
+                            "addressCountry": "IT"
+                        },
+                        "member": {
+                            "@id": "https://www.psicologalbano.it/#person"
+                        }
+                    },
+                    {
+                        "@type": "LocalBusiness",
+                        "@id": "https://www.psicologalbano.it/#metastudio",
+                        "name": "Meta Studio APS",
+                        "description": "Associazione di promozione sociale dove la Dott.ssa Mariaelisabetta Albano collabora come libera professionista (P.IVA).",
+                        "telephone": "+390892852922",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "Via Carmine Amato, 1/24",
+                            "postalCode": "84085",
+                            "addressLocality": "Mercato San Severino",
+                            "addressRegion": "SA",
+                            "addressCountry": "IT"
+                        },
+                        "member": {
+                            "@id": "https://www.psicologalbano.it/#person"
+                        }
                     }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Supporto psicologico per bambini",
-                      "description": "Valutazione e supporto psicologico per bambini in età evolutiva"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Terapia di coppia",
-                      "description": "Percorsi di supporto psicologico per coppie"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Disturbi dell'apprendimento (DSA)",
-                      "description": "Valutazione e supporto per disturbi specifici dell'apprendimento"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Parent Training",
-                      "description": "Percorsi di formazione e supporto alla genitorialità"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Consulenza psicologica online",
-                      "description": "Consulenze psicologiche a distanza disponibili su tutto il territorio nazionale"
-                    }
-                  }
                 ]
-              }
-            },
-            {
-              "@type": "LocalBusiness",
-              "@id": "https://www.psicologalbano.it/#salutepsy",
-              "name": "SalutePsy",
-              "description": "Centro di psicologia presso il quale la Dott.ssa Mariaelisabetta Albano collabora come libera professionista (P.IVA).",
-              "url": "https://www.salutepsy.it/",
-              "telephone": "+393533866098",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Via Palmiro Togliatti, 21",
-                "addressLocality": "Castel San Giorgio",
-                "addressRegion": "SA",
-                "addressCountry": "IT"
-              },
-              "member": {
-                "@id": "https://www.psicologalbano.it/#person"
-              }
-            },
-            {
-              "@type": "LocalBusiness",
-              "@id": "https://www.psicologalbano.it/#metastudio",
-              "name": "Meta Studio APS",
-              "description": "Associazione di promozione sociale presso la quale la Dott.ssa Mariaelisabetta Albano collabora come libera professionista (P.IVA).",
-              "telephone": "+390892852922",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Via Carmine Amato, 1/24",
-                "postalCode": "84085",
-                "addressLocality": "Sant'Angelo",
-                "addressRegion": "SA",
-                "addressCountry": "IT"
-              },
-              "member": {
-                "@id": "https://www.psicologalbano.it/#person"
-              }
             }
-          ]
-        }
         </script>
 
         <!-- ═══════════════════════════════════════════════
