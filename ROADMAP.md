@@ -35,16 +35,25 @@ Tracciamento delle attività SEO, GEO e AEO per il sito della Dott.ssa Mariaelis
 - [x] **TikTok** — profilo attivo
 
 ### File tecnici
-- [x] **robots.txt** — presente in `public/robots.txt`, configurato correttamente (`Allow: /`, blocco `/build/` e `/.env`, link sitemap)
+- [x] **robots.txt** — presente in `public/robots.txt`, configurato correttamente (`Allow: /`, blocco `/.env`, link sitemap)
 - [x] **sitemap.xml** — presente in `public/sitemap.xml`
+
+### Deploy & Dominio
+- [x] **Netlify** — sito deployato con deploy automatico da `main`. URL: https://psicologalbano.netlify.app
+- [x] **Dominio `psicologalbano.it`** — acquistato su OVHcloud
+- [x] **Cloudflare** — account attivo, record CNAME configurati (`@` → `apex-loadbalancer.netlify.com`, `www` → `psicologalbano.netlify.app`)
+- [x] **Nameserver OVHcloud** — puntati a Cloudflare (`carlane.ns.cloudflare.com`, `lamar.ns.cloudflare.com`)
+- [x] **Sito live** — https://www.psicologalbano.it 🎉
 
 ---
 
 ## 🔜 Da fare
 
 ### Alta priorità
+- [ ] **Google Search Console** — verificare la proprietà del sito e sottomettere la sitemap su [search.google.com/search-console](https://search.google.com/search-console). Fondamentale per accelerare l'indicizzazione.
 - [ ] **Google Business Profile** — creare e verificare il profilo su [business.google.com](https://business.google.com). È il segnale più impattante per le ricerche locali su Google e per le risposte generate dalle AI (ChatGPT, Gemini, Perplexity). Aggiungere: nome, indirizzo, telefono, orari, categoria "Psicologo", foto, link al sito.
 - [ ] **Sezione FAQ visibile on-page** — il `FAQPage` Schema funziona al meglio se le domande sono presenti anche nel testo visibile della pagina (non solo nel JSON-LD). Creare un componente React `FAQ` da aggiungere alla homepage.
+- [ ] **Impostare `www.psicologalbano.it` come primary domain su Netlify** — al momento bloccato dal provisioning SSL, da fare appena il certificato è emesso.
 
 ### Media priorità
 - [ ] **Psicologi.it** — registrare profilo gratuito su [psicologi.it](https://www.psicologi.it)
@@ -96,16 +105,25 @@ Tracking of SEO, GEO and AEO tasks for the website of Dr. Mariaelisabetta Albano
 - [x] **TikTok** — active profile
 
 ### Technical Files
-- [x] **robots.txt** — present at `public/robots.txt`, correctly configured (`Allow: /`, blocking `/build/` and `/.env`, sitemap link included)
+- [x] **robots.txt** — present at `public/robots.txt`, correctly configured (`Allow: /`, blocking `/.env`, sitemap link included)
 - [x] **sitemap.xml** — present at `public/sitemap.xml`
+
+### Deploy & Domain
+- [x] **Netlify** — site deployed with automatic deploy from `main`. URL: https://psicologalbano.netlify.app
+- [x] **Domain `psicologalbano.it`** — purchased on OVHcloud
+- [x] **Cloudflare** — account active, CNAME records configured (`@` → `apex-loadbalancer.netlify.com`, `www` → `psicologalbano.netlify.app`)
+- [x] **OVHcloud nameservers** — pointing to Cloudflare (`carlane.ns.cloudflare.com`, `lamar.ns.cloudflare.com`)
+- [x] **Site live** — https://www.psicologalbano.it 🎉
 
 ---
 
 ## 🔜 To Do
 
 ### High Priority
+- [ ] **Google Search Console** — verify site ownership and submit sitemap at [search.google.com/search-console](https://search.google.com/search-console). Essential to speed up indexing.
 - [ ] **Google Business Profile** — create and verify the profile at [business.google.com](https://business.google.com). This is the highest-impact signal for local Google searches and for AI-generated answers (ChatGPT, Gemini, Perplexity). Add: name, address, phone, opening hours, category "Psychologist", photos, website link.
 - [ ] **Visible FAQ section on-page** — the `FAQPage` Schema works best when the questions are also present as visible text on the page (not only in the JSON-LD). Create a React `FAQ` component and add it to the homepage.
+- [ ] **Set `www.psicologalbano.it` as primary domain on Netlify** — currently blocked by SSL provisioning, to be done once the certificate is issued.
 
 ### Medium Priority
 - [ ] **Psicologi.it** — register a free profile at [psicologi.it](https://www.psicologi.it)
