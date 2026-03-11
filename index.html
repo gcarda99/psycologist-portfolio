@@ -52,7 +52,7 @@
         <meta name="twitter:image:alt" content="Dott.ssa Mariaelisabetta Albano — Psicologa"/>
 
         <!-- ═══════════════════════════════════════════════
-             JSON-LD — Schema.org structured data
+             JSON-LD (1) — Person + LocalBusiness + Collaborazioni
         ════════════════════════════════════════════════ -->
         <script type="application/ld+json">
             {
@@ -219,6 +219,117 @@
                         },
                         "member": {
                             "@id": "https://www.psicologalbano.it/#person"
+                        }
+                    }
+                ]
+            }
+        </script>
+
+        <!-- ═══════════════════════════════════════════════
+             JSON-LD (2) — WebSite + SearchAction
+        ════════════════════════════════════════════════ -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "@id": "https://www.psicologalbano.it/#website",
+                "name": "Dott.ssa Mariaelisabetta Albano — Psicologa",
+                "url": "https://www.psicologalbano.it/",
+                "description": "Sito ufficiale della Dott.ssa Mariaelisabetta Albano, Psicologa e Psicoterapeuta in formazione sistemico-relazionale. Supporto psicologico per bambini, adolescenti, adulti e coppie a Mercato San Severino (SA) e online.",
+                "inLanguage": "it-IT",
+                "publisher": {
+                    "@id": "https://www.psicologalbano.it/#person"
+                },
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://www.psicologalbano.it/?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                }
+            }
+        </script>
+
+        <!-- ═══════════════════════════════════════════════
+             JSON-LD (3) — FAQPage (GEO / AEO)
+        ════════════════════════════════════════════════ -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "@id": "https://www.psicologalbano.it/#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Chi è la Dott.ssa Mariaelisabetta Albano?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "La Dott.ssa Mariaelisabetta Albano è una Psicologa iscritta all'Albo degli Psicologi della Campania e Psicoterapeuta in formazione ad orientamento sistemico-relazionale. Opera a Mercato San Severino (SA), a Castel San Giorgio presso SalutePsy, a Sant'Angelo presso Meta Studio APS, e offre consulenze online su tutto il territorio nazionale."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Qual è la differenza tra psicologo e psicoterapeuta?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Lo psicologo è un professionista laureato in psicologia e iscritto all'Albo, che si occupa di valutazione, supporto psicologico e counseling. Lo psicoterapeuta è uno psicologo (o medico) che ha completato una scuola di specializzazione in psicoterapia, abilitandolo a trattare disturbi psicologici più strutturati con approcci terapeutici specifici. La Dott.ssa Albano è psicologa e psicoterapeuta in formazione ad orientamento sistemico-relazionale."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Quali servizi offre la Dott.ssa Albano?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "La Dott.ssa Mariaelisabetta Albano offre: supporto psicologico individuale per adulti e adolescenti, supporto psicologico per bambini in età evolutiva, terapia di coppia, valutazione e supporto per disturbi specifici dell'apprendimento (DSA), Parent Training e percorsi di supporto alla genitorialità. Le consulenze sono disponibili sia in presenza che online."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "La Dott.ssa Albano fa consulenze online?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Sì, la Dott.ssa Mariaelisabetta Albano effettua consulenze psicologiche online, disponibili su tutto il territorio italiano. Le sedute online si svolgono tramite piattaforme sicure e garantiscono la stessa qualità del percorso in presenza."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Dove si trova lo studio della Dott.ssa Albano?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "La Dott.ssa Mariaelisabetta Albano riceve a Mercato San Severino (SA). Collabora inoltre presso SalutePsy in Via Palmiro Togliatti 21, Castel San Giorgio (SA), e presso Meta Studio APS in Via Carmine Amato 1/24, Mercato San Severino (SA). È possibile contattarla al +39 331 704 7398."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Cos'è il Parent Training?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Il Parent Training è un percorso psicologico rivolto ai genitori che desiderano migliorare le proprie competenze educative e relazionali con i figli. Si lavora sulle dinamiche familiari, sulla comunicazione, sulla gestione delle difficoltà comportamentali e sulle strategie di supporto allo sviluppo del bambino. La Dott.ssa Albano offre percorsi di Parent Training personalizzati."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Come posso prenotare un appuntamento con la Dott.ssa Albano?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Per prenotare un appuntamento con la Dott.ssa Mariaelisabetta Albano è possibile chiamare o inviare un messaggio al +39 331 704 7398, oppure compilare il modulo di contatto sul sito www.psicologalbano.it."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "La Dott.ssa Albano si occupa di disturbi dell'apprendimento nei bambini?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Sì, la Dott.ssa Mariaelisabetta Albano è specializzata nella valutazione e nel supporto dei disturbi specifici dell'apprendimento (DSA), tra cui dislessia, disortografia, disgrafia e discalculia. Lavora con bambini e adolescenti, affiancando anche le famiglie e, quando necessario, collaborando con le scuole."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Cosa si intende per approccio sistemico-relazionale in psicoterapia?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "L'approccio sistemico-relazionale considera la persona all'interno del proprio contesto di relazioni: famiglia, coppia, lavoro, società. Anziché concentrarsi solo sul singolo individuo, questo orientamento esplora come le dinamiche relazionali influenzino il benessere psicologico. È particolarmente efficace nei percorsi di terapia di coppia, familiare e nel supporto alla genitorialità."
                         }
                     }
                 ]
