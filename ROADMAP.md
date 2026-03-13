@@ -13,3 +13,5 @@
 - [ ] Additional local FAQ variants (e.g. "psychologist Castel San Giorgio", "psychologist province of Salerno")
 - [ ] Add `Review` / `AggregateRating` to JSON-LD if Dr. Albano collects reviews
 - [ ] Blog / informational articles — long-form content increases the likelihood of being cited by AI models
+- [ ] Detailed services (dynamic service's details page)
+- [ ] Google reviews integration
