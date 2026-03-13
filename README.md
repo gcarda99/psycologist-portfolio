@@ -4,6 +4,8 @@ Professional portfolio website for Dott.ssa Albano Mariaelisabetta (Psychologist
 
 Built with **React 18** + **Vite 6** + **Material UI 6**.
 
+🌐 Live at: [https://psicologalbano.it](https://psicologalbano.it)
+
 ---
 
 ## Sections
@@ -28,6 +30,20 @@ Built with **React 18** + **Vite 6** + **Material UI 6**.
 | Icons | React Icons 5 |
 | Form validation | Validator 13 |
 | Email service | EmailJS |
+
+---
+
+## Infrastructure
+
+| Service | Provider |
+|---|---|
+| Hosting | [Netlify](https://www.netlify.com) (free tier) |
+| DNS | [Cloudflare](https://www.cloudflare.com) (free tier) |
+| Domain registrar | [OVHcloud](https://www.ovhcloud.com/it/) |
+
+- The site is deployed on **Netlify** with automatic CI/CD from the `main` branch
+- **Cloudflare** is used as DNS provider with proxy enabled (CDN + DDoS protection)
+- The domain `psicologalbano.it` was registered via **OVHcloud** and nameservers are pointed to Cloudflare
 
 ---
 
