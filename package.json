@@ -29,7 +29,10 @@
   },
   "scripts": {
     "dev": "vite --port 8080",
-    "build": "vite build",
+    "build": "npm run build:client && npm run prerender",
+    "build:client": "vite build",
+    "build:ssr": "vite build --ssr src/entry-server.jsx --outDir .prerender",
+    "prerender": "npm run build:ssr && node scripts/prerender.mjs",
     "preview": "vite preview",
     "test": "echo \"No test runner configured\" && exit 0"
   },

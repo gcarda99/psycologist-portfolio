@@ -52,6 +52,7 @@ function Footer() {
                         <li><a href="/#about">Chi sono</a></li>
                         <li><a href="/#services">Servizi</a></li>
                         <li><a href="/#education">Formazione</a></li>
+                        <li><a href="/#faq">FAQ</a></li>
                         <li><a href="/#contacts">Contatti</a></li>
                     </ul>
                 </div>
@@ -98,7 +99,7 @@ function Footer() {
             </div>
 
             <div className="footer-bottom">
-                © {new Date().getFullYear()} {footerData.name} - Tutti i diritti riservati
+                © {__BUILD_YEAR__} {footerData.name} - Tutti i diritti riservati
                 <p style={{ color: 'white' }}>
                     Made with
                     <span style={{ color: 'red', margin: '0 0.5rem -1rem 0.5rem' }}>❤</span>

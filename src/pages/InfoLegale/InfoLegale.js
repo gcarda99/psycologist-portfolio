@@ -7,7 +7,7 @@ function InfoLegale() {
     return (
         <div className="info-legale">
             <Helmet>
-                <title>{privacyPolicyData.name}</title>
+                <title>Privacy Policy | {privacyPolicyData.name}</title>
             </Helmet>
             <div className="container">
                 <h1>Privacy Policy</h1>

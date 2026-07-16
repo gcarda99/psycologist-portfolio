@@ -117,8 +117,6 @@ function Landing() {
                                 <NavLink
                                     to='/#contacts'
                                     smooth={true}
-                                    spy={true}
-                                    duration={2000}
                                 >
                                     <Button sx={contactBtnStyle}>
                                         Contatti

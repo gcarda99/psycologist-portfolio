@@ -5,7 +5,7 @@ import { IoHomeSharp, IoMenuSharp } from 'react-icons/io5';
 import { HiDocumentText } from 'react-icons/hi';
 import { BsFillGearFill } from 'react-icons/bs';
 import { MdPhone } from 'react-icons/md';
-import { FaUser } from 'react-icons/fa';
+import { FaQuestionCircle, FaUser } from 'react-icons/fa';
 import Drawer from '@mui/material/Drawer';
 import CloseIcon from '@mui/icons-material/Close';
 import { Box } from '@mui/material';
@@ -28,6 +28,7 @@ const NAV_ITEMS = [
     { to: '/#about',     Icon: FaUser,         label: 'Su di me' },
     { to: '/#services',  Icon: BsFillGearFill, label: 'Servizi' },
     { to: '/#education', Icon: HiDocumentText, label: 'Formazione' },
+    { to: '/#faq',       Icon: FaQuestionCircle, label: 'FAQ' },
     { to: '/#contacts',  Icon: MdPhone,        label: 'Contatti' },
 ];
 
@@ -66,7 +67,7 @@ function NavItem({ to, Icon, label, theme, onClose, custom, open }) {
             onClick={onClose}
             style={{ willChange: 'transform, opacity' }}
         >
-            <NavLink to={to} smooth={true} spy={true} duration={2000}>
+            <NavLink to={to} smooth={true}>
                 <div style={itemStyle}>
                     <Box
                         component={Icon}

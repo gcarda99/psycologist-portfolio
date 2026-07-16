@@ -8,6 +8,7 @@ import { headerData } from '../../data/headerData'
 const About = lazy(() => import('../../components/About/About'))
 const Services = lazy(() => import('../../components/Services/Services'))
 const Education = lazy(() => import('../../components/Education/Education'))
+const Faq = lazy(() => import('../../components/Faq/Faq'))
 const Contacts = lazy(() => import('../../components/Contacts/Contacts'))
 const Footer = lazy(() => import('../../components/Footer/Footer'))
 
@@ -19,7 +20,7 @@ function Main() {
     return (
         <div>
             <Helmet>
-                <title>{headerData.name}</title>
+                <title>{headerData.name} - Psicologa | Mercato San Severino (SA)</title>
             </Helmet>
 
             <Navbar />
@@ -35,6 +36,10 @@ function Main() {
 
             <Suspense fallback={<SectionSkeleton />}>
                 <Education />
+            </Suspense>
+
+            <Suspense fallback={<SectionSkeleton />}>
+                <Faq />
             </Suspense>
 
             <Suspense fallback={<SectionSkeleton />}>

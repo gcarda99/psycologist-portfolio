@@ -82,7 +82,7 @@ npm run dev
 
 ```bash
 npm run build
-# output in /build
+# output prerendered in /build for / and /info-legale
 ```
 
 ### Preview build
@@ -165,6 +165,7 @@ All site content lives in `src/data/`. Edit the corresponding files:
 | `aboutData.js` | "About me" section text |
 | `educationData.js` | Academic background |
 | `servicesData.js` | Services offered |
+| `faqData.js` | Frequently asked questions displayed on the homepage |
 | `contactsData.js` | Locations, relationships and Google Maps links |
 | `socialsData.js` | Social links (LinkedIn, Instagram, TikTok) |
 | `themeData.js` | Theme colors |

@@ -2,19 +2,24 @@ import {defineConfig} from 'vite';
 import react from '@vitejs/plugin-react';
 import compression from 'vite-plugin-compression';
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({isSsrBuild}) => ({
+    define: {
+        __BUILD_YEAR__: JSON.stringify(new Date().getUTCFullYear()),
+    },
     plugins: [
         react(),
-        compression({
-            algorithm: 'gzip',
-            ext: '.gz',
-            threshold: 1024,
-        }),
-        compression({
-            algorithm: 'brotliCompress',
-            ext: '.br',
-            threshold: 1024,
-        }),
+        ...(!isSsrBuild ? [
+            compression({
+                algorithm: 'gzip',
+                ext: '.gz',
+                threshold: 1024,
+            }),
+            compression({
+                algorithm: 'brotliCompress',
+                ext: '.br',
+                threshold: 1024,
+            }),
+        ] : []),
     ],
     esbuild: {
         loader: 'jsx',
@@ -34,6 +39,10 @@ export default defineConfig(({ mode }) => ({
         allowedHosts: true,
     },
 
+    ssr: {
+        noExternal: [/^@mui\//, /^@emotion\//, 'react-helmet-async'],
+    },
+
     build: {
         outDir: 'build',
         sourcemap: false,
@@ -41,7 +50,7 @@ export default defineConfig(({ mode }) => ({
         target: 'esnext',
         cssCodeSplit: true,
         chunkSizeWarningLimit: 600,
-        rollupOptions: {
+        rollupOptions: !isSsrBuild ? {
             output: {
                 manualChunks: {
                     'vendor-react': ['react', 'react-dom', 'react-router-dom'],
@@ -49,6 +58,6 @@ export default defineConfig(({ mode }) => ({
                     'vendor-motion': ['framer-motion'],
                 },
             },
-        },
+        } : undefined,
     },
 }));

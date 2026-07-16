@@ -1,4 +1,4 @@
-import { createRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 import ThemeContextProvider from './contexts/ThemeContext';
@@ -7,8 +7,7 @@ import { HelmetProvider } from 'react-helmet-async';
 
 const muiTheme = createTheme();
 
-const root = createRoot(document.getElementById('root'));
-root.render(
+const app = (
   <HelmetProvider>
     <ThemeContextProvider>
       <ThemeProvider theme={muiTheme}>
@@ -17,3 +16,16 @@ root.render(
     </ThemeContextProvider>
   </HelmetProvider>
 );
+
+const rootElement = document.getElementById('root');
+const normalizePath = (path) => path.length > 1 ? path.replace(/\/$/, '') : path;
+const prerenderedPath = rootElement.dataset.prerenderedPath;
+const canHydrate = rootElement.hasChildNodes()
+  && normalizePath(prerenderedPath || '') === normalizePath(window.location.pathname);
+
+if (canHydrate) {
+  hydrateRoot(rootElement, app);
+} else {
+  rootElement.replaceChildren();
+  createRoot(rootElement).render(app);
+}

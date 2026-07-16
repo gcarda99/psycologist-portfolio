@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { IoIosArrowDropupCircle } from 'react-icons/io';
 import { Box } from '@mui/material';
 
@@ -26,7 +26,11 @@ function BackToTop() {
         });
     };
 
-    window.addEventListener('scroll', toggleVisible);
+    useEffect(() => {
+        window.addEventListener('scroll', toggleVisible);
+
+        return () => window.removeEventListener('scroll', toggleVisible);
+    }, []);
 
     return (
         <div

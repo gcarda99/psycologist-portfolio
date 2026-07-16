@@ -99,8 +99,11 @@ Il codice è JavaScript con JSX, anche nei file `.js`. `vite.config.js` configur
 │   ├── utils/                # utility React
 │   ├── App.css
 │   ├── App.js                # router principale
+│   ├── entry-server.jsx      # entry SSR usata solo durante il prerendering
 │   ├── index.css             # reset e regole globali
 │   └── main.jsx              # entry point React
+├── scripts/
+│   └── prerender.mjs         # genera gli HTML statici delle route pubbliche
 ├── .env.example              # variabili EmailJS richieste
 ├── index.html                # shell HTML, SEO, JSON-LD e analytics
 ├── package.json
@@ -118,7 +121,7 @@ Il codice è JavaScript con JSX, anche nei file `.js`. `vite.config.js` configur
 
 ## 5. Bootstrap dell'applicazione
 
-Il flusso di inizializzazione è:
+Nel browser il flusso di inizializzazione è:
 
 ```text
 index.html
@@ -127,17 +130,17 @@ index.html
     ├── ThemeContextProvider
     ├── MUI ThemeProvider
     └── App
-        ├── BrowserRouter
-        ├── ScrollToTop
-        ├── Routes
-        └── BackToTop
+        └── BrowserRouter
+            ├── ScrollToTop
+            ├── Routes
+            └── BackToTop
 ```
 
 ### `index.html`
 
-È la shell statica servita per ogni route. Contiene:
+È il template HTML della build. Contiene:
 
-- nodo `#root`;
+- nodo `#root`, vuoto nel sorgente e popolato dal prerendering in `build/`;
 - caricamento di `src/main.jsx`;
 - metadati generali e canonical URL;
 - Open Graph e Twitter Card;
@@ -155,7 +158,19 @@ Monta React e compone i provider globali:
 3. `ThemeProvider` di Material UI, inizializzato con il tema MUI predefinito;
 4. `App`.
 
-La palette applicativa e il tema MUI sono due sistemi distinti: il primo guida i colori del sito, mentre il secondo fornisce soprattutto breakpoint e comportamento dei componenti MUI.
+Se il nodo `#root` contiene HTML prerenderizzato per il pathname corrente, verificato tramite `data-prerendered-path`, `main.jsx` usa `hydrateRoot`. Durante lo sviluppo o quando il fallback Netlify restituisce l'HTML di una route diversa, il nodo viene svuotato e montato con `createRoot`, evitando mismatch di idratazione. La palette applicativa e il tema MUI sono due sistemi distinti: il primo guida i colori del sito, mentre il secondo fornisce soprattutto breakpoint e comportamento dei componenti MUI.
+
+### Prerendering
+
+`npm run build` esegue in sequenza:
+
+1. la build client Vite;
+2. una build SSR temporanea da `src/entry-server.jsx`;
+3. `scripts/prerender.mjs`, che genera `build/index.html`, `build/info-legale.html` e `build/info-legale/index.html`;
+4. la compressione gzip e Brotli degli HTML generati;
+5. la rimozione del bundle SSR temporaneo `.prerender`.
+
+Le route da generare e i metadati specifici della pagina legale sono dichiarati nell'array `routes` di `scripts/prerender.mjs`.
 
 ## 6. Routing
 
@@ -171,13 +186,13 @@ Le route attive sono definite in `src/App.js`.
 
 Le pagine attive sono caricate con `React.lazy` e racchiuse in `Suspense`. Il fallback è uno scheletro neutro che occupa la viewport.
 
-`public/_redirects` contiene:
+`public/_redirects` conserva il fallback SPA per URL non corrispondenti a file statici:
 
 ```text
 /*    /index.html  200
 ```
 
-Questa regola è essenziale su Netlify: restituisce `index.html` anche quando una route viene aperta direttamente o ricaricata, lasciando la risoluzione del path a React Router.
+Netlify serve direttamente gli HTML prerenderizzati esistenti; la regola restituisce `index.html` per gli altri URL, lasciando la risoluzione del path a React Router.
 
 `ScrollToTop` riporta la finestra all'inizio quando cambia il pathname. `BackToTop` è montato fuori dal router ma dentro l'albero dei provider e appare dopo 300 pixel di scroll.
 
@@ -192,6 +207,7 @@ Main
 ├── About       [lazy]
 ├── Services    [lazy]
 ├── Education   [lazy]
+├── Faq         [lazy]
 ├── Contacts    [lazy]
 └── Footer      [lazy]
 ```
@@ -207,6 +223,7 @@ Main
 | About | `#about` | Profilo professionale | `aboutData.js` |
 | Services | `#services` | Griglia dei servizi | `servicesData.js` |
 | Education | `#education` | Timeline/card della formazione | `educationData.js` |
+| FAQ | `#faq` | Accordion semantico delle domande frequenti | `faqData.js` |
 | Contacts | `#contacts` | Form, recapiti e indirizzo | `contactsData.js`, variabili Vite |
 | Footer | Nessuno | Dati professionali, sitemap, legale e social | `footerData.js`, `socialsData.js` |
 
@@ -225,6 +242,7 @@ Non esiste un CMS. I contenuti sono moduli JavaScript versionati nel repository.
 | `aboutData.js` | Testo della sezione "Su di me" |
 | `servicesData.js` | Elenco dei servizi e relative icone React |
 | `educationData.js` | Formazione accademica e specializzazioni |
+| `faqData.js` | Domande e risposte mostrate nella sezione FAQ |
 | `contactsData.js` | Sedi, relazioni con le strutture e relativi link Google Maps |
 | `socialsData.js` | URL social, email e PEC |
 | `footerData.js` | Nome, partita IVA e iscrizione all'Albo |
@@ -377,10 +395,10 @@ Le route React attive impostano il titolo con `react-helmet-async`, ma non ridef
 `index.html` contiene:
 
 1. un grafo `Person`, `LocalBusiness` e collaborazioni;
-2. `WebSite` con `SearchAction`;
+2. `WebSite`;
 3. `FAQPage`.
 
-Le FAQ sono attualmente presenti solo nel JSON-LD e non come sezione React visibile. La roadmap identifica esplicitamente la futura aggiunta di una sezione FAQ on-page.
+Le FAQ sono mostrate nella sezione React `Faq` tramite elementi semantici `details` e `summary`. Le domande e le risposte in `faqData.js` devono restare sincronizzate manualmente con il blocco `FAQPage` statico in `index.html`.
 
 ### File per crawler
 
@@ -485,12 +503,11 @@ Questi punti sono importanti per pianificare modifiche future:
 5. **Codice legacy:** moduli inattivi e dati demo aumentano il rumore e possono essere riattivati accidentalmente.
 6. **Nessuna copertura automatica:** build e comportamento del form non sono protetti da test.
 7. **Integrazione form solo client-side:** sicurezza e affidabilità dipendono da EmailJS.
-8. **SEO per-route limitata:** le route condividono quasi tutti i metadati della homepage.
+8. **SEO per-route manuale:** le route prerenderizzate possono avere metadati distinti, ma devono essere configurati esplicitamente in `scripts/prerender.mjs`.
 9. **Configurazione deploy esterna:** parte dell'architettura operativa non è versionata.
-10. **Listener di scroll:** `BackToTop` registra il listener direttamente durante il render e non lo rimuove; future modifiche dovrebbero spostarlo in un effect con cleanup.
-11. **Target browser moderno:** `build.target = "esnext"` riduce la compatibilità con browser datati.
-12. **Dati strutturati manuali:** JSON-LD e contenuto visibile possono descrivere servizi o sedi differenti se aggiornati separatamente.
-13. **Ricerca dichiarata ma assente:** il JSON-LD espone una `SearchAction` verso `?q=...`, ma l'applicazione non implementa alcuna ricerca globale né interpreta quel parametro.
+10. **Target browser moderno:** `build.target = "esnext"` riduce la compatibilità con browser datati.
+11. **Dati strutturati manuali:** JSON-LD e contenuto visibile possono descrivere servizi o sedi differenti se aggiornati separatamente.
+12. **Elenco route statico:** ogni nuova route pubblica deve essere aggiunta anche a `scripts/prerender.mjs`.
 
 ## 17. Linee guida per le evoluzioni
 
@@ -539,7 +556,7 @@ Prima della riattivazione:
 ```bash
 npm install
 npm run dev       # dev server su http://localhost:8080
-npm run build     # output in build/
+npm run build     # build client + prerendering, output in build/
 npm run preview   # preview locale della build
 npm test          # attualmente non esegue test reali
 ```
@@ -553,6 +570,7 @@ Per evitare assunzioni nelle future interazioni:
 | Informazione | Fonte primaria |
 |---|---|
 | Route attive | `src/App.js` |
+| Route prerenderizzate e metadati per-route | `scripts/prerender.mjs` |
 | Composizione homepage | `src/pages/Main/Main.js` |
 | Identità e recapiti professionali | `src/data/professionalData.js` |
 | Contenuti visibili | `src/data/*` e componenti attivi |

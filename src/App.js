@@ -1,7 +1,6 @@
-import React, { useContext, lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 
-import { ThemeContext } from './contexts/ThemeContext';
 import ScrollToTop from './utils/ScrollToTop';
 import BackToTop from './components/BackToTop/BackToTop';
 
@@ -20,30 +19,34 @@ const PageSkeleton = () => (
     }} />
 );
 
-function App() {
-    const { theme } = useContext(ThemeContext);
-
+export function AppContent() {
     return (
         <div className="app">
-            <Router
-                future={{
-                    v7_startTransition: true,
-                    v7_relativeSplatPath: true,
-                }}
-            >
-                <ScrollToTop />
-                <Suspense fallback={<PageSkeleton />}>
-                    <Routes>
-                        <Route path="/" element={<Main />} />
-                        <Route path="/info-legale" element={<InfoLegale />} />
-                        {/* <Route path="/blog" element={<BlogPage />} /> */}
-                        {/* <Route path="/projects" element={<ProjectPage />} /> */}
-                        <Route path="*" element={<Navigate to="/" replace />} />
-                    </Routes>
-                </Suspense>
-            </Router>
+            <ScrollToTop />
+            <Suspense fallback={<PageSkeleton />}>
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                    <Route path="/info-legale" element={<InfoLegale />} />
+                    {/* <Route path="/blog" element={<BlogPage />} /> */}
+                    {/* <Route path="/projects" element={<ProjectPage />} /> */}
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                </Routes>
+            </Suspense>
             <BackToTop />
         </div>
+    );
+}
+
+function App() {
+    return (
+        <Router
+            future={{
+                v7_startTransition: true,
+                v7_relativeSplatPath: true,
+            }}
+        >
+            <AppContent />
+        </Router>
     );
 }
 

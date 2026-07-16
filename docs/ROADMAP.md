@@ -7,10 +7,10 @@
 - [x] **Coerenza interna dei dati locali** — allineati nome canonico e alias, telefono, qualifiche, sedi, relazioni con le strutture, coordinate e servizi tra contenuti visibili, dati React, `index.html` e JSON-LD.
 - [ ] **Allineamento delle fonti esterne** — verificare e aggiornare Google Business Profile, MioDottore, SalutePsy, profili social e directory affinché usino nome, telefono, sedi, qualifica e sito canonici.
 - [x] **Correzione dei dati strutturati delle sedi** — rappresentate separatamente la sede professionale di Mercato San Severino e la struttura SalutePsy di Castel San Giorgio, con indirizzi completi, coordinate verificate, link Maps e relazioni corrette; rimossi i telefoni non verificati delle strutture partner.
-- [ ] **Rimozione della `SearchAction` non supportata** — il JSON-LD attuale dichiara una ricerca interna tramite `?q=...`, ma il sito non implementa questa funzionalità.
+- [x] **Rimozione della `SearchAction` non supportata** — eliminata dal JSON-LD la ricerca interna dichiarata ma non implementata.
 - [ ] **Pagina locale per Mercato San Severino** — creare una route indicizzabile, ad esempio `/psicologa-mercato-san-severino`, con H1 chiaro, contenuto locale originale, servizi, indirizzo, link Maps, indicazioni stradali, modalità di appuntamento e FAQ.
-- [ ] **Prerendering statico / SSG** — generare HTML significativo per ogni route pubblica, evitando di dipendere da una radice React inizialmente vuota e migliorando la scansione da parte dei motori di ricerca e degli agenti che non eseguono JavaScript.
-- [ ] **Sezione FAQ visibile** — mostrare nel sito le domande attualmente presenti solo nel JSON-LD `FAQPage`, mantenendo sincronizzate e corrette entrambe le rappresentazioni.
+- [x] **Prerendering statico / SSG** — la build genera HTML completo per homepage e pagina legale, successivamente idratato da React nel browser.
+- [x] **Sezione FAQ visibile** — aggiunta alla homepage una sezione accessibile e responsive, mantenuta coerente con il JSON-LD `FAQPage` e collegata dalla navigazione.
 - [ ] **Completamento del Google Business Profile** — verificare categoria primaria, servizi, descrizione, telefono, sito, orari, link per appuntamenti, foto, attributi e sedi fisiche idonee.
 
 ## Priorità media
