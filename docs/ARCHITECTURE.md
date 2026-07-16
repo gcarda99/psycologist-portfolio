@@ -220,11 +220,12 @@ Non esiste un CMS. I contenuti sono moduli JavaScript versionati nel repository.
 
 | File | Contenuto |
 |---|---|
+| `professionalData.js` | Fonte canonica per nome, qualifiche, telefono, email, PEC e identificativi professionali |
 | `headerData.js` | Nome, qualifica, citazione e immagine hero |
 | `aboutData.js` | Testo della sezione "Su di me" |
 | `servicesData.js` | Elenco dei servizi e relative icone React |
 | `educationData.js` | Formazione accademica e specializzazioni |
-| `contactsData.js` | Telefono, WhatsApp, email, indirizzi e relativi link Google Maps |
+| `contactsData.js` | Sedi, relazioni con le strutture e relativi link Google Maps |
 | `socialsData.js` | URL social, email e PEC |
 | `footerData.js` | Nome, partita IVA e iscrizione all'Albo |
 | `privacyPolicyData.js` | Dati del titolare e data della privacy policy |
@@ -553,6 +554,7 @@ Per evitare assunzioni nelle future interazioni:
 |---|---|
 | Route attive | `src/App.js` |
 | Composizione homepage | `src/pages/Main/Main.js` |
+| Identità e recapiti professionali | `src/data/professionalData.js` |
 | Contenuti visibili | `src/data/*` e componenti attivi |
 | Palette | `src/theme/theme.js` e `src/data/themeData.js` |
 | Variabili EmailJS | `.env.example` e `Contacts.js` |

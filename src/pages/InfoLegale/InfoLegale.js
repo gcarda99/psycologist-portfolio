@@ -15,7 +15,7 @@ function InfoLegale() {
 
                 <h2>1. Titolare del trattamento</h2>
                 <p>
-                    Dott.ssa <strong>{privacyPolicyData.name}</strong><br/>
+                    <strong>{privacyPolicyData.name}</strong><br/>
                     Psicologa, iscritta all'Albo degli Psicologi della Campania n.{' '}
                     <a href={privacyPolicyData.alboUrl} target="_blank"
                        rel="noreferrer">{privacyPolicyData.albo}</a><br/>

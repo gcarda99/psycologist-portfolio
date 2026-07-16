@@ -1,9 +1,10 @@
 import landing from '../assets/webp/landing.webp'
+import {professionalData} from './professionalData'
 
 export const headerData = {
-    name: 'Dott.ssa Albano Mariaelisabetta',
-    title: "Psicologa",
+    name: professionalData.displayName,
+    title: professionalData.shortTitle,
     description: "\"Non giudicare ogni giorno dal raccolto che raccogli, ma dai semi che pianti.\"",
     image: landing,
-    resumeName: 'CV - Mariaelisabetta Albano'
+    resumeName: `CV - ${professionalData.name}`
 }

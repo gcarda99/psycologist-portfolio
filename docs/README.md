@@ -1,6 +1,6 @@
-# 🧠 Portfolio — Dott.ssa Albano Mariaelisabetta
+# 🧠 Portfolio — Dott.ssa Mariaelisabetta Albano
 
-Professional portfolio website for Dott.ssa Albano Mariaelisabetta (Psychologist).
+Professional portfolio website for Dott.ssa Mariaelisabetta Albano (Psychologist).
 
 Built with **React 18** + **Vite 6** + **Material UI 6**.
 
@@ -160,11 +160,12 @@ All site content lives in `src/data/`. Edit the corresponding files:
 
 | File | Content |
 |---|---|
+| `professionalData.js` | Canonical name, professional titles, phone, email, PEC and legal identifiers |
 | `headerData.js` | Name, title, photo, description |
 | `aboutData.js` | "About me" section text |
 | `educationData.js` | Academic background |
 | `servicesData.js` | Services offered |
-| `contactsData.js` | Email, phone, address |
+| `contactsData.js` | Locations, relationships and Google Maps links |
 | `socialsData.js` | Social links (LinkedIn, Instagram, TikTok) |
 | `themeData.js` | Theme colors |
 

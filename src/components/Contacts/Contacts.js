@@ -80,11 +80,13 @@ const DetailsIcon = styled('div')(({ownerState}) => ({
 const contactHoverStyles = (ownerState) => ({
     '& p': {
         color: ownerState.tertiary,
+    },
+    '& .contact-hover-text': {
         textDecoration: 'underline',
         textDecorationColor: 'transparent',
         transition: 'color 250ms ease-in-out, text-decoration-color 250ms ease-in-out',
     },
-    '&:hover p, &:focus-visible p': {
+    '&:hover .contact-hover-text, &:focus-visible .contact-hover-text': {
         color: ownerState.primary,
         textDecorationColor: ownerState.primary,
     },
@@ -109,7 +111,14 @@ function ContactAddress({address, theme}) {
             <DetailsIcon className='contact-details-icon' ownerState={theme}>
                 <AddressIcon/>
             </DetailsIcon>
-            <p>{address.label}</p>
+            <p>
+                {address.relationship && (
+                    <>
+                        <strong>{address.relationship}</strong><br/>
+                    </>
+                )}
+                <span className='contact-hover-text'>{address.label}</span>
+            </p>
         </>
     );
 
@@ -128,7 +137,7 @@ function ContactAddress({address, theme}) {
             className='personal-details'
             target='_blank'
             rel='noreferrer'
-            aria-label={`Apri ${address.label} su Google Maps`}
+            aria-label={`Apri ${address.relationship || address.label} su Google Maps`}
         >
             {content}
         </ContactLink>
@@ -403,11 +412,11 @@ function Contacts() {
                         <div className='contacts-details'>
                             <ContactLink
                                 ownerState={theme}
-                                href={`tel:${contactsData.phone.replace(" ", "")}`}
+                                href={contactsData.phone.href}
                                 className='personal-details'
                             >
                                 <DetailsIcon className='contact-details-icon' ownerState={theme}><FiPhone/></DetailsIcon>
-                                <p>{contactsData.phone}</p>
+                                <p className='contact-hover-text'>{contactsData.phone.display}</p>
                             </ContactLink>
                             <ContactLink
                                 ownerState={theme}
@@ -415,7 +424,7 @@ function Contacts() {
                                 className='personal-details'
                             >
                                 <DetailsIcon className='contact-details-icon' ownerState={theme}><FaWhatsapp/></DetailsIcon>
-                                <p>Clicca per scrivermi su WhatsApp</p>
+                                <p className='contact-hover-text'>Clicca per scrivermi su WhatsApp</p>
                             </ContactLink>
                             <ContactLink
                                 ownerState={theme}
@@ -423,7 +432,7 @@ function Contacts() {
                                 className='personal-details'
                             >
                                 <DetailsIcon className='contact-details-icon' ownerState={theme}><FiAtSign/></DetailsIcon>
-                                <p>{contactsData.email}</p>
+                                <p className='contact-hover-text'>{contactsData.email}</p>
                             </ContactLink>
                             {contactsData.addresses.map((address) => (
                                 <ContactAddress
