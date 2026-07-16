@@ -453,7 +453,7 @@ Le route Blog e Projects sono commentate in `App.js`; i componenti non sono incl
 
 Non esiste un test runner configurato. Lo script:
 
-```json
+```
 "test": "echo \"No test runner configured\" && exit 0"
 ```
 
