@@ -1,4 +1,6 @@
 .contacts {
+    --contact-icon-size: 45px;
+    --contact-icon-glyph-size: 23px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -175,6 +177,14 @@
 
 .custom-shape-divider-bottom-1757341859 .shape-fill {
     fill: #823ae0;
+}
+
+/* Desktop grandi e schermi 2K, anche con scaling del sistema operativo. */
+@media (min-width: 1920px) {
+    .contacts {
+        --contact-icon-size: 60px;
+        --contact-icon-glyph-size: 31px;
+    }
 }
 
 /* ── 2K (2560px+) ──────────────────────────────────────────────── */

@@ -7,7 +7,7 @@ import {AiOutlineCheckCircle, AiOutlineSend} from 'react-icons/ai';
 import {FiAtSign, FiPhone} from 'react-icons/fi';
 import {HiOutlineLocationMarker} from 'react-icons/hi';
 import emailjs from '@emailjs/browser';
-import {FaWhatsapp} from 'react-icons/fa';
+import {FaGlobe, FaWhatsapp} from 'react-icons/fa';
 
 import {ThemeContext} from '../../contexts/ThemeContext';
 import {contactsData} from '../../data/contactsData';
@@ -62,12 +62,12 @@ const DetailsIcon = styled('div')(({ownerState}) => ({
     backgroundColor: ownerState.primary,
     color: ownerState.secondary,
     borderRadius: '50%',
-    width: '45px',
-    height: '45px',
+    width: 'var(--contact-icon-size, 45px)',
+    height: 'var(--contact-icon-size, 45px)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: '23px',
+    fontSize: 'var(--contact-icon-glyph-size, 23px)',
     transition: '250ms ease-in-out',
     flexShrink: 0,
     '&:hover': {
@@ -76,6 +76,64 @@ const DetailsIcon = styled('div')(({ownerState}) => ({
         backgroundColor: ownerState.tertiary,
     },
 }));
+
+const contactHoverStyles = (ownerState) => ({
+    '& p': {
+        color: ownerState.tertiary,
+        textDecoration: 'underline',
+        textDecorationColor: 'transparent',
+        transition: 'color 250ms ease-in-out, text-decoration-color 250ms ease-in-out',
+    },
+    '&:hover p, &:focus-visible p': {
+        color: ownerState.primary,
+        textDecorationColor: ownerState.primary,
+    },
+    '&:hover .contact-details-icon, &:focus-visible .contact-details-icon': {
+        transform: 'scale(1.1)',
+        color: ownerState.secondary,
+        backgroundColor: ownerState.tertiary,
+    },
+});
+
+const ContactLink = styled('a')(({ownerState}) => ({
+    textDecoration: 'none',
+    ...contactHoverStyles(ownerState),
+}));
+
+const ContactDetail = styled('div')(({ownerState}) => contactHoverStyles(ownerState));
+
+function ContactAddress({address, theme}) {
+    const AddressIcon = address.type === 'online' ? FaGlobe : HiOutlineLocationMarker;
+    const content = (
+        <>
+            <DetailsIcon className='contact-details-icon' ownerState={theme}>
+                <AddressIcon/>
+            </DetailsIcon>
+            <p>{address.label}</p>
+        </>
+    );
+
+    if (!address.googleMapsUrl) {
+        return (
+            <ContactDetail ownerState={theme} className='personal-details'>
+                {content}
+            </ContactDetail>
+        );
+    }
+
+    return (
+        <ContactLink
+            ownerState={theme}
+            href={address.googleMapsUrl}
+            className='personal-details'
+            target='_blank'
+            rel='noreferrer'
+            aria-label={`Apri ${address.label} su Google Maps`}
+        >
+            {content}
+        </ContactLink>
+    );
+}
 
 const SubmitBtn = styled('button')(({ownerState}) => ({
     backgroundColor: ownerState.primary,
@@ -98,7 +156,6 @@ function Contacts() {
     const [success, setSuccess] = useState(false);
     const [errMsg, setErrMsg] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [whatsappHover, setWhatsappHover] = useState(false);
     const isSubmittingRef = useRef(false);
 
     const {theme} = useContext(ThemeContext);
@@ -344,41 +401,37 @@ function Contacts() {
                         </div>
 
                         <div className='contacts-details'>
-                            <a href={`tel:${contactsData.phone.replace(" ", "")}`} className='personal-details'>
-                                <DetailsIcon ownerState={theme}><FiPhone/></DetailsIcon>
-                                <p style={{color: theme.tertiary}}>{contactsData.phone}</p>
-                            </a>
-                            <a
+                            <ContactLink
+                                ownerState={theme}
+                                href={`tel:${contactsData.phone.replace(" ", "")}`}
+                                className='personal-details'
+                            >
+                                <DetailsIcon className='contact-details-icon' ownerState={theme}><FiPhone/></DetailsIcon>
+                                <p>{contactsData.phone}</p>
+                            </ContactLink>
+                            <ContactLink
+                                ownerState={theme}
                                 href={`${contactsData.whatsapp}`}
                                 className='personal-details'
-                                style={{textDecoration: 'none'}}
                             >
-                                <DetailsIcon ownerState={theme}><FaWhatsapp/></DetailsIcon>
-                                <p style={{color: theme.tertiary}}>
-                                    Scrivimi su{' '}
-                                    <span
-                                        style={{
-                                            color: whatsappHover ? theme.primary : theme.tertiary,
-                                            textDecoration: whatsappHover ? 'underline' : 'none',
-                                            transition: 'color 0.2s',
-                                        }}
-                                        onMouseEnter={() => setWhatsappHover(true)}
-                                        onMouseLeave={() => setWhatsappHover(false)}
-                                    >
-                                        WhatsApp
-                                    </span>
-                                </p>
-                            </a>
-                            <a href={`mailto:${contactsData.email}`} className='personal-details'>
-                                <DetailsIcon ownerState={theme}><FiAtSign/></DetailsIcon>
-                                <p style={{color: theme.tertiary}}>{contactsData.email}</p>
-                            </a>
-                            <div className='personal-details'>
-                                <DetailsIcon ownerState={theme}><HiOutlineLocationMarker/></DetailsIcon>
-                                <p style={{color: theme.tertiary}}>
-                                    {contactsData.address1}<br/>{contactsData.address2}
-                                </p>
-                            </div>
+                                <DetailsIcon className='contact-details-icon' ownerState={theme}><FaWhatsapp/></DetailsIcon>
+                                <p>Clicca per scrivermi su WhatsApp</p>
+                            </ContactLink>
+                            <ContactLink
+                                ownerState={theme}
+                                href={`mailto:${contactsData.email}`}
+                                className='personal-details'
+                            >
+                                <DetailsIcon className='contact-details-icon' ownerState={theme}><FiAtSign/></DetailsIcon>
+                                <p>{contactsData.email}</p>
+                            </ContactLink>
+                            {contactsData.addresses.map((address) => (
+                                <ContactAddress
+                                    key={address.id}
+                                    address={address}
+                                    theme={theme}
+                                />
+                            ))}
                         </div>
                     </div>
                     <img
