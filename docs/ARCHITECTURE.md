@@ -224,7 +224,7 @@ Non esiste un CMS. I contenuti sono moduli JavaScript versionati nel repository.
 | `aboutData.js` | Testo della sezione "Su di me" |
 | `servicesData.js` | Elenco dei servizi e relative icone React |
 | `educationData.js` | Formazione accademica e specializzazioni |
-| `contactsData.js` | Telefono, WhatsApp, email e indirizzo |
+| `contactsData.js` | Telefono, WhatsApp, email, indirizzi e relativi link Google Maps |
 | `socialsData.js` | URL social, email e PEC |
 | `footerData.js` | Nome, partita IVA e iscrizione all'Albo |
 | `privacyPolicyData.js` | Dati del titolare e data della privacy policy |
@@ -232,7 +232,8 @@ Non esiste un CMS. I contenuti sono moduli JavaScript versionati nel repository.
 
 ### Caratteristiche del modello
 
-- Gli elenchi usano ID numerici come chiavi React.
+- Gli elenchi usano ID stabili come chiavi React.
+- `contactsData.addresses` modella sedi e disponibilità online come una lista di oggetti con ID, tipo, testo e link Google Maps opzionale.
 - I campi facoltativi sono gestiti tramite controlli locali, ad esempio voto, tesi e partita IVA.
 - Le icone dei servizi sono elementi JSX memorizzati direttamente nei dati; il file non è quindi JSON puro.
 - Non esistono schemi, TypeScript, PropTypes o validazione automatica dei contenuti.
@@ -393,7 +394,7 @@ Quando viene aggiunta una route pubblica indicizzabile, occorre aggiornare almen
 
 Google Analytics è caricato direttamente in `index.html` con measurement ID `G-VB2PFVSKQM`.
 
-Esiste una criticità di coerenza legale: la privacy policy dichiara che il sito usa solo cookie tecnici e non usa cookie analitici, mentre `index.html` esegue Google Analytics. Prima di evolvere analytics o gestione consensi, questa discrepanza deve essere risolta a livello legale e tecnico.
+La privacy policy dichiara l'uso di Google Analytics e dei relativi cookie. Rimane una criticità tecnica: lo script viene caricato immediatamente da `index.html`, senza un meccanismo che raccolga il consenso e blocchi Analytics prima dell'accettazione.
 
 ## 13. Asset e performance
 
@@ -477,7 +478,7 @@ termina con successo senza eseguire test. Le dipendenze Testing Library sono ins
 Questi punti sono importanti per pianificare modifiche future:
 
 1. **Contenuti duplicati:** SEO, dati legali e contenuti UI possono divergere perché non condividono una sorgente unica.
-2. **Privacy e analytics incoerenti:** Google Analytics è attivo, ma la privacy policy nega l'uso di analytics.
+2. **Consenso Analytics non implementato:** l'informativa descrive Google Analytics, ma lo script viene caricato prima di un consenso esplicito e non è presente un meccanismo di revoca.
 3. **Tema non unificato:** palette custom, tema MUI e colori hardcoded convivono.
 4. **Tema statico:** `ThemeContext` non supporta cambio tema nonostante la struttura derivi da un sistema light/dark.
 5. **Codice legacy:** moduli inattivi e dati demo aumentano il rumore e possono essere riattivati accidentalmente.

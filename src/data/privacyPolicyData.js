@@ -5,5 +5,5 @@ export const privacyPolicyData = {
     albo: '11832',
     alboUrl: 'https://www.oprc.it/scheda-personale/?user=MARIAELISABETTA-ALBANO&id=11832-A',
     iva: '06399950655',
-    lastUpdate: '9 Marzo 2026'
+    lastUpdate: '16 Luglio 2026'
 }

@@ -2,7 +2,8 @@
 ## 🔜 To Do
 
 ### High Priority
-- [ ] **Google Business Profile** — create and verify the profile at [business.google.com](https://business.google.com). This is the highest-impact signal for local Google searches and for AI-generated answers (ChatGPT, Gemini, Perplexity). Add: name, address, phone, opening hours, category "Psychologist", photos, website link.
+- [x] **Google Business Profile** — profile created and linked from the studio address on the website.
+- [ ] **Cookie consent management** — block Google Analytics until explicit consent, provide equally accessible accept/reject actions, and allow users to change or revoke their choice.
 - [ ] **Visible FAQ section on-page** — the `FAQPage` Schema works best when the questions are also present as visible text on the page (not only in the JSON-LD). Create a React `FAQ` component and add it to the homepage.
 
 ### Medium Priority

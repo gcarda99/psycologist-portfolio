@@ -52,7 +52,7 @@ Built with **React 18** + **Vite 6** + **Material UI 6**.
 - [ ] Loading skeleton / splash screen template
 - [ ] Dynamic detail page for each service
 - [ ] Blog page — import posts/reels from the professional Instagram profile
-- [ ] Google Maps location embed
+- [x] Google Maps links from the studio addresses
 - [ ] Google Reviews integration
 
 ---
