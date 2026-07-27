@@ -3,7 +3,7 @@ export const professionalData = {
     displayName: 'Dott.ssa Mariaelisabetta Albano',
     alternateNames: ['Elisabetta Albano', 'Dott.ssa Elisabetta Albano', 'Dott.ssa Albano'],
     shortTitle: 'Psicologa',
-    professionalTitle: 'Psicologa e Psicoterapeuta in formazione ad orientamento sistemico-relazionale',
+    professionalTitle: 'Psicologa e specializzanda in psicoterapia ad orientamento sistemico-relazionale',
     phone: {
         display: '+39 331 704 7398',
         value: '+393317047398',
