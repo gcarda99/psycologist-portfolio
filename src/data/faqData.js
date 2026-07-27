@@ -4,7 +4,7 @@ export const faqData = [
     {
         id: 'profilo-professionale',
         question: 'Chi sono e di cosa mi occupo?',
-        answer: `Sono la ${professionalData.displayName}, ma puoi chiamarmi anche Elisabetta. Sono una Psicologa iscritta all'Albo degli Psicologi della Campania e specializzanda in psicoterapia ad orientamento sistemico-relazionale. Mi occupo di supporto psicologico per bambini, adolescenti, adulti e coppie.`
+        answer: <>Sono la <strong>{professionalData.displayName}</strong>, ma puoi chiamarmi anche Elisabetta. Sono una Psicologa iscritta all'Albo degli Psicologi della Campania e specializzanda in psicoterapia ad <strong>orientamento sistemico-relazionale</strong>. Mi occupo di supporto psicologico per bambini, adolescenti, adulti e coppie.</>
     },
     {
         id: 'servizi',
@@ -14,7 +14,7 @@ export const faqData = [
     {
         id: 'sedi',
         question: 'Dove ricevo?',
-        answer: 'Ricevo presso il Meta Studio APS, in Via Carmine Amato 1/24, 84085 Mercato San Severino (SA). Inoltre, collaboro presso SalutePsy, in Via Palmiro Togliatti 21, 84083 Castel San Giorgio (SA), e offro consulenze online.'
+        answer: <>Ricevo presso il <strong>Meta Studio APS</strong>, in Via Carmine Amato 1/24, 84085 Mercato San Severino (SA). Inoltre, collaboro presso <strong>SalutePsy</strong>, in Via Palmiro Togliatti 21, 84083 Castel San Giorgio (SA), e offro consulenze online.</>
     },
     {
         id: 'consulenze-online',
@@ -24,7 +24,7 @@ export const faqData = [
     {
         id: 'appuntamento',
         question: 'Come prenotare un appuntamento?',
-        answer: `Puoi chiamare o inviare un messaggio al ${professionalData.phone.display}, oppure compilare il modulo presente nella sezione Contatti.`
+        answer: <>Puoi chiamare o inviare un messaggio al <strong>${professionalData.phone.display}</strong>, oppure compilare il modulo presente nella sezione <strong>Contatti</strong>.</>
     },
     {
         id: 'psicologo-psicoterapeuta',
